@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		281B03AF19DCA7EB00CC73A0 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 281B03AE19DCA7EB00CC73A0 /* Event.m */; };
+		281B03B219DCA7EC00CC73A0 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 281B03B119DCA7EC00CC73A0 /* Person.m */; };
+		281B03B519DCA7ED00CC73A0 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 281B03B419DCA7ED00CC73A0 /* Task.m */; };
 		289443F319DB5FC00036CDDA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 289443F219DB5FC00036CDDA /* main.m */; };
 		289443F619DB5FC00036CDDA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 289443F519DB5FC00036CDDA /* AppDelegate.m */; };
 		289443F919DB5FC00036CDDA /* TaskTag.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 289443F719DB5FC00036CDDA /* TaskTag.xcdatamodeld */; };
-		289443FC19DB5FC00036CDDA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289443FB19DB5FC00036CDDA /* ViewController.m */; };
 		289443FF19DB5FC00036CDDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 289443FD19DB5FC00036CDDA /* Main.storyboard */; };
 		2894440119DB5FC00036CDDA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2894440019DB5FC00036CDDA /* Images.xcassets */; };
 		2894440419DB5FC00036CDDA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2894440219DB5FC00036CDDA /* LaunchScreen.xib */; };
 		2894441019DB5FC00036CDDA /* TaskTagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894440F19DB5FC00036CDDA /* TaskTagTests.m */; };
+		2894441E19DB63F90036CDDA /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894441D19DB63F90036CDDA /* EventViewController.m */; };
+		2894442419DB6CAD0036CDDA /* EventInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894442319DB6CAD0036CDDA /* EventInfoViewController.m */; };
+		2894442719DB6D080036CDDA /* EventTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894442619DB6D080036CDDA /* EventTaskViewController.m */; };
+		2894442A19DB75210036CDDA /* EventTaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894442919DB75210036CDDA /* EventTaskDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,20 +34,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		281B03AD19DCA7EB00CC73A0 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		281B03AE19DCA7EB00CC73A0 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		281B03B019DCA7EC00CC73A0 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		281B03B119DCA7EC00CC73A0 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		281B03B319DCA7ED00CC73A0 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		281B03B419DCA7ED00CC73A0 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		289443ED19DB5FC00036CDDA /* TaskTag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskTag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		289443F119DB5FC00036CDDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		289443F219DB5FC00036CDDA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		289443F419DB5FC00036CDDA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		289443F519DB5FC00036CDDA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		289443F819DB5FC00036CDDA /* TaskTag.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskTag.xcdatamodel; sourceTree = "<group>"; };
-		289443FA19DB5FC00036CDDA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		289443FB19DB5FC00036CDDA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		289443FE19DB5FC00036CDDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2894440019DB5FC00036CDDA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2894440319DB5FC00036CDDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2894440919DB5FC00036CDDA /* TaskTagTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskTagTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2894440E19DB5FC00036CDDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2894440F19DB5FC00036CDDA /* TaskTagTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskTagTests.m; sourceTree = "<group>"; };
+		2894441C19DB63F90036CDDA /* EventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventViewController.h; path = ../EventViewController.h; sourceTree = "<group>"; };
+		2894441D19DB63F90036CDDA /* EventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventViewController.m; path = ../EventViewController.m; sourceTree = "<group>"; };
+		2894442219DB6CAD0036CDDA /* EventInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventInfoViewController.h; sourceTree = "<group>"; };
+		2894442319DB6CAD0036CDDA /* EventInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventInfoViewController.m; sourceTree = "<group>"; };
+		2894442519DB6D080036CDDA /* EventTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventTaskViewController.h; path = ../EventTaskViewController.h; sourceTree = "<group>"; };
+		2894442619DB6D080036CDDA /* EventTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventTaskViewController.m; path = ../EventTaskViewController.m; sourceTree = "<group>"; };
+		2894442819DB75210036CDDA /* EventTaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTaskDetailViewController.h; sourceTree = "<group>"; };
+		2894442919DB75210036CDDA /* EventTaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTaskDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,11 +101,23 @@
 		289443EF19DB5FC00036CDDA /* TaskTag */ = {
 			isa = PBXGroup;
 			children = (
+				289443FD19DB5FC00036CDDA /* Main.storyboard */,
 				289443F419DB5FC00036CDDA /* AppDelegate.h */,
 				289443F519DB5FC00036CDDA /* AppDelegate.m */,
-				289443FA19DB5FC00036CDDA /* ViewController.h */,
-				289443FB19DB5FC00036CDDA /* ViewController.m */,
-				289443FD19DB5FC00036CDDA /* Main.storyboard */,
+				2894441C19DB63F90036CDDA /* EventViewController.h */,
+				2894441D19DB63F90036CDDA /* EventViewController.m */,
+				2894442519DB6D080036CDDA /* EventTaskViewController.h */,
+				2894442619DB6D080036CDDA /* EventTaskViewController.m */,
+				2894442819DB75210036CDDA /* EventTaskDetailViewController.h */,
+				2894442919DB75210036CDDA /* EventTaskDetailViewController.m */,
+				2894442219DB6CAD0036CDDA /* EventInfoViewController.h */,
+				2894442319DB6CAD0036CDDA /* EventInfoViewController.m */,
+				281B03AD19DCA7EB00CC73A0 /* Event.h */,
+				281B03AE19DCA7EB00CC73A0 /* Event.m */,
+				281B03B319DCA7ED00CC73A0 /* Task.h */,
+				281B03B419DCA7ED00CC73A0 /* Task.m */,
+				281B03B019DCA7EC00CC73A0 /* Person.h */,
+				281B03B119DCA7EC00CC73A0 /* Person.m */,
 				2894440019DB5FC00036CDDA /* Images.xcassets */,
 				2894440219DB5FC00036CDDA /* LaunchScreen.xib */,
 				289443F719DB5FC00036CDDA /* TaskTag.xcdatamodeld */,
@@ -222,9 +252,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				281B03B519DCA7ED00CC73A0 /* Task.m in Sources */,
+				2894442719DB6D080036CDDA /* EventTaskViewController.m in Sources */,
 				289443F619DB5FC00036CDDA /* AppDelegate.m in Sources */,
+				2894441E19DB63F90036CDDA /* EventViewController.m in Sources */,
+				2894442419DB6CAD0036CDDA /* EventInfoViewController.m in Sources */,
+				281B03AF19DCA7EB00CC73A0 /* Event.m in Sources */,
+				2894442A19DB75210036CDDA /* EventTaskDetailViewController.m in Sources */,
+				281B03B219DCA7EC00CC73A0 /* Person.m in Sources */,
 				289443F319DB5FC00036CDDA /* main.m in Sources */,
-				289443FC19DB5FC00036CDDA /* ViewController.m in Sources */,
 				289443F919DB5FC00036CDDA /* TaskTag.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,6 +452,7 @@
 				2894441519DB5FC00036CDDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2894441619DB5FC00036CDDA /* Build configuration list for PBXNativeTarget "TaskTagTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +461,7 @@
 				2894441819DB5FC00036CDDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

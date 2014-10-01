@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  EventTaskDetailViewController.h
 //  TaskTag
 //
 //  Created by Min Xing on 9/30/14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface EventTaskDetailViewController : UIViewController
 
 @end
-
