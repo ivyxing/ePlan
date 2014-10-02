@@ -18,9 +18,9 @@
 		2894440419DB5FC00036CDDA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2894440219DB5FC00036CDDA /* LaunchScreen.xib */; };
 		2894441019DB5FC00036CDDA /* TaskTagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894440F19DB5FC00036CDDA /* TaskTagTests.m */; };
 		2894441E19DB63F90036CDDA /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894441D19DB63F90036CDDA /* EventViewController.m */; };
-		2894442419DB6CAD0036CDDA /* EventInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894442319DB6CAD0036CDDA /* EventInfoViewController.m */; };
 		2894442719DB6D080036CDDA /* EventTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894442619DB6D080036CDDA /* EventTaskViewController.m */; };
 		2894442A19DB75210036CDDA /* EventTaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894442919DB75210036CDDA /* EventTaskDetailViewController.m */; };
+		28CB72DC19DE0C48009F7BF8 /* EventInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CB72DB19DE0C48009F7BF8 /* EventInfoTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,12 +54,12 @@
 		2894440F19DB5FC00036CDDA /* TaskTagTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskTagTests.m; sourceTree = "<group>"; };
 		2894441C19DB63F90036CDDA /* EventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventViewController.h; path = ../EventViewController.h; sourceTree = "<group>"; };
 		2894441D19DB63F90036CDDA /* EventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventViewController.m; path = ../EventViewController.m; sourceTree = "<group>"; };
-		2894442219DB6CAD0036CDDA /* EventInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventInfoViewController.h; sourceTree = "<group>"; };
-		2894442319DB6CAD0036CDDA /* EventInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventInfoViewController.m; sourceTree = "<group>"; };
 		2894442519DB6D080036CDDA /* EventTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventTaskViewController.h; path = ../EventTaskViewController.h; sourceTree = "<group>"; };
 		2894442619DB6D080036CDDA /* EventTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventTaskViewController.m; path = ../EventTaskViewController.m; sourceTree = "<group>"; };
 		2894442819DB75210036CDDA /* EventTaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTaskDetailViewController.h; sourceTree = "<group>"; };
 		2894442919DB75210036CDDA /* EventTaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTaskDetailViewController.m; sourceTree = "<group>"; };
+		28CB72DA19DE0C48009F7BF8 /* EventInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventInfoTableViewController.h; path = ../EventInfoTableViewController.h; sourceTree = "<group>"; };
+		28CB72DB19DE0C48009F7BF8 /* EventInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventInfoTableViewController.m; path = ../EventInfoTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +110,8 @@
 				2894442619DB6D080036CDDA /* EventTaskViewController.m */,
 				2894442819DB75210036CDDA /* EventTaskDetailViewController.h */,
 				2894442919DB75210036CDDA /* EventTaskDetailViewController.m */,
-				2894442219DB6CAD0036CDDA /* EventInfoViewController.h */,
-				2894442319DB6CAD0036CDDA /* EventInfoViewController.m */,
+				28CB72DA19DE0C48009F7BF8 /* EventInfoTableViewController.h */,
+				28CB72DB19DE0C48009F7BF8 /* EventInfoTableViewController.m */,
 				281B03AD19DCA7EB00CC73A0 /* Event.h */,
 				281B03AE19DCA7EB00CC73A0 /* Event.m */,
 				281B03B319DCA7ED00CC73A0 /* Task.h */,
@@ -252,11 +252,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28CB72DC19DE0C48009F7BF8 /* EventInfoTableViewController.m in Sources */,
 				281B03B519DCA7ED00CC73A0 /* Task.m in Sources */,
 				2894442719DB6D080036CDDA /* EventTaskViewController.m in Sources */,
 				289443F619DB5FC00036CDDA /* AppDelegate.m in Sources */,
 				2894441E19DB63F90036CDDA /* EventViewController.m in Sources */,
-				2894442419DB6CAD0036CDDA /* EventInfoViewController.m in Sources */,
 				281B03AF19DCA7EB00CC73A0 /* Event.m in Sources */,
 				2894442A19DB75210036CDDA /* EventTaskDetailViewController.m in Sources */,
 				281B03B219DCA7EC00CC73A0 /* Person.m in Sources */,

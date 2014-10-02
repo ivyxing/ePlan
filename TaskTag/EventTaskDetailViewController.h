@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Task;
 
 @interface EventTaskDetailViewController : UIViewController
+
+@property (strong, nonatomic) Task *task;
 
 @end
