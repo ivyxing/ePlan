@@ -9,6 +9,7 @@
 #import "EventTaskViewController.h"
 #import "EventTaskDetailViewController.h"
 #import "EventInfoTableViewController.h"
+#import "EventTaskDetailViewController.h"
 #import "Task.h"
 #import "Event.h"
 #import "AppDelegate.h"
@@ -26,10 +27,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.taskTableView.delegate = self;
-    self.taskTableView.dataSource = self;
-    self.eventTitleTextField.delegate = self;
-    self.taskNameTextField.delegate = self;
+//    self.taskTableView.delegate = self;
+//    self.taskTableView.dataSource = self;
+//    self.eventTitleTextField.delegate = self;
+//    self.taskNameTextField.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,10 +83,10 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"Event Info"]) {
+    if ([segue.identifier isEqualToString:@"EventInfo"]) {
         EventInfoTableViewController *eventInfoTableViewController = [segue destinationViewController];
         eventInfoTableViewController.event = self.event;
-    } else if ([segue.identifier isEqualToString:@"EventDetail"]) {
+    } else if ([segue.identifier isEqualToString:@"TaskDetail"]) {
         EventTaskDetailViewController *eventTaskDetailViewController = [segue destinationViewController];
         NSIndexPath *selectedIndexPath = self.taskTableView.indexPathForSelectedRow;
         NSArray *tasksArray = [self.event.tasks allObjects];

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class Task;
 
-@interface EventTaskDetailViewController : UIViewController
+@interface EventTaskDetailViewController : UIViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) Task *task;
 
