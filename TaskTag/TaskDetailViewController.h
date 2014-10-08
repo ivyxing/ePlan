@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DatePickerViewController.h"
 @class Task;
 
-@interface EventTaskDetailViewController : UIViewController <UITextFieldDelegate>
+@interface TaskDetailViewController : UIViewController <UITextFieldDelegate, DatePickerViewControllerDelegate>
 
 @property (strong, nonatomic) Task *task;
 

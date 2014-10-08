@@ -6,15 +6,16 @@
 //  Copyright (c) 2014 MakeSchool. All rights reserved.
 //
 
-#import "EventTaskViewController.h"
-#import "EventTaskDetailViewController.h"
+#import "TaskViewController.h"
+#import "TaskDetailViewController.h"
 #import "EventInfoTableViewController.h"
-#import "EventTaskDetailViewController.h"
+#import "TaskDetailViewController.h"
 #import "Task.h"
 #import "Event.h"
 #import "AppDelegate.h"
 
-@interface EventTaskViewController ()
+
+@interface TaskViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *taskTableView;
 @property (weak, nonatomic) IBOutlet UITextField *eventTitleTextField;
@@ -22,15 +23,10 @@
 
 @end
 
-@implementation EventTaskViewController
+@implementation TaskViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    self.taskTableView.delegate = self;
-//    self.taskTableView.dataSource = self;
-//    self.eventTitleTextField.delegate = self;
-//    self.taskNameTextField.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -87,7 +83,7 @@
         EventInfoTableViewController *eventInfoTableViewController = [segue destinationViewController];
         eventInfoTableViewController.event = self.event;
     } else if ([segue.identifier isEqualToString:@"TaskDetail"]) {
-        EventTaskDetailViewController *eventTaskDetailViewController = [segue destinationViewController];
+        TaskDetailViewController *eventTaskDetailViewController = [segue destinationViewController];
         NSIndexPath *selectedIndexPath = self.taskTableView.indexPathForSelectedRow;
         NSArray *tasksArray = [self.event.tasks allObjects];
         eventTaskDetailViewController.task = tasksArray[selectedIndexPath.row];
@@ -110,15 +106,5 @@
         // Error handling, e.g. display error to user.
     }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

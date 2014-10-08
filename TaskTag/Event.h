@@ -20,6 +20,7 @@
 @property (nonatomic, retain) NSDate * endTime;
 @property (nonatomic, retain) NSSet *tasks;
 @property (nonatomic, retain) NSSet *persons;
+
 @end
 
 @interface Event (CoreDataGeneratedAccessors)

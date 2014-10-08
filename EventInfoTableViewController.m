@@ -9,6 +9,7 @@
 #import "EventInfoTableViewController.h"
 #import "Event.h"
 
+
 @interface EventInfoTableViewController ()
 
 @end

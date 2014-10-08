@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 @class Event;
 
+
 @interface EventInfoTableViewController : UITableViewController
 
 @property (strong, nonatomic) Event *event;

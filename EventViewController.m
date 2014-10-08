@@ -7,9 +7,10 @@
 //
 
 #import "EventViewController.h"
-#import "EventTaskViewController.h"
+#import "TaskViewController.h"
 #import "Event.h"
 #import "AppDelegate.h"
+
 
 @interface EventViewController ()
 
@@ -75,11 +76,11 @@
         NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
         // Create a new object using the entity description.
         Event *newEvent = [NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:context];
-        EventTaskViewController *eventTaskViewController = [segue destinationViewController];
+        TaskViewController *eventTaskViewController = [segue destinationViewController];
         eventTaskViewController.event = newEvent;
         [self.events addObject:newEvent];
     } else if ([segue.identifier isEqualToString:@"ExistingEvent"]) {
-        EventTaskViewController *eventTaskViewController = [segue destinationViewController];
+        TaskViewController *eventTaskViewController = [segue destinationViewController];
         NSIndexPath *selectedIndexPath = self.eventTableView.indexPathForSelectedRow;
         eventTaskViewController.event =self.events[selectedIndexPath.row];
     }

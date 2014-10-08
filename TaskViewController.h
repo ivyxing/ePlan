@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 @class Event;
 
-@interface EventTaskViewController : UIViewController
+
+@interface TaskViewController : UIViewController
 <UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) Event *event;
