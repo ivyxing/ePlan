@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DatePickerViewController.h"
 @class Event;
 
 
 @interface EventInfoTableViewController : UITableViewController
+<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, DatePickerViewControllerDelegate>
 
 @property (strong, nonatomic) Event *event;
 

@@ -2,13 +2,14 @@
 //  Person.h
 //  TaskTag
 //
-//  Created by Min Xing on 10/1/14.
+//  Created by Min Xing on 10/9/14.
 //  Copyright (c) 2014 MakeSchool. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-@class Event;
+
+@class Event, Task;
 
 @interface Person : NSManagedObject
 
@@ -25,8 +26,8 @@
 - (void)addParentEvent:(NSSet *)values;
 - (void)removeParentEvent:(NSSet *)values;
 
-- (void)addParentTaskObject:(NSManagedObject *)value;
-- (void)removeParentTaskObject:(NSManagedObject *)value;
+- (void)addParentTaskObject:(Task *)value;
+- (void)removeParentTaskObject:(Task *)value;
 - (void)addParentTask:(NSSet *)values;
 - (void)removeParentTask:(NSSet *)values;
 

@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 
-@interface EventViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface EventViewController : UIViewController
+<UITableViewDelegate, UITableViewDataSource, NSURLSessionDataDelegate>
 
 @property (strong, nonatomic) NSMutableArray *events;
 

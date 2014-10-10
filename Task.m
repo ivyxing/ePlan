@@ -2,7 +2,7 @@
 //  Task.m
 //  TaskTag
 //
-//  Created by Min Xing on 10/1/14.
+//  Created by Min Xing on 10/9/14.
 //  Copyright (c) 2014 MakeSchool. All rights reserved.
 //
 
@@ -13,9 +13,9 @@
 
 @implementation Task
 
+@dynamic dueDate;
 @dynamic name;
 @dynamic notes;
-@dynamic dueDate;
 @dynamic parentEvent;
 @dynamic persons;
 
