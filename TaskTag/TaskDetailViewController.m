@@ -9,6 +9,7 @@
 #import "TaskDetailViewController.h"
 #import "DatePickerViewController.h"
 #import "Task.h"
+#import "AppDelegate.h"
 
 
 @interface TaskDetailViewController ()
@@ -25,10 +26,24 @@
 #pragma mark - View life cycle
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+    [self.dueDateAlertTableView reloadData];
     // Display task name.
     [self.taskNameTextField setText:self.task.name];
-    [self.view reloadInputViews];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    // Save event name and image.
+    self.task.name = self.taskNameTextField.text;
+    // Get the NSManagedObject context.
+    NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+    // Create an error variable to pass to the save method.
+    NSError *error = nil;
+    // Attempt to save the context and persist our changes.
+    [context save:&error];
+    if (error) {
+        // Error handling, e.g. display error to user.
+    }
 }
 
 #pragma mark - User Interaction
@@ -40,11 +55,20 @@
         [self.taskNameTextField resignFirstResponder];
         // Save task title.
         self.task.name = textField.text;
+        self.task.timeStamp = [NSDate date];
     }
     return YES;
 }
 
-#pragma mark - Set Date
+#pragma mark - Table view data source
+
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell" forIndexPath:indexPath];
+//
+//    return cell;
+//}
+
+#pragma mark - Date Handling
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"PickDueDate"]) {
@@ -55,20 +79,13 @@
 }
 
 - (void)datePicked:(NSDate*)date {
-    self.task.dueDate =  date;
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
+    self.task.dueDate = date;
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:date
                                                           dateStyle:NSDateFormatterShortStyle
                                                           timeStyle:NSDateFormatterShortStyle];
+    NSLog(@"%@", dateString);
     NSString *buttonTitle = [NSString stringWithFormat:@"Due Date: %@", dateString];
     [self.dueDateButton setTitle:buttonTitle forState:UIControlStateNormal];
 }
-
-#pragma mark - Table view data source
-
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell" forIndexPath:indexPath];
-//    
-//    return cell;
-//}
 
 @end

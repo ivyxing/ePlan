@@ -23,15 +23,29 @@
 
 @end
 
+
 @implementation TaskViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+#pragma mark - View Life Cycle
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.taskTableView reloadData];
+    self.eventTitleTextField.text = self.event.title;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    // Save event name and image.
+    self.event.title = self.eventTitleTextField.text;
+    // Get the NSManagedObject context.
+    NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+    // Create an error variable to pass to the save method.
+    NSError *error = nil;
+    // Attempt to save the context and persist our changes.
+    [context save:&error];
+    if (error) {
+        // Error handling, e.g. display error to user.
+    }
 }
 
 #pragma mark - User Interaction
@@ -51,6 +65,7 @@
         // Create a new object using the entity description.
         Task *task = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:context];
         task.name = textField.text;
+        task.timeStamp = [NSDate date];
         [self.event addTasksObject:task];
         // Clear the text field.
         [textField setText:@""];
@@ -59,7 +74,7 @@
     return YES;
 }
 
-#pragma mark - Table view data source
+#pragma mark - Table View Data Source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.event.tasks count];
@@ -67,15 +82,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell" forIndexPath:indexPath];
-    NSArray *tasksArray = [self.event.tasks allObjects];
+    NSArray *tasksArray = [self tasksSetToSortedArray:self.event.tasks];
     cell.textLabel.text = [tasksArray[indexPath.row] name];
     
     return cell;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.eventTitleTextField.text = self.event.title;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -85,26 +95,43 @@
     } else if ([segue.identifier isEqualToString:@"TaskDetail"]) {
         TaskDetailViewController *eventTaskDetailViewController = [segue destinationViewController];
         NSIndexPath *selectedIndexPath = self.taskTableView.indexPathForSelectedRow;
-        NSArray *tasksArray = [self.event.tasks allObjects];
+        NSArray *tasksArray = [self tasksSetToSortedArray:self.event.tasks];
         eventTaskDetailViewController.task = tasksArray[selectedIndexPath.row];
     }
 }
 
-#pragma mark - Save Changes
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    // Save event name and image.
-    self.event.title = self.eventTitleTextField.text;
-    // Get the NSManagedObject context.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // Get the context.
     NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+    // Get and delete object
+    NSArray *tasksArray = [self tasksSetToSortedArray:self.event.tasks];
+    Task *task = [tasksArray objectAtIndex:indexPath.row];
+    [context deleteObject:task];
     // Create an error variable to pass to the save method.
     NSError *error = nil;
     // Attempt to save the context and persist our changes.
     [context save:&error];
     if (error) {
-        // Error handling, e.g. display error to user.
+        //Error
     }
+    
+    // Delete entry in the array.
+    [self.event removeTasksObject:task];
+    // Delete entry in the UI.
+    [self.taskTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+#pragma mark - Data Type Convertion
+
+- (NSArray*)tasksSetToSortedArray:(NSSet*)tasksSet {
+    NSArray *tasksArray = [tasksSet allObjects];
+    NSArray *sortedArray = [tasksArray sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+        NSDate *first = [(Task*)a timeStamp];
+        NSDate *second = [(Task*)b timeStamp];
+        return [first compare:second];
+    }];
+    return sortedArray;
 }
 
 @end

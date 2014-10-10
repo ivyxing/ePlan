@@ -26,11 +26,6 @@
     self.events = [NSMutableArray array];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - View Lifecycle
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -107,37 +102,39 @@
 
 #pragma mark - Server Communication
 
-- (void)sendEventToServer:(NSDictionary*)dictionary {
-    NSURL *url = [NSURL URLWithString:@"http://localhost:3000/collections/test"];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setHTTPMethod:@"POST"];
-    
-    // Convert dictionary to NSData.
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:nil];
-    
-    [request setHTTPBody:jsonData];
-    
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *urlSession = [NSURLSession
-                                sessionWithConfiguration:config delegate:self delegateQueue:nil];
-    
-    NSURLSessionDataTask *dataTask = [urlSession dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-        NSInteger responseStatusCode = [httpResponse statusCode];
-        if (responseStatusCode == 200 && data) {
-            NSArray *downloadedJSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            [self addToArrayJSONDictionary:downloadedJSON];
-        } else {
-            // error handling
-        }
-    }];
-    
-    [dataTask resume];
-}
+//TODO: Server
 
-- (void)addToArrayJSONDictionary:(NSArray *)msgArray {
+//- (void)sendEventToServer:(NSDictionary*)dictionary {
+//    NSURL *url = [NSURL URLWithString:@"http://localhost:3000/collections/test"];
+//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
+//    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//    [request setHTTPMethod:@"POST"];
+//    
+//    // Convert dictionary to NSData.
+//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:nil];
+//    
+//    [request setHTTPBody:jsonData];
+//    
+//    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    NSURLSession *urlSession = [NSURLSession
+//                                sessionWithConfiguration:config delegate:self delegateQueue:nil];
+//    
+//    NSURLSessionDataTask *dataTask = [urlSession dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+//        NSInteger responseStatusCode = [httpResponse statusCode];
+//        if (responseStatusCode == 200 && data) {
+//            NSArray *downloadedJSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+//            [self addToArrayJSONDictionary:downloadedJSON];
+//        } else {
+//            // error handling
+//        }
+//    }];
+//    
+//    [dataTask resume];
+//}
+//
+//- (void)addToArrayJSONDictionary:(NSArray *)msgArray {
 //    for (NSDictionary *jsonMsg in msgArray) {
 //        Event *event = [Event eventWithJSONDictionary:jsonMsg];
 //        [self.events addObject:event];
@@ -145,7 +142,7 @@
 //            [self.eventTableView reloadData];
 //        });
 //    }
-}
+//}
 
 
 @end

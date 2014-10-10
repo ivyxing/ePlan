@@ -21,12 +21,13 @@
         <attribute name="dueDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="parentEvent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="tasks" inverseEntity="Event" syncable="YES"/>
         <relationship name="persons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="parentTask" inverseEntity="Person" syncable="YES"/>
     </entity>
     <elements>
         <element name="Event" positionX="18" positionY="-153" width="128" height="180"/>
         <element name="Person" positionX="126" positionY="189" width="128" height="103"/>
-        <element name="Task" positionX="286" positionY="-72" width="128" height="118"/>
+        <element name="Task" positionX="286" positionY="-72" width="128" height="133"/>
     </elements>
 </model>

@@ -252,7 +252,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mh2-BD-ihR">
                                 <rect key="frame" x="16" y="154" width="568" height="30"/>
-                                <state key="normal" title="Alert">
+                                <state key="normal" title="Set Alert">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -279,7 +279,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSk-ef-kQZ">
                                 <rect key="frame" x="16" y="114" width="568" height="30"/>
-                                <state key="normal" title="Due Date">
+                                <state key="normal" title="Set Due Date">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -550,6 +550,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
+                                                        <action selector="setStartTime:" destination="7Vj-Hn-JIl" eventType="touchUpInside" id="hI7-NF-Khe"/>
                                                         <segue destination="QJa-5c-fp0" kind="show" identifier="PickStartTime" id="BM2-eD-hd5"/>
                                                     </connections>
                                                 </button>
@@ -593,6 +594,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
+                                                        <action selector="setEndTime:" destination="7Vj-Hn-JIl" eventType="touchUpInside" id="AgF-HV-E2G"/>
                                                         <segue destination="QJa-5c-fp0" kind="show" identifier="PickEndTime" id="PT9-YK-HCm"/>
                                                     </connections>
                                                 </button>

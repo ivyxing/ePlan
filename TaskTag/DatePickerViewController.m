@@ -1,5 +1,5 @@
 //
-//  TaskDueDatePickerViewController.m
+//  DatePickerViewController.m
 //  TaskTag
 //
 //  Created by Min Xing on 10/6/14.

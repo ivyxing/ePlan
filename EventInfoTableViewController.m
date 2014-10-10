@@ -27,6 +27,8 @@
     BOOL settingEndTime;
 }
 
+#pragma mark - View Life Cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // To get rid of the extra lines in the table views.
@@ -38,7 +40,6 @@
     self.imgPicker.delegate = self;
 }
 
-#pragma mark - Table View Data Source
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -49,12 +50,34 @@
         [self.addPhotoButton setTitle:nil forState:UIControlStateNormal];
     }
     // Display description.
-    [self.notesTextField setText:self.event.notes];
+    if (self.event.notes) {
+        [self.notesTextField setText:self.event.notes];
+    }
     // Display start and end time.
-    NSString* startTimeStr = [self dateToString:self.event.startTime];
-    NSString* endTimeStr = [self dateToString:self.event.endTime];
-    [self.startTimeButton setTitle:startTimeStr forState:UIControlStateNormal];
-    [self.endTimeButton setTitle:endTimeStr forState:UIControlStateNormal];
+    if (self.event.startTime) {
+        NSString* startTimeStr = [self dateToString:self.event.startTime];
+        [self.startTimeButton setTitle:startTimeStr forState:UIControlStateNormal];
+    }
+    if (self.event.endTime) {
+        NSString* endTimeStr = [self dateToString:self.event.endTime];
+        [self.endTimeButton setTitle:endTimeStr forState:UIControlStateNormal];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    self.event.notes = self.notesTextField.text;
+    
+    // Get the NSManagedObject context.
+    NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+    // Create an error variable to pass to the save method.
+    NSError *error = nil;
+    // Attempt to save the context and persist our changes.
+    [context save:&error];
+    if (error) {
+        // Error handling, e.g. display error to user.
+    }
 }
 
 #pragma mark - User Interaction
@@ -80,22 +103,26 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - Set Date/Time
+#pragma mark - Date/Time Handling
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"PickStartTime"]) {
-        settingStartTime = YES;
-        settingEndTime = NO;
         DatePickerViewController *datePickerViewController = [segue destinationViewController];
         datePickerViewController.delegate = self;
         datePickerViewController.displayDate = self.event.startTime;
     } else if ([segue.identifier isEqualToString:@"PickEndTime"]) {
-        settingEndTime = YES;
-        settingStartTime = NO;
         DatePickerViewController *datePickerViewController = [segue destinationViewController];
         datePickerViewController.delegate = self;
         datePickerViewController.displayDate = self.event.endTime;
     }
+}
+- (IBAction)setStartTime:(id)sender {
+    settingStartTime = YES;
+    settingEndTime = NO;
+}
+- (IBAction)setEndTime:(id)sender {
+    settingEndTime = YES;
+    settingStartTime = NO;
 }
 
 - (void)datePicked:(NSDate*)date {
@@ -110,31 +137,10 @@
 }
 
 - (NSString*)dateToString:(NSDate*)date {
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:date
                                                           dateStyle:NSDateFormatterShortStyle
                                                           timeStyle:NSDateFormatterShortStyle];
     return dateString;
-}
-
-#pragma mark - Save Changes
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    // Save candy name and image.
-    UIImage *img = self.addPhotoButton.currentBackgroundImage;
-    self.event.image = UIImagePNGRepresentation(img);
-    self.event.notes = self.notesTextField.text;
-    
-    // Get the NSManagedObject context.
-    NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
-    // Create an error variable to pass to the save method.
-    NSError *error = nil;
-    // Attempt to save the context and persist our changes.
-    [context save:&error];
-    if (error) {
-        // Error handling, e.g. display error to user.
-    }
 }
 
 @end
