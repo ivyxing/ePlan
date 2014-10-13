@@ -105,6 +105,7 @@
 
 #pragma mark - Date/Time Handling
 
+#pragma message "It is fairly untypical to present the DatePickerViewController as a separate ViewController, except you want to display more than only a DatePicker within the ViewController. In most cases the DatePicker gets displayed on top of the current View Controller until a date is selected"
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"PickStartTime"]) {
         DatePickerViewController *datePickerViewController = [segue destinationViewController];
@@ -116,6 +117,9 @@
         datePickerViewController.displayDate = self.event.endTime;
     }
 }
+
+#pragma message "Having state variables such as 'settingStartTime' and 'settingEndTime' is usually not a good practice. In this specific case a better solution could be that the date picker knows which date it is picking and passes that information on to the callback method"
+
 - (IBAction)setStartTime:(id)sender {
     settingStartTime = YES;
     settingEndTime = NO;

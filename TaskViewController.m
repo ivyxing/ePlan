@@ -28,6 +28,8 @@
 
 #pragma mark - View Life Cycle
 
+#pragma message "Missing super call in 'viewWillAppear'"
+
 - (void)viewWillAppear:(BOOL)animated {
     [self.taskTableView reloadData];
     self.eventTitleTextField.text = self.event.title;
