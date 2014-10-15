@@ -37,6 +37,7 @@
     [super viewWillDisappear:animated];
     // Save event name and image.
     self.event.title = self.eventTitleTextField.text;
+  
     // Get the NSManagedObject context.
     NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
     // Create an error variable to pass to the save method.
