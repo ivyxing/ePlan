@@ -129,6 +129,21 @@
     settingStartTime = NO;
 }
 
+- (IBAction)addToCalendar:(id)sender {
+    EKEventStore *store = [[EKEventStore alloc] init];
+    [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+        if (!granted) { return; }
+        EKEvent *event = [EKEvent eventWithEventStore:store];
+        event.title = self.event.title;
+        event.startDate = self.event.startTime;
+        event.endDate = self.event.endTime;
+        [event setCalendar:[store defaultCalendarForNewEvents]];
+        NSError *err = nil;
+        [store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
+//        NSString *savedEventId = event.eventIdentifier;  //this is so you can access this event later
+    }];
+}
+
 - (void)datePicked:(NSDate*)date {
     NSString *buttonTitle = [self dateToString:date];
     if (settingStartTime) {

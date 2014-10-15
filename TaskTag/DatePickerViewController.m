@@ -18,17 +18,15 @@
 
 @implementation DatePickerViewController
 
-#pragma message "Missing super call in 'viewWillAppear'"
-
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     if (self.displayDate) {
         _datePicker.date = self.displayDate;
     }
 }
 
-#pragma message "Missing super call in 'viewWillDisappear'"
-
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     NSDate *pickedDate = [_datePicker date];
     if (self.delegate) {
         [self.delegate datePicked:pickedDate];

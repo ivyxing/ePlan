@@ -11,6 +11,8 @@
 		283AEB5119E7358C00B83A8A /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AEB5019E7358C00B83A8A /* Person.m */; };
 		283AEB5719E7358D00B83A8A /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AEB5619E7358D00B83A8A /* Event.m */; };
 		283AEB5A19E85D8000B83A8A /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AEB5919E85D8000B83A8A /* Task.m */; };
+		2863B96219EEECE900ADFDA7 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2863B96119EEECE900ADFDA7 /* EventKit.framework */; };
+		2863B96419EEF67A00ADFDA7 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2863B96319EEF67A00ADFDA7 /* EventKitUI.framework */; };
 		289443F319DB5FC00036CDDA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 289443F219DB5FC00036CDDA /* main.m */; };
 		289443F619DB5FC00036CDDA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 289443F519DB5FC00036CDDA /* AppDelegate.m */; };
 		289443F919DB5FC00036CDDA /* TaskTag.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 289443F719DB5FC00036CDDA /* TaskTag.xcdatamodeld */; };
@@ -44,6 +46,8 @@
 		283AEB5619E7358D00B83A8A /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Event.m; path = ../Event.m; sourceTree = "<group>"; };
 		283AEB5819E85D8000B83A8A /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Task.h; path = ../Task.h; sourceTree = "<group>"; };
 		283AEB5919E85D8000B83A8A /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Task.m; path = ../Task.m; sourceTree = "<group>"; };
+		2863B96119EEECE900ADFDA7 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		2863B96319EEF67A00ADFDA7 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		289443ED19DB5FC00036CDDA /* TaskTag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskTag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		289443F119DB5FC00036CDDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		289443F219DB5FC00036CDDA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -73,6 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2863B96419EEF67A00ADFDA7 /* EventKitUI.framework in Frameworks */,
+				2863B96219EEECE900ADFDA7 /* EventKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +95,8 @@
 		289443E419DB5FC00036CDDA = {
 			isa = PBXGroup;
 			children = (
+				2863B96319EEF67A00ADFDA7 /* EventKitUI.framework */,
+				2863B96119EEECE900ADFDA7 /* EventKit.framework */,
 				289443EF19DB5FC00036CDDA /* TaskTag */,
 				2894440C19DB5FC00036CDDA /* TaskTagTests */,
 				289443EE19DB5FC00036CDDA /* Products */,

@@ -25,9 +25,8 @@
 
 #pragma mark - View life cycle
 
-#pragma message "Missing super call in 'viewWillAppear'"
-
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self.dueDateAlertTableView reloadData];
     // Display task name.
     [self.taskNameTextField setText:self.task.name];
