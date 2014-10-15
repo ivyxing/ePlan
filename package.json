@@ -1,0 +1,27 @@
+{
+  "name": "TaskTagServer",
+  "version": "1.0.0",
+  "description": "event-based task management app",
+  "main": "serverNode.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/ivyxing/tasktag"
+  },
+  "keywords": [
+    "productivity",
+    "team",
+    "management",
+    "event",
+    "task",
+    "tag"
+  ],
+  "author": "Ivy Xing",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.9.7",
+    "logfmt": "^1.2.0"
+  }
+}
