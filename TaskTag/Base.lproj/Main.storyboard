@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7CK-0B-VGY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7CK-0B-VGY">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -702,7 +702,6 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="setStartTime:" destination="7Vj-Hn-JIl" eventType="touchUpInside" id="hI7-NF-Khe"/>
-                                                        <segue destination="QJa-5c-fp0" kind="show" identifier="PickStartTime" id="BM2-eD-hd5"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -726,6 +725,9 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="QJa-5c-fp0" kind="show" id="IYG-dH-cmX"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="02o-4e-ANi" userLabel="End Time">
                                         <rect key="frame" x="0.0" y="0.0" width="568" height="44"/>
@@ -740,18 +742,17 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nth-Mc-MNa">
-                                                    <rect key="frame" x="101" y="8" width="491" height="27"/>
+                                                    <rect key="frame" x="106" y="8" width="486" height="27"/>
                                                     <state key="normal" title="Set End Time">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="setEndTime:" destination="7Vj-Hn-JIl" eventType="touchUpInside" id="AgF-HV-E2G"/>
-                                                        <segue destination="QJa-5c-fp0" kind="show" identifier="PickEndTime" id="PT9-YK-HCm"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Nth-Mc-MNa" firstAttribute="leading" secondItem="I0R-Ft-qSk" secondAttribute="trailing" constant="10" id="AIj-pd-ZAk"/>
+                                                <constraint firstItem="Nth-Mc-MNa" firstAttribute="leading" secondItem="I0R-Ft-qSk" secondAttribute="trailing" constant="15" id="AIj-pd-ZAk"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Nth-Mc-MNa" secondAttribute="trailing" id="DJm-mt-yO7"/>
                                                 <constraint firstItem="I0R-Ft-qSk" firstAttribute="leading" secondItem="uGZ-vg-9ec" secondAttribute="leadingMargin" constant="10" id="IAj-oa-EBd"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Nth-Mc-MNa" secondAttribute="bottom" id="Mi6-xw-Ad4"/>
@@ -760,6 +761,9 @@
                                                 <constraint firstItem="I0R-Ft-qSk" firstAttribute="top" secondItem="uGZ-vg-9ec" secondAttribute="topMargin" id="xIE-J2-7eQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="QJa-5c-fp0" kind="show" identifier="PickEndTime" id="Gyi-ud-qHD"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1NY-bQ-aLE" userLabel="Add to Calendar">
                                         <rect key="frame" x="0.0" y="0.0" width="568" height="44"/>
@@ -775,6 +779,9 @@
                                                     <state key="normal" title="Add to Calendar">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="addToCalendar:" destination="7Vj-Hn-JIl" eventType="touchUpInside" id="ZJX-7m-p1q"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -824,6 +831,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Phl-8Z-rXb"/>
-        <segue reference="PT9-YK-HCm"/>
+        <segue reference="Gyi-ud-qHD"/>
     </inferredMetricsTieBreakers>
 </document>

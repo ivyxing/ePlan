@@ -29,6 +29,7 @@
 #pragma mark - View Life Cycle
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self.taskTableView reloadData];
     self.eventTitleTextField.text = self.event.title;
 }
