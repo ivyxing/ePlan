@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2807262919F1A1B90043657C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2807252919F1A1B80043657C /* Bolts.framework */; };
+		2807262A19F1A1B90043657C /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2807252A19F1A1B80043657C /* FacebookSDK.framework */; };
+		2807262B19F1A1B90043657C /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2807252C19F1A1B80043657C /* FBAudienceNetwork.framework */; };
+		280726DC19F1A3A20043657C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280726DB19F1A3A20043657C /* LoginViewController.m */; };
 		283AEB4819E7195600B83A8A /* ReminderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AEB4719E7195600B83A8A /* ReminderTableViewController.m */; };
 		283AEB5119E7358C00B83A8A /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AEB5019E7358C00B83A8A /* Person.m */; };
 		283AEB5719E7358D00B83A8A /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AEB5619E7358D00B83A8A /* Event.m */; };
@@ -38,6 +42,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2807252919F1A1B80043657C /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../Documents/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
+		2807252A19F1A1B80043657C /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		2807252C19F1A1B80043657C /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBAudienceNetwork.framework; path = ../../../Documents/FacebookSDK/FBAudienceNetwork/FBAudienceNetwork.framework; sourceTree = "<group>"; };
+		280726DA19F1A3A20043657C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		280726DB19F1A3A20043657C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		283AEB4619E7195600B83A8A /* ReminderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderTableViewController.h; sourceTree = "<group>"; };
 		283AEB4719E7195600B83A8A /* ReminderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderTableViewController.m; sourceTree = "<group>"; };
 		283AEB4F19E7358C00B83A8A /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = ../Person.h; sourceTree = "<group>"; };
@@ -68,6 +77,7 @@
 		2894442919DB75210036CDDA /* TaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskDetailViewController.m; sourceTree = "<group>"; };
 		28CB72DA19DE0C48009F7BF8 /* EventInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventInfoTableViewController.h; path = ../EventInfoTableViewController.h; sourceTree = "<group>"; };
 		28CB72DB19DE0C48009F7BF8 /* EventInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventInfoTableViewController.m; path = ../EventInfoTableViewController.m; sourceTree = "<group>"; };
+		28D3962D19F1AE2900637D9A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		28EF068019E35614002AB675 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		28EF068119E35614002AB675 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,7 +87,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2807262919F1A1B90043657C /* Bolts.framework in Frameworks */,
+				2807262A19F1A1B90043657C /* FacebookSDK.framework in Frameworks */,
 				2863B96419EEF67A00ADFDA7 /* EventKitUI.framework in Frameworks */,
+				2807262B19F1A1B90043657C /* FBAudienceNetwork.framework in Frameworks */,
 				2863B96219EEECE900ADFDA7 /* EventKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,11 +105,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2807252719F1A18D0043657C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				28D3962D19F1AE2900637D9A /* CoreData.framework */,
+				2863B96319EEF67A00ADFDA7 /* EventKitUI.framework */,
+				2863B96119EEECE900ADFDA7 /* EventKit.framework */,
+				2807252919F1A1B80043657C /* Bolts.framework */,
+				2807252A19F1A1B80043657C /* FacebookSDK.framework */,
+				2807252C19F1A1B80043657C /* FBAudienceNetwork.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		289443E419DB5FC00036CDDA = {
 			isa = PBXGroup;
 			children = (
-				2863B96319EEF67A00ADFDA7 /* EventKitUI.framework */,
-				2863B96119EEECE900ADFDA7 /* EventKit.framework */,
+				2807252719F1A18D0043657C /* Frameworks */,
 				289443EF19DB5FC00036CDDA /* TaskTag */,
 				2894440C19DB5FC00036CDDA /* TaskTagTests */,
 				289443EE19DB5FC00036CDDA /* Products */,
@@ -118,6 +143,8 @@
 				289443FD19DB5FC00036CDDA /* Main.storyboard */,
 				289443F419DB5FC00036CDDA /* AppDelegate.h */,
 				289443F519DB5FC00036CDDA /* AppDelegate.m */,
+				280726DA19F1A3A20043657C /* LoginViewController.h */,
+				280726DB19F1A3A20043657C /* LoginViewController.m */,
 				2894441C19DB63F90036CDDA /* EventViewController.h */,
 				2894441D19DB63F90036CDDA /* EventViewController.m */,
 				28CB72DA19DE0C48009F7BF8 /* EventInfoTableViewController.h */,
@@ -233,6 +260,7 @@
 			knownRegions = (
 				en,
 				Base,
+				he,
 			);
 			mainGroup = 289443E419DB5FC00036CDDA;
 			productRefGroup = 289443EE19DB5FC00036CDDA /* Products */;
@@ -278,6 +306,7 @@
 				28EF068219E35614002AB675 /* DatePickerViewController.m in Sources */,
 				289443F619DB5FC00036CDDA /* AppDelegate.m in Sources */,
 				283AEB4819E7195600B83A8A /* ReminderTableViewController.m in Sources */,
+				280726DC19F1A3A20043657C /* LoginViewController.m in Sources */,
 				2894441E19DB63F90036CDDA /* EventViewController.m in Sources */,
 				2894442A19DB75210036CDDA /* TaskDetailViewController.m in Sources */,
 				289443F319DB5FC00036CDDA /* main.m in Sources */,
@@ -403,6 +432,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/mxing/Documents/FacebookSDK,
+					/Users/mxing/Documents/FacebookSDK/FBAudienceNetwork,
+				);
 				INFOPLIST_FILE = TaskTag/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -413,6 +447,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/mxing/Documents/FacebookSDK,
+					/Users/mxing/Documents/FacebookSDK/FBAudienceNetwork,
+				);
 				INFOPLIST_FILE = TaskTag/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -105,7 +105,7 @@
 //TODO: Server
 
 //- (void)sendEventToServer:(NSDictionary*)dictionary {
-//    NSURL *url = [NSURL URLWithString:@"http://localhost:3000/collections/test"];
+//    NSURL *url = [NSURL URLWithString:@"http://polar-refuge-5597.herokuapp.com/"];
 //    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
 //    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 //    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
@@ -136,7 +136,7 @@
 //
 //- (void)addToArrayJSONDictionary:(NSArray *)msgArray {
 //    for (NSDictionary *jsonMsg in msgArray) {
-//        Event *event = [Event eventWithJSONDictionary:jsonMsg];
+////        Event *event = [Event eventWithJSONDictionary:jsonMsg];
 //        [self.events addObject:event];
 //        dispatch_async(dispatch_get_main_queue(), ^{
 //            [self.eventTableView reloadData];

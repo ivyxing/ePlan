@@ -27,6 +27,36 @@
             endingLineNumber = "135"
             landmarkName = "-addToCalendar:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[EventInfoTableViewController addToCalendar:]"
+                  moduleName = "TaskTag"
+                  urlString = "file:///Users/mxing/Desktop/MakeSchool/TaskTag/EventInfoTableViewController.m"
+                  timestampString = "435277520.796055"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "168">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__46-[EventInfoTableViewController addToCalendar:]_block_invoke"
+                  moduleName = "TaskTag"
+                  urlString = "file:///Users/mxing/Desktop/MakeSchool/TaskTag/EventInfoTableViewController.m"
+                  timestampString = "435277520.796245"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
