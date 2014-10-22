@@ -21,11 +21,6 @@
     [super viewDidLoad];
 
     //Facebook login.
-    
-    if (![FBSettings defaultAppID])
-    {
-        [FBSettings setDefaultAppID:@"1568271783394281"];
-    }
     FBLoginView *loginView = [[FBLoginView alloc] initWithReadPermissions: @[@"public_profile", @"email", @"user_friends"]];
     loginView.delegate = self;
     loginView.center = self.view.center;
@@ -44,6 +39,7 @@
 // Logged-in user experience
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
     self.statusLabel.text = @"You're logged in as";
+    [self performSegueWithIdentifier:@"showEventTable" sender:nil];
 }
 
 // Logged-out user experience
@@ -118,7 +114,6 @@
                                            allowLoginUI:YES
                                       completionHandler:
          ^(FBSession *session, FBSessionState state, NSError *error) {
-             
              // Retrieve the app delegate
              AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
              // Call the app delegate's sessionStateChanged:state:error method to handle session state changes

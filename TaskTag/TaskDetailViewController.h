@@ -14,4 +14,6 @@
 
 @property (strong, nonatomic) Task *task;
 
+- (void)showTaggedFriendsWith:(NSString *)objectID and:(NSString *)name;
+
 @end

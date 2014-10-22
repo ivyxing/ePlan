@@ -16,6 +16,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    if (![FBSettings defaultAppID])
+    {
+        // Initializing AppID
+        [FBSettings setDefaultAppID:@"1568271783394281"];
+    }
+    
+    [FBProfilePictureView class];
+    
     // Whenever a person opens the app, check for a cached session
     if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
         
@@ -222,7 +230,6 @@
 }
 
 - (void)userLoggedIn {
-    
 }
 
 - (void)userLoggedOut {

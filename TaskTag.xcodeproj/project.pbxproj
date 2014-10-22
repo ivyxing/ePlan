@@ -15,6 +15,8 @@
 		283AEB5119E7358C00B83A8A /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AEB5019E7358C00B83A8A /* Person.m */; };
 		283AEB5719E7358D00B83A8A /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AEB5619E7358D00B83A8A /* Event.m */; };
 		283AEB5A19E85D8000B83A8A /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AEB5919E85D8000B83A8A /* Task.m */; };
+		28480B0919F6F2E20030B2E4 /* FriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28480B0819F6F2E20030B2E4 /* FriendViewController.m */; };
+		28480B0C19F70ED70030B2E4 /* FriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28480B0B19F70ED70030B2E4 /* FriendTableViewCell.m */; };
 		2863B96219EEECE900ADFDA7 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2863B96119EEECE900ADFDA7 /* EventKit.framework */; };
 		2863B96419EEF67A00ADFDA7 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2863B96319EEF67A00ADFDA7 /* EventKitUI.framework */; };
 		289443F319DB5FC00036CDDA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 289443F219DB5FC00036CDDA /* main.m */; };
@@ -27,6 +29,7 @@
 		2894441E19DB63F90036CDDA /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894441D19DB63F90036CDDA /* EventViewController.m */; };
 		2894442719DB6D080036CDDA /* TaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894442619DB6D080036CDDA /* TaskViewController.m */; };
 		2894442A19DB75210036CDDA /* TaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894442919DB75210036CDDA /* TaskDetailViewController.m */; };
+		28BA6B9719F85BD90072EC32 /* FriendCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BA6B9619F85BD90072EC32 /* FriendCollectionViewCell.m */; };
 		28CB72DC19DE0C48009F7BF8 /* EventInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CB72DB19DE0C48009F7BF8 /* EventInfoTableViewController.m */; };
 		28EF068219E35614002AB675 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EF068119E35614002AB675 /* DatePickerViewController.m */; };
 /* End PBXBuildFile section */
@@ -55,6 +58,10 @@
 		283AEB5619E7358D00B83A8A /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Event.m; path = ../Event.m; sourceTree = "<group>"; };
 		283AEB5819E85D8000B83A8A /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Task.h; path = ../Task.h; sourceTree = "<group>"; };
 		283AEB5919E85D8000B83A8A /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Task.m; path = ../Task.m; sourceTree = "<group>"; };
+		28480B0719F6F2E20030B2E4 /* FriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendViewController.h; sourceTree = "<group>"; };
+		28480B0819F6F2E20030B2E4 /* FriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendViewController.m; sourceTree = "<group>"; };
+		28480B0A19F70ED70030B2E4 /* FriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewCell.h; sourceTree = "<group>"; };
+		28480B0B19F70ED70030B2E4 /* FriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableViewCell.m; sourceTree = "<group>"; };
 		2863B96119EEECE900ADFDA7 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		2863B96319EEF67A00ADFDA7 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		289443ED19DB5FC00036CDDA /* TaskTag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskTag.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +82,8 @@
 		2894442619DB6D080036CDDA /* TaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskViewController.m; path = ../TaskViewController.m; sourceTree = "<group>"; };
 		2894442819DB75210036CDDA /* TaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskDetailViewController.h; sourceTree = "<group>"; };
 		2894442919DB75210036CDDA /* TaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskDetailViewController.m; sourceTree = "<group>"; };
+		28BA6B9519F85BD80072EC32 /* FriendCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCollectionViewCell.h; sourceTree = "<group>"; };
+		28BA6B9619F85BD90072EC32 /* FriendCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCollectionViewCell.m; sourceTree = "<group>"; };
 		28CB72DA19DE0C48009F7BF8 /* EventInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventInfoTableViewController.h; path = ../EventInfoTableViewController.h; sourceTree = "<group>"; };
 		28CB72DB19DE0C48009F7BF8 /* EventInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventInfoTableViewController.m; path = ../EventInfoTableViewController.m; sourceTree = "<group>"; };
 		28D3962D19F1AE2900637D9A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -153,6 +162,12 @@
 				2894442619DB6D080036CDDA /* TaskViewController.m */,
 				2894442819DB75210036CDDA /* TaskDetailViewController.h */,
 				2894442919DB75210036CDDA /* TaskDetailViewController.m */,
+				28BA6B9519F85BD80072EC32 /* FriendCollectionViewCell.h */,
+				28BA6B9619F85BD90072EC32 /* FriendCollectionViewCell.m */,
+				28480B0719F6F2E20030B2E4 /* FriendViewController.h */,
+				28480B0819F6F2E20030B2E4 /* FriendViewController.m */,
+				28480B0A19F70ED70030B2E4 /* FriendTableViewCell.h */,
+				28480B0B19F70ED70030B2E4 /* FriendTableViewCell.m */,
 				28EF068019E35614002AB675 /* DatePickerViewController.h */,
 				28EF068119E35614002AB675 /* DatePickerViewController.m */,
 				283AEB4619E7195600B83A8A /* ReminderTableViewController.h */,
@@ -302,6 +317,8 @@
 				28CB72DC19DE0C48009F7BF8 /* EventInfoTableViewController.m in Sources */,
 				2894442719DB6D080036CDDA /* TaskViewController.m in Sources */,
 				283AEB5119E7358C00B83A8A /* Person.m in Sources */,
+				28BA6B9719F85BD90072EC32 /* FriendCollectionViewCell.m in Sources */,
+				28480B0919F6F2E20030B2E4 /* FriendViewController.m in Sources */,
 				283AEB5A19E85D8000B83A8A /* Task.m in Sources */,
 				28EF068219E35614002AB675 /* DatePickerViewController.m in Sources */,
 				289443F619DB5FC00036CDDA /* AppDelegate.m in Sources */,
@@ -310,6 +327,7 @@
 				2894441E19DB63F90036CDDA /* EventViewController.m in Sources */,
 				2894442A19DB75210036CDDA /* TaskDetailViewController.m in Sources */,
 				289443F319DB5FC00036CDDA /* main.m in Sources */,
+				28480B0C19F70ED70030B2E4 /* FriendTableViewCell.m in Sources */,
 				289443F919DB5FC00036CDDA /* TaskTag.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

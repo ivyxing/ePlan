@@ -8,6 +8,8 @@
 
 #import "TaskDetailViewController.h"
 #import "DatePickerViewController.h"
+#import "FriendViewController.h"
+#import "FriendCollectionViewCell.h"
 #import "Task.h"
 #import "AppDelegate.h"
 
@@ -18,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *commentsTableView;
 @property (weak, nonatomic) IBOutlet UITableView *dueDateAlertTableView;
 @property (weak, nonatomic) IBOutlet UIButton *dueDateButton;
+@property (weak, nonatomic) IBOutlet UICollectionView *friendsCollectionView;
 
 @end
 
@@ -69,15 +72,37 @@
 //    return cell;
 //}
 
-#pragma mark - Date Handling
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"PickDueDate"]) {
         DatePickerViewController *datePickerViewController = [segue destinationViewController];
         datePickerViewController.delegate = self;
         datePickerViewController.displayDate = self.task.dueDate;
+    } else if ([segue.identifier isEqualToString:@"ShowFriendsList"]) {
+        FriendViewController *friendViewController = [segue destinationViewController];
+        // Get a list of the user's Facebook friends.
+        FBRequest* friendsRequest = [FBRequest requestForMyFriends];
+        [friendsRequest startWithCompletionHandler: ^(FBRequestConnection *connection,
+                                                      NSDictionary* result,
+                                                      NSError *error) {
+            NSArray* friends = [result objectForKey:@"data"];
+            friendViewController.friendsList = friends;
+        }];
     }
 }
+
+- (IBAction)unwindToTaskDetailViewController:(UIStoryboardSegue *)unwindSegue {
+    
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    FriendCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TaggedFriendCell" forIndexPath:indexPath];
+    cell.userObjectID =
+    cell.userName = 
+    return cell;
+}
+
+
+#pragma mark - Date Handling
 
 - (void)datePicked:(NSDate*)date {
     self.task.dueDate = date;
