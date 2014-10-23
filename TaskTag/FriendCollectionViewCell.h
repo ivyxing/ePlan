@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Person;
 
 @interface FriendCollectionViewCell : UICollectionViewCell
 
-@property (copy, nonatomic) NSString *userObjectID;
-@property (copy, nonatomic) NSString *userName;
+@property (strong, nonatomic) Person *friend;
 
 @end

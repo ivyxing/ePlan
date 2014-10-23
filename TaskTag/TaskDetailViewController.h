@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "DatePickerViewController.h"
 @class Task;
+@class Person;
 
 @interface TaskDetailViewController : UIViewController <UITextFieldDelegate, DatePickerViewControllerDelegate>
 
 @property (strong, nonatomic) Task *task;
+@property (strong, nonatomic) NSMutableArray *friendsTagged;
 
-- (void)showTaggedFriendsWith:(NSString *)objectID and:(NSString *)name;
+- (void)tagFriend:(Person *)myFriend;
 
 @end

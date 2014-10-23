@@ -8,6 +8,7 @@
 
 #import "FriendCollectionViewCell.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "Person.h"
 
 @interface FriendCollectionViewCell ()
 
@@ -18,14 +19,13 @@
 
 @implementation FriendCollectionViewCell
 
-- (void)setUserName:(NSString *)userName {
-    _userName = [userName copy];
-    _name.text = _userName;
-}
-
-- (void)setUserObjectID:(NSString *)userObjectID {
-    _userObjectID = [userObjectID copy];
-    self.profilePictureView.profileID = _userObjectID;
+- (void)setFriend:(Person *)friend {
+    // Set name label.
+    _friend.name = [friend.name copy];
+    _name.text = _friend.name;
+    // Set Facebook profile picture.
+    _friend.fbProfilePictureID = [friend.fbProfilePictureID copy];
+    self.profilePictureView.profileID = _friend.fbProfilePictureID;
 }
 
 @end

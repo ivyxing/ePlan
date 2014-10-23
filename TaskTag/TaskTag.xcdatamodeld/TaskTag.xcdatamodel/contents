@@ -12,7 +12,7 @@
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="parentEvent" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="Person" representedClassName="Person" syncable="YES">
-        <attribute name="editingPermissionLevel" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="fbProfilePictureID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="parentEvent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="persons" inverseEntity="Event" syncable="YES"/>
         <relationship name="parentTask" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="persons" inverseEntity="Task" syncable="YES"/>
@@ -27,7 +27,7 @@
     </entity>
     <elements>
         <element name="Event" positionX="18" positionY="-153" width="128" height="180"/>
-        <element name="Person" positionX="126" positionY="189" width="128" height="103"/>
+        <element name="Person" positionX="126" positionY="189" width="128" height="105"/>
         <element name="Task" positionX="286" positionY="-72" width="128" height="133"/>
     </elements>
 </model>

@@ -8,6 +8,7 @@
 
 #import "FriendTableViewCell.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "Person.h"
 
 @interface FriendTableViewCell ()
 
@@ -18,29 +19,14 @@
 
 @implementation FriendTableViewCell
 
-#pragma mark - View Life Cycle
-
-- (void)viewDidLoad {
-
-}
-
-- (void)awakeFromNib {
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-    // Configure the view for the selected state
-}
-
-- (void)setUserName:(NSString *)userName {
-    _userName = [userName copy];
-    _name.text = _userName;
-}
-
-- (void)setUserObjectID:(NSString *)userObjectID {
-    _userObjectID = [userObjectID copy];
-    self.profilePictureView.profileID = _userObjectID;
+- (void)setFriend:(Person *)friend {
+    // Set name label.
+    _friend = friend;
+    _friend.name = [friend.name copy];
+    _name.text = _friend.name;
+    // Set Facebook profile picture.
+    _friend.fbProfilePictureID = [friend.fbProfilePictureID copy];
+    self.profilePictureView.profileID = _friend.fbProfilePictureID;
 }
 
 @end

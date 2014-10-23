@@ -26,7 +26,12 @@
 
 @implementation TaskDetailViewController 
 
-#pragma mark - View life cycle
+#pragma mark - View Life Cycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.friendsTagged = [NSMutableArray array];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -64,13 +69,31 @@
     return YES;
 }
 
-#pragma mark - Table view data source
+#pragma mark - Table View Data Source
 
 //- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell" forIndexPath:indexPath];
 //
 //    return cell;
 //}
+
+#pragma mark - Collection View Data Source
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [self.friendsTagged count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    FriendCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TaggedFriendCell" forIndexPath:indexPath];
+    cell.friend = self.friendsTagged[indexPath.row];
+    return cell;
+}
+
+#pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"PickDueDate"]) {
@@ -91,16 +114,13 @@
 }
 
 - (IBAction)unwindToTaskDetailViewController:(UIStoryboardSegue *)unwindSegue {
-    
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    FriendCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TaggedFriendCell" forIndexPath:indexPath];
-    cell.userObjectID =
-    cell.userName = 
-    return cell;
-}
+#pragma mark - Tagging Info Handling
 
+- (void)tagFriend:(Person *)myFriend {
+    [self.friendsTagged addObject:myFriend];
+}
 
 #pragma mark - Date Handling
 
