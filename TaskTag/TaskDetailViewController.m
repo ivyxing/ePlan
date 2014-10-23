@@ -12,7 +12,7 @@
 #import "FriendCollectionViewCell.h"
 #import "Task.h"
 #import "AppDelegate.h"
-
+#import "Person.h"
 
 @interface TaskDetailViewController ()
 
@@ -35,6 +35,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.friendsCollectionView reloadData];
     [self.dueDateAlertTableView reloadData];
     // Display task name.
     [self.taskNameTextField setText:self.task.name];
@@ -89,7 +90,10 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FriendCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TaggedFriendCell" forIndexPath:indexPath];
+//    FriendCollectionViewCell *cell = (FriendCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     cell.friend = self.friendsTagged[indexPath.row];
+    NSLog(@"name: %@", cell.friend.name);
+    NSLog(@"profilePicID: %@", cell.friend.fbProfilePictureID);
     return cell;
 }
 
