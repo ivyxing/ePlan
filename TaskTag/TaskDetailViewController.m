@@ -90,9 +90,9 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FriendCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TaggedFriendCell" forIndexPath:indexPath];
-    cell.friend = self.friendsTagged[indexPath.row];
-    NSLog(@"name: %@", cell.friend.name);
-    NSLog(@"profilePicID: %@", cell.friend.fbProfilePictureID);
+    cell.userFriend = self.friendsTagged[indexPath.row];
+    NSLog(@"name: %@", cell.userFriend.name);
+    NSLog(@"profilePicID: %@", cell.userFriend.fbProfilePictureID);
     return cell;
 }
 

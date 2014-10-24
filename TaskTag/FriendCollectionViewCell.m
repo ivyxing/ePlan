@@ -19,13 +19,13 @@
 
 @implementation FriendCollectionViewCell
 
-- (void)setFriend:(Person *)friend {
+- (void)setUserFriend:(Person *)someFriend {
     // Set name label.
-    _friend.name = [friend.name copy];
-    _name.text = _friend.name;
+    _userFriend.name = [someFriend.name copy];
+    _name.text = _userFriend.name;
     // Set Facebook profile picture.
-    _friend.fbProfilePictureID = [friend.fbProfilePictureID copy];
-    self.profilePictureView.profileID = _friend.fbProfilePictureID;
+    _userFriend.fbProfilePictureID = [someFriend.fbProfilePictureID copy];
+    self.profilePictureView.profileID = _userFriend.fbProfilePictureID;
 }
 
 @end

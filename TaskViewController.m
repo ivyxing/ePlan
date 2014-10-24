@@ -128,14 +128,6 @@
 
 - (NSArray*)tasksSetToSortedArray:(NSSet*)tasksSet {
     NSArray *tasksArray = [tasksSet allObjects];
-
-#pragma message "Instead of casting you can change the type of the method parameters, see below"
-//    NSArray *sortedArray = [tasksArray sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-//        NSDate *first = [(Task*)a timeStamp];
-//        NSDate *second = [(Task*)b timeStamp];
-//        return [first compare:second];
-//    }];
-    
     NSArray *sortedArray = [tasksArray sortedArrayUsingComparator:^NSComparisonResult(Task* a, Task* b) {
         return [a.timeStamp compare:b.timeStamp];
     }];

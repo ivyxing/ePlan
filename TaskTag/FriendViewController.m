@@ -32,6 +32,7 @@
 #pragma mark - Table View Data Source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Count the user him/herself in addition to the friends list.
     return [self.friendsList count] + 1;
 }
 
@@ -48,7 +49,7 @@
                                                                    inManagedObjectContext:context];
                 user.fbProfilePictureID = me.objectID;
                 user.name = @"Sign Me up";
-                cell.friend = user;
+                cell.userFriend = user;
             } else {
                 // An error occurred, we need to handle the error
                 // See: https://developers.facebook.com/docs/ios/errors
@@ -63,16 +64,18 @@
         Person *userFriend = [NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:context];
         userFriend.fbProfilePictureID = userDictionary.objectID;
         userFriend.name = userDictionary.name;
-        cell.friend = userFriend;
+        cell.userFriend = userFriend;
     }
     return cell;
 }
+
+#pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     FriendTableViewCell *cell = (FriendTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     TaskDetailViewController *taskDetailViewController = [segue destinationViewController];
-    [taskDetailViewController tagFriend:cell.friend];
+    [taskDetailViewController tagFriend:cell.userFriend];
 }
 
 @end

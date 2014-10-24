@@ -7,18 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2807262919F1A1B90043657C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2807252919F1A1B80043657C /* Bolts.framework */; };
-		2807262A19F1A1B90043657C /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2807252A19F1A1B80043657C /* FacebookSDK.framework */; };
-		2807262B19F1A1B90043657C /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2807252C19F1A1B80043657C /* FBAudienceNetwork.framework */; };
 		280726DC19F1A3A20043657C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280726DB19F1A3A20043657C /* LoginViewController.m */; };
 		283AEB4819E7195600B83A8A /* ReminderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AEB4719E7195600B83A8A /* ReminderTableViewController.m */; };
-		283AEB5719E7358D00B83A8A /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AEB5619E7358D00B83A8A /* Event.m */; };
-		283AEB5A19E85D8000B83A8A /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AEB5919E85D8000B83A8A /* Task.m */; };
 		28480B0919F6F2E20030B2E4 /* FriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28480B0819F6F2E20030B2E4 /* FriendViewController.m */; };
 		28480B0C19F70ED70030B2E4 /* FriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28480B0B19F70ED70030B2E4 /* FriendTableViewCell.m */; };
 		2863B96219EEECE900ADFDA7 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2863B96119EEECE900ADFDA7 /* EventKit.framework */; };
 		2863B96419EEF67A00ADFDA7 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2863B96319EEF67A00ADFDA7 /* EventKitUI.framework */; };
-		28832BF819F9A37A00A74B1A /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 28832BF719F9A37A00A74B1A /* Person.m */; };
 		289443F319DB5FC00036CDDA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 289443F219DB5FC00036CDDA /* main.m */; };
 		289443F619DB5FC00036CDDA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 289443F519DB5FC00036CDDA /* AppDelegate.m */; };
 		289443F919DB5FC00036CDDA /* TaskTag.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 289443F719DB5FC00036CDDA /* TaskTag.xcdatamodeld */; };
@@ -26,11 +20,17 @@
 		2894440119DB5FC00036CDDA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2894440019DB5FC00036CDDA /* Images.xcassets */; };
 		2894440419DB5FC00036CDDA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2894440219DB5FC00036CDDA /* LaunchScreen.xib */; };
 		2894441019DB5FC00036CDDA /* TaskTagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894440F19DB5FC00036CDDA /* TaskTagTests.m */; };
-		2894441E19DB63F90036CDDA /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894441D19DB63F90036CDDA /* EventViewController.m */; };
 		2894442719DB6D080036CDDA /* TaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894442619DB6D080036CDDA /* TaskViewController.m */; };
 		2894442A19DB75210036CDDA /* TaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894442919DB75210036CDDA /* TaskDetailViewController.m */; };
 		28BA6B9719F85BD90072EC32 /* FriendCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BA6B9619F85BD90072EC32 /* FriendCollectionViewCell.m */; };
-		28CB72DC19DE0C48009F7BF8 /* EventInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CB72DB19DE0C48009F7BF8 /* EventInfoTableViewController.m */; };
+		28CED42019FB13AC005989D0 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CED41F19FB13AC005989D0 /* Task.m */; };
+		28CED42519FB13BF005989D0 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CED42219FB13BF005989D0 /* Person.m */; };
+		28CED42619FB13BF005989D0 /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CED42419FB13BF005989D0 /* EventViewController.m */; };
+		28CED42C19FB13CE005989D0 /* EventInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CED42819FB13CE005989D0 /* EventInfoTableViewController.m */; };
+		28CED42D19FB13CE005989D0 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CED42A19FB13CE005989D0 /* Event.m */; };
+		28CED43119FB144C005989D0 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28CED42E19FB144C005989D0 /* FBAudienceNetwork.framework */; };
+		28CED43219FB144C005989D0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28CED42F19FB144C005989D0 /* FacebookSDK.framework */; };
+		28CED43319FB144C005989D0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28CED43019FB144C005989D0 /* Bolts.framework */; };
 		28EF068219E35614002AB675 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EF068119E35614002AB675 /* DatePickerViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -45,25 +45,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2807252919F1A1B80043657C /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../Documents/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
-		2807252A19F1A1B80043657C /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
-		2807252C19F1A1B80043657C /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBAudienceNetwork.framework; path = ../../../Documents/FacebookSDK/FBAudienceNetwork/FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		280726DA19F1A3A20043657C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		280726DB19F1A3A20043657C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		283AEB4619E7195600B83A8A /* ReminderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderTableViewController.h; sourceTree = "<group>"; };
 		283AEB4719E7195600B83A8A /* ReminderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderTableViewController.m; sourceTree = "<group>"; };
-		283AEB5519E7358D00B83A8A /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Event.h; path = ../Event.h; sourceTree = "<group>"; };
-		283AEB5619E7358D00B83A8A /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Event.m; path = ../Event.m; sourceTree = "<group>"; };
-		283AEB5819E85D8000B83A8A /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Task.h; path = ../Task.h; sourceTree = "<group>"; };
-		283AEB5919E85D8000B83A8A /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Task.m; path = ../Task.m; sourceTree = "<group>"; };
 		28480B0719F6F2E20030B2E4 /* FriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendViewController.h; sourceTree = "<group>"; };
 		28480B0819F6F2E20030B2E4 /* FriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendViewController.m; sourceTree = "<group>"; };
 		28480B0A19F70ED70030B2E4 /* FriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewCell.h; sourceTree = "<group>"; };
 		28480B0B19F70ED70030B2E4 /* FriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableViewCell.m; sourceTree = "<group>"; };
 		2863B96119EEECE900ADFDA7 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		2863B96319EEF67A00ADFDA7 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
-		28832BF619F9A37A00A74B1A /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = ../Person.h; sourceTree = "<group>"; };
-		28832BF719F9A37A00A74B1A /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = ../Person.m; sourceTree = "<group>"; };
 		289443ED19DB5FC00036CDDA /* TaskTag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskTag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		289443F119DB5FC00036CDDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		289443F219DB5FC00036CDDA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -76,16 +67,25 @@
 		2894440919DB5FC00036CDDA /* TaskTagTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskTagTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2894440E19DB5FC00036CDDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2894440F19DB5FC00036CDDA /* TaskTagTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskTagTests.m; sourceTree = "<group>"; };
-		2894441C19DB63F90036CDDA /* EventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventViewController.h; path = ../EventViewController.h; sourceTree = "<group>"; };
-		2894441D19DB63F90036CDDA /* EventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventViewController.m; path = ../EventViewController.m; sourceTree = "<group>"; };
 		2894442519DB6D080036CDDA /* TaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskViewController.h; path = ../TaskViewController.h; sourceTree = "<group>"; };
 		2894442619DB6D080036CDDA /* TaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskViewController.m; path = ../TaskViewController.m; sourceTree = "<group>"; };
 		2894442819DB75210036CDDA /* TaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskDetailViewController.h; sourceTree = "<group>"; };
 		2894442919DB75210036CDDA /* TaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskDetailViewController.m; sourceTree = "<group>"; };
 		28BA6B9519F85BD80072EC32 /* FriendCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCollectionViewCell.h; sourceTree = "<group>"; };
 		28BA6B9619F85BD90072EC32 /* FriendCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCollectionViewCell.m; sourceTree = "<group>"; };
-		28CB72DA19DE0C48009F7BF8 /* EventInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventInfoTableViewController.h; path = ../EventInfoTableViewController.h; sourceTree = "<group>"; };
-		28CB72DB19DE0C48009F7BF8 /* EventInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventInfoTableViewController.m; path = ../EventInfoTableViewController.m; sourceTree = "<group>"; };
+		28CED41F19FB13AC005989D0 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		28CED42119FB13BF005989D0 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		28CED42219FB13BF005989D0 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		28CED42319FB13BF005989D0 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		28CED42419FB13BF005989D0 /* EventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventViewController.m; sourceTree = "<group>"; };
+		28CED42719FB13CE005989D0 /* EventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventViewController.h; sourceTree = "<group>"; };
+		28CED42819FB13CE005989D0 /* EventInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventInfoTableViewController.m; sourceTree = "<group>"; };
+		28CED42919FB13CE005989D0 /* EventInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventInfoTableViewController.h; sourceTree = "<group>"; };
+		28CED42A19FB13CE005989D0 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		28CED42B19FB13CE005989D0 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		28CED42E19FB144C005989D0 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBAudienceNetwork.framework; path = TaskTag/FBAudienceNetwork.framework; sourceTree = "<group>"; };
+		28CED42F19FB144C005989D0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = TaskTag/FacebookSDK.framework; sourceTree = "<group>"; };
+		28CED43019FB144C005989D0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = TaskTag/Bolts.framework; sourceTree = "<group>"; };
 		28D3962D19F1AE2900637D9A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		28EF068019E35614002AB675 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		28EF068119E35614002AB675 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
@@ -96,11 +96,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2807262919F1A1B90043657C /* Bolts.framework in Frameworks */,
-				2807262A19F1A1B90043657C /* FacebookSDK.framework in Frameworks */,
 				2863B96419EEF67A00ADFDA7 /* EventKitUI.framework in Frameworks */,
-				2807262B19F1A1B90043657C /* FBAudienceNetwork.framework in Frameworks */,
+				28CED43119FB144C005989D0 /* FBAudienceNetwork.framework in Frameworks */,
 				2863B96219EEECE900ADFDA7 /* EventKit.framework in Frameworks */,
+				28CED43219FB144C005989D0 /* FacebookSDK.framework in Frameworks */,
+				28CED43319FB144C005989D0 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,12 +117,12 @@
 		2807252719F1A18D0043657C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				28CED42E19FB144C005989D0 /* FBAudienceNetwork.framework */,
+				28CED42F19FB144C005989D0 /* FacebookSDK.framework */,
+				28CED43019FB144C005989D0 /* Bolts.framework */,
 				28D3962D19F1AE2900637D9A /* CoreData.framework */,
 				2863B96319EEF67A00ADFDA7 /* EventKitUI.framework */,
 				2863B96119EEECE900ADFDA7 /* EventKit.framework */,
-				2807252919F1A1B80043657C /* Bolts.framework */,
-				2807252A19F1A1B80043657C /* FacebookSDK.framework */,
-				2807252C19F1A1B80043657C /* FBAudienceNetwork.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -150,14 +150,20 @@
 			isa = PBXGroup;
 			children = (
 				289443FD19DB5FC00036CDDA /* Main.storyboard */,
+				28CED42B19FB13CE005989D0 /* Event.h */,
+				28CED42A19FB13CE005989D0 /* Event.m */,
+				28CED42119FB13BF005989D0 /* Task.h */,
+				28CED41F19FB13AC005989D0 /* Task.m */,
+				28CED42319FB13BF005989D0 /* Person.h */,
+				28CED42219FB13BF005989D0 /* Person.m */,
 				289443F419DB5FC00036CDDA /* AppDelegate.h */,
 				289443F519DB5FC00036CDDA /* AppDelegate.m */,
 				280726DA19F1A3A20043657C /* LoginViewController.h */,
 				280726DB19F1A3A20043657C /* LoginViewController.m */,
-				2894441C19DB63F90036CDDA /* EventViewController.h */,
-				2894441D19DB63F90036CDDA /* EventViewController.m */,
-				28CB72DA19DE0C48009F7BF8 /* EventInfoTableViewController.h */,
-				28CB72DB19DE0C48009F7BF8 /* EventInfoTableViewController.m */,
+				28CED42719FB13CE005989D0 /* EventViewController.h */,
+				28CED42419FB13BF005989D0 /* EventViewController.m */,
+				28CED42919FB13CE005989D0 /* EventInfoTableViewController.h */,
+				28CED42819FB13CE005989D0 /* EventInfoTableViewController.m */,
 				2894442519DB6D080036CDDA /* TaskViewController.h */,
 				2894442619DB6D080036CDDA /* TaskViewController.m */,
 				2894442819DB75210036CDDA /* TaskDetailViewController.h */,
@@ -172,12 +178,6 @@
 				28EF068119E35614002AB675 /* DatePickerViewController.m */,
 				283AEB4619E7195600B83A8A /* ReminderTableViewController.h */,
 				283AEB4719E7195600B83A8A /* ReminderTableViewController.m */,
-				283AEB5519E7358D00B83A8A /* Event.h */,
-				283AEB5619E7358D00B83A8A /* Event.m */,
-				283AEB5819E85D8000B83A8A /* Task.h */,
-				283AEB5919E85D8000B83A8A /* Task.m */,
-				28832BF619F9A37A00A74B1A /* Person.h */,
-				28832BF719F9A37A00A74B1A /* Person.m */,
 				2894440019DB5FC00036CDDA /* Images.xcassets */,
 				2894440219DB5FC00036CDDA /* LaunchScreen.xib */,
 				289443F719DB5FC00036CDDA /* TaskTag.xcdatamodeld */,
@@ -313,21 +313,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				283AEB5719E7358D00B83A8A /* Event.m in Sources */,
-				28CB72DC19DE0C48009F7BF8 /* EventInfoTableViewController.m in Sources */,
 				2894442719DB6D080036CDDA /* TaskViewController.m in Sources */,
 				28BA6B9719F85BD90072EC32 /* FriendCollectionViewCell.m in Sources */,
-				28832BF819F9A37A00A74B1A /* Person.m in Sources */,
 				28480B0919F6F2E20030B2E4 /* FriendViewController.m in Sources */,
-				283AEB5A19E85D8000B83A8A /* Task.m in Sources */,
+				28CED42D19FB13CE005989D0 /* Event.m in Sources */,
+				28CED42519FB13BF005989D0 /* Person.m in Sources */,
 				28EF068219E35614002AB675 /* DatePickerViewController.m in Sources */,
 				289443F619DB5FC00036CDDA /* AppDelegate.m in Sources */,
+				28CED42C19FB13CE005989D0 /* EventInfoTableViewController.m in Sources */,
 				283AEB4819E7195600B83A8A /* ReminderTableViewController.m in Sources */,
 				280726DC19F1A3A20043657C /* LoginViewController.m in Sources */,
-				2894441E19DB63F90036CDDA /* EventViewController.m in Sources */,
+				28CED42619FB13BF005989D0 /* EventViewController.m in Sources */,
 				2894442A19DB75210036CDDA /* TaskDetailViewController.m in Sources */,
 				289443F319DB5FC00036CDDA /* main.m in Sources */,
 				28480B0C19F70ED70030B2E4 /* FriendTableViewCell.m in Sources */,
+				28CED42019FB13AC005989D0 /* Task.m in Sources */,
 				289443F919DB5FC00036CDDA /* TaskTag.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,6 +454,7 @@
 					"$(inherited)",
 					/Users/mxing/Documents/FacebookSDK,
 					/Users/mxing/Documents/FacebookSDK/FBAudienceNetwork,
+					"$(PROJECT_DIR)/TaskTag",
 				);
 				INFOPLIST_FILE = TaskTag/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -469,6 +470,7 @@
 					"$(inherited)",
 					/Users/mxing/Documents/FacebookSDK,
 					/Users/mxing/Documents/FacebookSDK/FBAudienceNetwork,
+					"$(PROJECT_DIR)/TaskTag",
 				);
 				INFOPLIST_FILE = TaskTag/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
