@@ -11,8 +11,8 @@
 #import "FriendViewController.h"
 #import "FriendCollectionViewCell.h"
 #import "Task.h"
-#import "AppDelegate.h"
 #import "Person.h"
+#import "AppDelegate.h"
 
 @interface TaskDetailViewController ()
 
@@ -90,7 +90,6 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FriendCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TaggedFriendCell" forIndexPath:indexPath];
-//    FriendCollectionViewCell *cell = (FriendCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     cell.friend = self.friendsTagged[indexPath.row];
     NSLog(@"name: %@", cell.friend.name);
     NSLog(@"profilePicID: %@", cell.friend.fbProfilePictureID);

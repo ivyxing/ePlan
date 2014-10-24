@@ -35,7 +35,7 @@
                   symbolName = "-[EventInfoTableViewController addToCalendar:]"
                   moduleName = "TaskTag"
                   urlString = "file:///Users/mxing/Desktop/MakeSchool/TaskTag/EventInfoTableViewController.m"
-                  timestampString = "435800300.651657"
+                  timestampString = "435800563.259556"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "135"
@@ -49,7 +49,7 @@
                   symbolName = "__46-[EventInfoTableViewController addToCalendar:]_block_invoke"
                   moduleName = "TaskTag"
                   urlString = "file:///Users/mxing/Desktop/MakeSchool/TaskTag/EventInfoTableViewController.m"
-                  timestampString = "435800300.651843"
+                  timestampString = "435800563.259754"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "135"
@@ -88,22 +88,6 @@
             startingLineNumber = "66"
             endingLineNumber = "66"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TaskTag/TaskDetailViewController.m"
-            timestampString = "435800007.057304"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
