@@ -11,6 +11,7 @@
 
 @interface FriendCollectionViewCell : UICollectionViewCell
 
+#pragma message "friend is a C++ keyword, ideally rename this property ;)"
 @property (strong, nonatomic) Person *friend;
 
 @end
