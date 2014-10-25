@@ -20,6 +20,7 @@
 @implementation FriendCollectionViewCell
 
 - (void)setUserFriend:(Person *)someFriend {
+    _userFriend = someFriend;
     // Set name label.
     _userFriend.name = [someFriend.name copy];
     _name.text = _userFriend.name;
