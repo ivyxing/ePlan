@@ -141,7 +141,7 @@
         [event setCalendar:[store defaultCalendarForNewEvents]];
         NSError *err = nil;
         [store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
-//        NSString *savedEventId = event.eventIdentifier;  //this is so you can access this event later
+//        NSString *savedEventId = event.eventIdentifier;
     }];
 }
 

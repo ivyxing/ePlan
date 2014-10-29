@@ -21,9 +21,16 @@
 
 - (void)setUserFriend:(Person *)someFriend {
     _userFriend = someFriend;
+    
     // Set name label.
     _userFriend.name = [someFriend.name copy];
-    _name.text = _userFriend.name;
+    if ([_userFriend.name isEqualToString:@"Sign Me up"]) {
+        _name.text = @"Me";
+    } else {
+        _name.text = _userFriend.firstName;
+    }
+    [_name setBackgroundColor:[UIColor blackColor]];
+    
     // Set Facebook profile picture.
     _userFriend.fbProfilePictureID = [someFriend.fbProfilePictureID copy];
     self.profilePictureView.profileID = _userFriend.fbProfilePictureID;

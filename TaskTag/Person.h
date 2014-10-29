@@ -2,7 +2,7 @@
 //  Person.h
 //  TaskTag
 //
-//  Created by Min Xing on 10/23/14.
+//  Created by Min Xing on 10/29/14.
 //  Copyright (c) 2014 MakeSchool. All rights reserved.
 //
 
@@ -13,8 +13,9 @@
 
 @interface Person : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * fbProfilePictureID;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSSet *parentEvent;
 @property (nonatomic, retain) NSSet *parentTask;
 @end

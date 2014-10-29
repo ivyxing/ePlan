@@ -91,8 +91,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FriendCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TaggedFriendCell" forIndexPath:indexPath];
     cell.userFriend = self.friendsTagged[indexPath.row];
-    NSLog(@"name: %@", cell.userFriend.name);
-    NSLog(@"profilePicID: %@", cell.userFriend.fbProfilePictureID);
+
     return cell;
 }
 
@@ -103,20 +102,7 @@
         DatePickerViewController *datePickerViewController = [segue destinationViewController];
         datePickerViewController.delegate = self;
         datePickerViewController.displayDate = self.task.dueDate;
-    } else if ([segue.identifier isEqualToString:@"ShowFriendsList"]) {
-        FriendViewController *friendViewController = [segue destinationViewController];
-        // Get a list of the user's Facebook friends.
-        FBRequest* friendsRequest = [FBRequest requestForMyFriends];
-        [friendsRequest startWithCompletionHandler: ^(FBRequestConnection *connection,
-                                                      NSDictionary* result,
-                                                      NSError *error) {
-            NSArray* friends = [result objectForKey:@"data"];
-            friendViewController.friendsList = friends;
-        }];
-    }
-}
-
-- (IBAction)unwindToTaskDetailViewController:(UIStoryboardSegue *)unwindSegue {
+    } 
 }
 
 #pragma mark - Tagging Info Handling

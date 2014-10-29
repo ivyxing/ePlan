@@ -120,6 +120,19 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6xL-lc-1LS" id="kUA-1r-8uR">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="svO-dM-QaJ">
+                                                    <rect key="frame" x="525" y="8" width="30" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="UxH-QA-qhL"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="svO-dM-QaJ" firstAttribute="top" secondItem="kUA-1r-8uR" secondAttribute="topMargin" id="0YM-se-Y9Z"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="svO-dM-QaJ" secondAttribute="bottom" id="TR1-Jv-Iw9"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="svO-dM-QaJ" secondAttribute="trailing" constant="5" id="qQB-vq-0oq"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="RW7-SC-rEk" kind="show" identifier="TaskDetail" id="Wrq-bt-7TB"/>
@@ -219,7 +232,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWl-2H-mIv">
-                                                    <rect key="frame" x="380" y="13" width="170" height="17"/>
+                                                    <rect key="frame" x="76" y="13" width="170" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="170" id="bCv-QF-XqI"/>
                                                     </constraints>
@@ -228,7 +241,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvH-Xf-EuP" customClass="FBProfilePictureView">
-                                                    <rect key="frame" x="8" y="8" width="50" height="27"/>
+                                                    <rect key="frame" x="11" y="8" width="50" height="27"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="AAt-ot-gfw"/>
@@ -238,24 +251,25 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="yWl-2H-mIv" secondAttribute="bottom" constant="5" id="2y2-8R-qho"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="jvH-Xf-EuP" secondAttribute="bottom" id="Fw5-OG-ufE"/>
+                                                <constraint firstItem="jvH-Xf-EuP" firstAttribute="leading" secondItem="y8V-Dk-5yt" secondAttribute="leadingMargin" constant="3" id="Kw7-z4-xPd"/>
                                                 <constraint firstItem="yWl-2H-mIv" firstAttribute="top" secondItem="y8V-Dk-5yt" secondAttribute="topMargin" constant="5" id="LqH-yQ-d4s"/>
                                                 <constraint firstItem="yWl-2H-mIv" firstAttribute="top" secondItem="y8V-Dk-5yt" secondAttribute="topMargin" constant="5" id="Lva-6e-mRK"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="yWl-2H-mIv" secondAttribute="trailing" constant="10" id="S2q-Df-0Oh"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="yWl-2H-mIv" secondAttribute="bottom" constant="5" id="T0T-K2-xZq"/>
+                                                <constraint firstItem="yWl-2H-mIv" firstAttribute="leading" secondItem="jvH-Xf-EuP" secondAttribute="trailing" constant="15" id="aQ6-L9-2vr"/>
                                                 <constraint firstItem="jvH-Xf-EuP" firstAttribute="top" secondItem="y8V-Dk-5yt" secondAttribute="topMargin" id="eTc-Ok-azm"/>
-                                                <constraint firstItem="jvH-Xf-EuP" firstAttribute="leading" secondItem="y8V-Dk-5yt" secondAttribute="leadingMargin" id="yoD-hH-4MK"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="2y2-8R-qho"/>
                                                     <exclude reference="Lva-6e-mRK"/>
+                                                    <exclude reference="S2q-Df-0Oh"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="name" destination="yWl-2H-mIv" id="k4c-5j-bDY"/>
                                             <outlet property="profilePictureView" destination="jvH-Xf-EuP" id="8M4-8U-nte"/>
-                                            <segue destination="JbL-Qg-Xvm" kind="unwind" unwindAction="unwindToTaskDetailViewController:" id="aOU-0O-gPf"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -278,9 +292,8 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5l-hv-pst" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="JbL-Qg-Xvm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2381" y="-655"/>
+            <point key="canvasLocation" x="2381" y="-656"/>
         </scene>
         <!--Task Detail View Controller-->
         <scene sceneID="7JG-FJ-tQM">
@@ -371,7 +384,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZW-Hq-nOq">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZW-Hq-nOq">
                                                     <rect key="frame" x="0.0" y="10" width="42" height="32"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -381,7 +394,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="KZW-Hq-nOq" firstAttribute="top" secondItem="TFh-9c-hBw" secondAttribute="topMargin" constant="2" id="WiI-tI-rD3"/>
+                                            <constraint firstItem="KZW-Hq-nOq" firstAttribute="top" secondItem="TFh-9c-hBw" secondAttribute="topMargin" constant="15" id="WiI-tI-rD3"/>
                                             <constraint firstItem="KZW-Hq-nOq" firstAttribute="top" secondItem="TFh-9c-hBw" secondAttribute="topMargin" constant="13" id="koX-z3-FhP"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="KZW-Hq-nOq" secondAttribute="bottom" id="zfm-kW-7f7"/>
                                         </constraints>
