@@ -102,7 +102,10 @@
         DatePickerViewController *datePickerViewController = [segue destinationViewController];
         datePickerViewController.delegate = self;
         datePickerViewController.displayDate = self.task.dueDate;
-    } 
+    } else if ([segue.identifier isEqualToString:@"ShowFriendsList"]) {
+        FriendViewController *friendViewController = [segue destinationViewController];
+        friendViewController.task = self.task;
+    }
 }
 
 #pragma mark - Tagging Info Handling

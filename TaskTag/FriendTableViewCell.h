@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 @class Person;
-@class Task;
 
 @interface FriendTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) Person *userFriend;
-@property (strong, nonatomic) Task *task;
 
 @end

@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+@class Task;
 
 @interface FriendViewController : UIViewController
 
 @property (strong, nonatomic) NSArray *friendsList;
+@property (strong, nonatomic) Task *task;
 
 @end
