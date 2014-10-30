@@ -18,7 +18,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *tag;
 
-@property (strong, nonatomic) NSMutableArray *cellsSelected;
+@property (strong, nonatomic) NSArray *friendsList;
+@property (strong, nonatomic) NSMutableArray *friendsSelected;
 
 @end
 
@@ -28,7 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.cellsSelected = [NSMutableArray array];
+    self.friendsSelected = [NSMutableArray array];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -104,18 +105,20 @@
         }
     }
     
-    // Load the checkmarks as the user selects the cells.
-//    FriendTableViewCell *friendCell = (FriendTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
-    // Create a new object using the entity description.
-    self.task = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:context];
+    
+    // DEBUGGING
     NSArray *personsArray = [self.task.persons allObjects];
     if ([personsArray count] > 0) {
         Person *person = personsArray[0];
-        NSLog(@"self.tasks.persons: %@", person.name);
+        NSLog(@"Reloading table - first person name: %@", person.name);
+    }
+    if ([self.task.persons containsObject:cell.userFriend]) {
+        NSLog(@"YES, self.task.persons contains userFriend");
     }
     
-    if ([self.cellsSelected containsObject:indexPath] || [self.task.persons containsObject:cell.userFriend]) {
+    
+    // Load the checkmarks as the user selects the cells.
+    if ([self.friendsSelected containsObject:indexPath] || [self.task.persons containsObject:cell.userFriend]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -129,20 +132,22 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     FriendTableViewCell *cell = (FriendTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    if ([self.cellsSelected containsObject:indexPath]) {
-        [self.cellsSelected removeObject:indexPath];
-        NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
-        // Create a new object using the entity description.
-        self.task = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:context];
+    if ([self.friendsSelected containsObject:indexPath]) {
+        [self.friendsSelected removeObject:indexPath];
         [self.task removePersonsObject:cell.userFriend];
     } else {
-        [self.cellsSelected addObject:indexPath];
-        // Get managed object context.
-        NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
-        // Create a new object using the entity description.
-        self.task = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:context];
+        [self.friendsSelected addObject:indexPath];
         NSLog(@"name: %@", cell.userFriend.name);
         [self.task addPersonsObject:cell.userFriend];
+    
+        
+        // DEBUGGING
+        NSArray *personsArray = [self.task.persons allObjects];
+        if ([personsArray count] > 0) {
+            Person *person = personsArray[0];
+            NSLog(@"After adding person - first person name: %@", person.name);
+        }
+        
     }
     [tableView reloadData];
 }

@@ -12,7 +12,6 @@
 
 @interface FriendViewController : UIViewController
 
-@property (strong, nonatomic) NSArray *friendsList;
 @property (strong, nonatomic) Task *task;
 
 @end

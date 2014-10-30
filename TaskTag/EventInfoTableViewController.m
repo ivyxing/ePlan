@@ -70,8 +70,7 @@
     self.event.notes = self.notesTextField.text;
     
     // Get the NSManagedObject context
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    NSManagedObjectContext *context = appDelegate.managedObjectContext;
+    NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
     // Create an error variable to pass to the save method.
     NSError *error = nil;
     // Attempt to save the context and persist our changes.
