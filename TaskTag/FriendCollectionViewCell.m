@@ -24,12 +24,11 @@
     
     // Set name label.
     _userFriend.name = [someFriend.name copy];
-#pragma message "You should prefer accessing properties with dot-syntax instead of using the underlying iVar"
-    _name.text = _userFriend.firstName;
-    [_name setBackgroundColor:[UIColor blackColor]];
+    self.name.text = self.userFriend.firstName;
+    [self.name setBackgroundColor:[UIColor blackColor]];
     
     // Set Facebook profile picture.
-    _userFriend.fbProfilePictureID = [someFriend.fbProfilePictureID copy];
+    self.userFriend.fbProfilePictureID = [someFriend.fbProfilePictureID copy];
     self.profilePictureView.profileID = _userFriend.fbProfilePictureID;
 }
 

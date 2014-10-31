@@ -55,7 +55,7 @@
             
         // TODO: Add a "Renew Friends List" button so only need to check for new friends upon request.
         // The user him/herself is included in self.task.persons, but FB does not count the user as his/her own friend.
-        } else if ([[result objectForKey:@"data"] count] > ([self.task.persons count] - 1)) {
+        } else if ([[result objectForKey:@"data"] count] > self.task.persons.count - 1) {
             NSMutableArray *oldFriends = [NSMutableArray arrayWithArray:[self.task.persons allObjects]];
             // The result is a set of the user's new friends who are now using the app.
             [self helperAddPersons:[result objectForKey:@"data"]];
@@ -99,7 +99,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (self.task.persons) {
         // Count the user him/herself in addition to the friends list.
-        return [self.task.persons count];
+        return self.task.persons.count;
     }
     return 0;
 }
@@ -110,15 +110,13 @@
     // Only populate friends the first time the table view is loaded, not during "reload data" when selecting cells.
     if (!cell.userFriend) {
         // Add the user's Facebook friends who use the app and check if there are new friends.
-        if (self.friendsListDiff && [self.friendsListDiff count] > 0) {
+        if (self.friendsListDiff && self.friendsListDiff.count > 0) {
             cell.userFriend = self.friendsListDiff[indexPath.row];
-        } else if (self.task.persons && [self.task.persons count] > 0) {
+        } else if (self.task.persons && self.task.persons.count > 0) {
             // Show the stored friends.
             NSArray *taskPersonsArray = [self.task.persons allObjects];
             cell.userFriend = taskPersonsArray[indexPath.row];
         }
-#pragma message "Calling reloadData in the cellForRowAtIndexPath: method is bad. Why are you doing it here?"
-        [self.tableView reloadData];
     }
     
     // Check/uncheck as user selects/deselects cells.
