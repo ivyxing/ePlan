@@ -41,14 +41,16 @@
     // Display task name.
     [self.taskNameTextField setText:self.task.name];
     
-    // Add tagged friends.
     if (self.task.persons && [self.task.persons count] > 0) {
         for (Person* person in self.task.persons) {
+            // Add the tagged friend.
             if ([person.tagged isEqualToNumber:@YES]) {
+                // Do not add duplicated entries.
                 if (![self.friendsTagged containsObject:person]) {
                     [self.friendsTagged addObject:person];
                 }
             } else if ([self.friendsTagged containsObject:person]) {
+                // Remove untagged friend.
                 [self.friendsTagged removeObject:person];
             }
         }
@@ -107,7 +109,6 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FriendCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TaggedFriendCell" forIndexPath:indexPath];
     cell.userFriend = self.friendsTagged[indexPath.row];
-
     return cell;
 }
 

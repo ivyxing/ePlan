@@ -24,11 +24,7 @@
     
     // Set name label.
     _userFriend.name = [someFriend.name copy];
-    if ([_userFriend.name isEqualToString:@"Sign Me up"]) {
-        _name.text = @"Me";
-    } else {
-        _name.text = _userFriend.firstName;
-    }
+    _name.text = _userFriend.firstName;
     [_name setBackgroundColor:[UIColor blackColor]];
     
     // Set Facebook profile picture.
