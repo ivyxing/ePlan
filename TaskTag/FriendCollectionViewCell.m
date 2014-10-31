@@ -24,6 +24,7 @@
     
     // Set name label.
     _userFriend.name = [someFriend.name copy];
+#pragma message "You should prefer accessing properties with dot-syntax instead of using the underlying iVar"
     _name.text = _userFriend.firstName;
     [_name setBackgroundColor:[UIColor blackColor]];
     

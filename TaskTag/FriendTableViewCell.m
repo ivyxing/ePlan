@@ -23,6 +23,7 @@
     _userFriend = someFriend;
     // Set name label.
     _userFriend.name = [someFriend.name copy];
+    #pragma message "You should prefer accessing properties with dot-syntax instead of using the underlying iVar"
     _name.text = _userFriend.name;
     // Set Facebook profile picture.
     _userFriend.fbProfilePictureID = [someFriend.fbProfilePictureID copy];

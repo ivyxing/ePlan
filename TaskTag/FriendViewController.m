@@ -117,6 +117,7 @@
             NSArray *taskPersonsArray = [self.task.persons allObjects];
             cell.userFriend = taskPersonsArray[indexPath.row];
         }
+#pragma message "Calling reloadData in the cellForRowAtIndexPath: method is bad. Why are you doing it here?"
         [self.tableView reloadData];
     }
     
