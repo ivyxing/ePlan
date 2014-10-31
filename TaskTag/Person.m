@@ -2,7 +2,7 @@
 //  Person.m
 //  TaskTag
 //
-//  Created by Min Xing on 10/29/14.
+//  Created by Min Xing on 10/30/14.
 //  Copyright (c) 2014 MakeSchool. All rights reserved.
 //
 
@@ -14,8 +14,9 @@
 @implementation Person
 
 @dynamic fbProfilePictureID;
-@dynamic name;
 @dynamic firstName;
+@dynamic name;
+@dynamic tagged;
 @dynamic parentEvent;
 @dynamic parentTask;
 

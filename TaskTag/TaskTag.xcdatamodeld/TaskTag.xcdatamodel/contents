@@ -15,6 +15,7 @@
         <attribute name="fbProfilePictureID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tagged" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="parentEvent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="persons" inverseEntity="Event" syncable="YES"/>
         <relationship name="parentTask" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="persons" inverseEntity="Task" syncable="YES"/>
     </entity>
@@ -28,7 +29,7 @@
     </entity>
     <elements>
         <element name="Event" positionX="18" positionY="-153" width="128" height="180"/>
-        <element name="Person" positionX="126" positionY="189" width="128" height="120"/>
+        <element name="Person" positionX="126" positionY="189" width="128" height="135"/>
         <element name="Task" positionX="286" positionY="-72" width="128" height="133"/>
     </elements>
 </model>

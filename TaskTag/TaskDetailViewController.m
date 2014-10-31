@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *dueDateButton;
 @property (weak, nonatomic) IBOutlet UICollectionView *friendsCollectionView;
 
+@property (strong, nonatomic) NSMutableArray *friendsTagged;
+
 @end
 
 @implementation TaskDetailViewController 
@@ -35,10 +37,24 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.friendsCollectionView reloadData];
-    [self.dueDateAlertTableView reloadData];
+    
     // Display task name.
     [self.taskNameTextField setText:self.task.name];
+    
+    // Add tagged friends.
+    if (self.task.persons && [self.task.persons count] > 0) {
+        for (Person* person in self.task.persons) {
+            if ([person.tagged isEqualToNumber:@YES]) {
+                if (![self.friendsTagged containsObject:person]) {
+                    [self.friendsTagged addObject:person];
+                }
+            } else if ([self.friendsTagged containsObject:person]) {
+                [self.friendsTagged removeObject:person];
+            }
+        }
+    }
+    [self.friendsCollectionView reloadData];
+    [self.dueDateAlertTableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -106,12 +122,6 @@
         FriendViewController *friendViewController = [segue destinationViewController];
         friendViewController.task = self.task;
     }
-}
-
-#pragma mark - Tagging Info Handling
-
-- (void)tagFriend:(Person *)myFriend {
-    [self.friendsTagged addObject:myFriend];
 }
 
 #pragma mark - Date Handling

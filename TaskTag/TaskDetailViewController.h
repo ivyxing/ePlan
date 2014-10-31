@@ -14,8 +14,5 @@
 @interface TaskDetailViewController : UIViewController <UITextFieldDelegate, DatePickerViewControllerDelegate>
 
 @property (strong, nonatomic) Task *task;
-@property (strong, nonatomic) NSMutableArray *friendsTagged;
-
-- (void)tagFriend:(Person *)myFriend;
 
 @end

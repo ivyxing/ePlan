@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		280726DC19F1A3A20043657C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280726DB19F1A3A20043657C /* LoginViewController.m */; };
-		2808B4981A016F1D00A619F0 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 2808B4971A016F1D00A619F0 /* Person.m */; };
 		283AEB4819E7195600B83A8A /* ReminderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AEB4719E7195600B83A8A /* ReminderTableViewController.m */; };
 		28480B0919F6F2E20030B2E4 /* FriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28480B0819F6F2E20030B2E4 /* FriendViewController.m */; };
 		28480B0C19F70ED70030B2E4 /* FriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28480B0B19F70ED70030B2E4 /* FriendTableViewCell.m */; };
@@ -22,6 +21,7 @@
 		2894440419DB5FC00036CDDA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2894440219DB5FC00036CDDA /* LaunchScreen.xib */; };
 		2894441019DB5FC00036CDDA /* TaskTagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894440F19DB5FC00036CDDA /* TaskTagTests.m */; };
 		2894442A19DB75210036CDDA /* TaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894442919DB75210036CDDA /* TaskDetailViewController.m */; };
+		2894D20E1A0318440076F182 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 2894D20D1A0318440076F182 /* Person.m */; };
 		28BA6B9719F85BD90072EC32 /* FriendCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BA6B9619F85BD90072EC32 /* FriendCollectionViewCell.m */; };
 		28CED42019FB13AC005989D0 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CED41F19FB13AC005989D0 /* Task.m */; };
 		28CED42619FB13BF005989D0 /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CED42419FB13BF005989D0 /* EventViewController.m */; };
@@ -48,8 +48,6 @@
 /* Begin PBXFileReference section */
 		280726DA19F1A3A20043657C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		280726DB19F1A3A20043657C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		2808B4961A016F1D00A619F0 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
-		2808B4971A016F1D00A619F0 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		283AEB4619E7195600B83A8A /* ReminderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderTableViewController.h; sourceTree = "<group>"; };
 		283AEB4719E7195600B83A8A /* ReminderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderTableViewController.m; sourceTree = "<group>"; };
 		28480B0719F6F2E20030B2E4 /* FriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendViewController.h; sourceTree = "<group>"; };
@@ -72,6 +70,8 @@
 		2894440F19DB5FC00036CDDA /* TaskTagTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskTagTests.m; sourceTree = "<group>"; };
 		2894442819DB75210036CDDA /* TaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskDetailViewController.h; sourceTree = "<group>"; };
 		2894442919DB75210036CDDA /* TaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskDetailViewController.m; sourceTree = "<group>"; };
+		2894D20C1A0318440076F182 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		2894D20D1A0318440076F182 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		28BA6B9519F85BD80072EC32 /* FriendCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCollectionViewCell.h; sourceTree = "<group>"; };
 		28BA6B9619F85BD90072EC32 /* FriendCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCollectionViewCell.m; sourceTree = "<group>"; };
 		28CED41F19FB13AC005989D0 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
@@ -157,8 +157,8 @@
 				28CED42A19FB13CE005989D0 /* Event.m */,
 				28CED42119FB13BF005989D0 /* Task.h */,
 				28CED41F19FB13AC005989D0 /* Task.m */,
-				2808B4961A016F1D00A619F0 /* Person.h */,
-				2808B4971A016F1D00A619F0 /* Person.m */,
+				2894D20C1A0318440076F182 /* Person.h */,
+				2894D20D1A0318440076F182 /* Person.m */,
 				289443F419DB5FC00036CDDA /* AppDelegate.h */,
 				289443F519DB5FC00036CDDA /* AppDelegate.m */,
 				280726DA19F1A3A20043657C /* LoginViewController.h */,
@@ -335,7 +335,7 @@
 				283AEB4819E7195600B83A8A /* ReminderTableViewController.m in Sources */,
 				280726DC19F1A3A20043657C /* LoginViewController.m in Sources */,
 				28CED42619FB13BF005989D0 /* EventViewController.m in Sources */,
-				2808B4981A016F1D00A619F0 /* Person.m in Sources */,
+				2894D20E1A0318440076F182 /* Person.m in Sources */,
 				2894442A19DB75210036CDDA /* TaskDetailViewController.m in Sources */,
 				289443F319DB5FC00036CDDA /* main.m in Sources */,
 				28480B0C19F70ED70030B2E4 /* FriendTableViewCell.m in Sources */,
