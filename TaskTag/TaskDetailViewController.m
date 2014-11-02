@@ -44,7 +44,7 @@
     if (self.task.persons && [self.task.persons count] > 0) {
         for (Person* person in self.task.persons) {
             // Add the tagged friend.
-            if ([person.tagged isEqualToNumber:@YES]) {
+            if ([person.taggedForTask isEqualToNumber:@YES]) {
                 // Do not add duplicated entries.
                 if (![self.friendsTagged containsObject:person]) {
                     [self.friendsTagged addObject:person];
@@ -122,6 +122,7 @@
     } else if ([segue.identifier isEqualToString:@"ShowFriendsList"]) {
         FriendViewController *friendViewController = [segue destinationViewController];
         friendViewController.task = self.task;
+        friendViewController.loadFriendsInEventInfoTableView = NO;
     }
 }
 

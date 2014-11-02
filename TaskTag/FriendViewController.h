@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 @class Task;
+@class Event;
 
 @interface FriendViewController : UIViewController
 
 @property (strong, nonatomic) Task *task;
+@property (assign, nonatomic) BOOL loadFriendsInEventInfoTableView;
 
 @end

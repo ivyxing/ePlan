@@ -18,7 +18,7 @@
 @interface TaskViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *taskTableView;
-@property (weak, nonatomic) IBOutlet UITextField *eventTitleTextField;
+@property (weak, nonatomic) IBOutlet UILabel *eventTitle;
 @property (weak, nonatomic) IBOutlet UITextField *taskNameTextField;
 
 @end
@@ -31,13 +31,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.taskTableView reloadData];
-    self.eventTitleTextField.text = self.event.title;
+    self.eventTitle.text = self.event.title;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     // Save event name and image.
-    self.event.title = self.eventTitleTextField.text;
+    self.event.title = self.eventTitle.text;
   
     // Get the NSManagedObject context.
     NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
@@ -54,12 +54,7 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField == self.eventTitleTextField) {
-        // Hide keyboard.
-        [self.eventTitleTextField resignFirstResponder];
-        // Save event title.
-        self.event.title = textField.text;
-    } else if (textField == self.taskNameTextField) {
+    if (textField == self.taskNameTextField) {
         // Hide keyboard.
         [self.taskNameTextField resignFirstResponder];
         // Create new task.
@@ -95,10 +90,11 @@
         EventInfoTableViewController *eventInfoTableViewController = [segue destinationViewController];
         eventInfoTableViewController.event = self.event;
     } else if ([segue.identifier isEqualToString:@"TaskDetail"]) {
-        TaskDetailViewController *eventTaskDetailViewController = [segue destinationViewController];
+        TaskDetailViewController *taskDetailViewController = [segue destinationViewController];
         NSIndexPath *selectedIndexPath = self.taskTableView.indexPathForSelectedRow;
         NSArray *tasksArray = [self tasksSetToSortedArray:self.event.tasks];
-        eventTaskDetailViewController.task = tasksArray[selectedIndexPath.row];
+        taskDetailViewController.task = tasksArray[selectedIndexPath.row];
+        taskDetailViewController.task.parentEvent = self.event;
     }
 }
 

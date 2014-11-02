@@ -2,7 +2,7 @@
 //  Event.m
 //  TaskTag
 //
-//  Created by Min Xing on 10/9/14.
+//  Created by Min Xing on 10/31/14.
 //  Copyright (c) 2014 MakeSchool. All rights reserved.
 //
 
@@ -13,13 +13,11 @@
 
 @implementation Event
 
-@dynamic endTime;
-@dynamic latitude;
-@dynamic longitude;
-@dynamic notes;
 @dynamic startTime;
+@dynamic endTime;
+@dynamic location;
+@dynamic summary;
 @dynamic title;
-@dynamic image;
 @dynamic persons;
 @dynamic tasks;
 

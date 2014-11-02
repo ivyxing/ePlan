@@ -8,6 +8,7 @@
 
 #import "EventViewController.h"
 #import "TaskViewController.h"
+#import "EventInfoTableViewController.h"
 #import "Event.h"
 #import "AppDelegate.h"
 
@@ -52,7 +53,7 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.events count];
+    return self.events.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -69,8 +70,8 @@
         NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
         // Create a new object using the entity description.
         Event *newEvent = [NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:context];
-        TaskViewController *eventTaskViewController = [segue destinationViewController];
-        eventTaskViewController.event = newEvent;
+        EventInfoTableViewController *eventInfoTableViewController = [segue destinationViewController];
+        eventInfoTableViewController.event = newEvent;
         [self.events addObject:newEvent];
     } else if ([segue.identifier isEqualToString:@"ExistingEvent"]) {
         TaskViewController *eventTaskViewController = [segue destinationViewController];
@@ -80,7 +81,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     // Get the context.
     NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
     // Get and delete object
