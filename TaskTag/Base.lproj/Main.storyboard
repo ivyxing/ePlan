@@ -62,7 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GEH-NI-Hd6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1084" y="81"/>
+            <point key="canvasLocation" x="1068" y="80"/>
         </scene>
         <!--Task View Controller-->
         <scene sceneID="ftw-aH-nBX">
@@ -77,24 +77,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add task..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gN1-6l-CFl">
-                                <rect key="frame" x="21" y="85" width="558" height="30"/>
+                                <rect key="frame" x="21" y="104" width="558" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="fiO-V3-Orb" id="cEh-NI-x0V"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWG-3P-nmd">
-                                <rect key="frame" x="31" y="35" width="538" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="MMX-xN-XOR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8wO-Gy-xil">
-                                <rect key="frame" x="26" y="120" width="548" height="470"/>
+                                <rect key="frame" x="26" y="139" width="548" height="451"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" id="sgE-jl-GSv">
@@ -113,27 +104,34 @@
                                     <outlet property="delegate" destination="fiO-V3-Orb" id="8OD-Kb-hJ6"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIW-eO-xSc">
+                                <rect key="frame" x="16" y="69" width="568" height="30"/>
+                                <state key="normal" title="Event Title">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="7Vj-Hn-JIl" kind="show" identifier="ShowEventInfo" id="a2e-xx-O8E"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="gN1-6l-CFl" secondAttribute="trailing" constant="5" id="4xe-3A-vQA"/>
-                            <constraint firstItem="gN1-6l-CFl" firstAttribute="top" secondItem="fWG-3P-nmd" secondAttribute="bottom" constant="5" id="Ag7-aq-xfw"/>
                             <constraint firstItem="gN1-6l-CFl" firstAttribute="leading" secondItem="afT-Cg-PWC" secondAttribute="leadingMargin" constant="5" id="C58-re-NIG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8wO-Gy-xil" secondAttribute="trailing" constant="10" id="E5U-cJ-fLd"/>
                             <constraint firstItem="WCd-bC-DTe" firstAttribute="top" secondItem="gN1-6l-CFl" secondAttribute="bottom" constant="5" id="MaO-32-0hx"/>
                             <constraint firstItem="8wO-Gy-xil" firstAttribute="leading" secondItem="afT-Cg-PWC" secondAttribute="leadingMargin" constant="10" id="MtZ-HX-OYu"/>
                             <constraint firstItem="WCd-bC-DTe" firstAttribute="top" secondItem="gN1-6l-CFl" secondAttribute="bottom" constant="430" id="RF2-0g-wEl"/>
                             <constraint firstItem="8wO-Gy-xil" firstAttribute="top" secondItem="gN1-6l-CFl" secondAttribute="bottom" constant="5" id="STc-bh-GM8"/>
-                            <constraint firstItem="fWG-3P-nmd" firstAttribute="leading" secondItem="afT-Cg-PWC" secondAttribute="leadingMargin" constant="15" id="Xcw-wF-0ZG"/>
-                            <constraint firstItem="fWG-3P-nmd" firstAttribute="top" secondItem="nPd-sL-fN0" secondAttribute="bottom" constant="15" id="aYw-Yc-1xH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zIW-eO-xSc" secondAttribute="trailing" id="f6i-36-GPd"/>
+                            <constraint firstItem="zIW-eO-xSc" firstAttribute="top" secondItem="nPd-sL-fN0" secondAttribute="bottom" constant="5" id="fjl-ye-M0N"/>
+                            <constraint firstItem="zIW-eO-xSc" firstAttribute="leading" secondItem="afT-Cg-PWC" secondAttribute="leadingMargin" id="iVZ-Tt-3pC"/>
                             <constraint firstItem="WCd-bC-DTe" firstAttribute="top" secondItem="gN1-6l-CFl" secondAttribute="bottom" constant="5" id="wPE-E1-reV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="fWG-3P-nmd" secondAttribute="trailing" constant="15" id="xL4-Sb-ot0"/>
-                            <constraint firstItem="gN1-6l-CFl" firstAttribute="top" secondItem="fWG-3P-nmd" secondAttribute="bottom" constant="15" id="xoO-oU-bQV"/>
                             <constraint firstItem="WCd-bC-DTe" firstAttribute="top" secondItem="8wO-Gy-xil" secondAttribute="bottom" constant="10" id="yWO-K1-Vfu"/>
+                            <constraint firstItem="gN1-6l-CFl" firstAttribute="top" secondItem="zIW-eO-xSc" secondAttribute="bottom" constant="5" id="zS3-Rc-dQm"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="Ag7-aq-xfw"/>
                                 <exclude reference="MaO-32-0hx"/>
                                 <exclude reference="RF2-0g-wEl"/>
                                 <exclude reference="wPE-E1-reV"/>
@@ -141,16 +139,9 @@
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="dqF-ak-awK">
-                        <barButtonItem key="rightBarButtonItem" title="Event Info" id="U9j-nf-Yk8">
-                            <connections>
-                                <segue destination="7Vj-Hn-JIl" kind="show" identifier="EventInfo" id="AxG-N6-dfI"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="eventTitle" destination="fWG-3P-nmd" id="kdr-Az-98N"/>
+                        <outlet property="eventTitleButton" destination="zIW-eO-xSc" id="Aoq-aa-L2P"/>
                         <outlet property="taskNameTextField" destination="gN1-6l-CFl" id="FoZ-2g-8H7"/>
                         <outlet property="taskTableView" destination="8wO-Gy-xil" id="RFa-LR-U3h"/>
                     </connections>
@@ -243,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5l-hv-pst" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2369" y="794"/>
+            <point key="canvasLocation" x="2357" y="1085"/>
         </scene>
         <!--Task Detail View Controller-->
         <scene sceneID="7JG-FJ-tQM">
@@ -435,7 +426,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gk-6i-Ss5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2369" y="81"/>
+            <point key="canvasLocation" x="2549" y="80"/>
         </scene>
         <!--Reminder Table View Controller-->
         <scene sceneID="f5C-8M-rwZ">
@@ -612,7 +603,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tj0-K1-Awq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3049" y="80"/>
+            <point key="canvasLocation" x="3325" y="80"/>
         </scene>
         <!--Date Picker View Controller-->
         <scene sceneID="DpD-ns-Fg8">
@@ -657,7 +648,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qLk-vf-F6I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1734" y="794"/>
+            <point key="canvasLocation" x="1728" y="1580"/>
         </scene>
         <!--Event Info Table View Controller-->
         <scene sceneID="FMJ-15-Y66">
@@ -677,7 +668,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AjZ-Db-tkJ">
-                                                    <rect key="frame" x="13" y="8" width="574" height="38"/>
+                                                    <rect key="frame" x="8" y="8" width="584" height="38"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -689,8 +680,17 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="AjZ-Db-tkJ" secondAttribute="bottom" id="0rJ-62-Po8"/>
                                                 <constraint firstItem="AjZ-Db-tkJ" firstAttribute="leading" secondItem="2et-jx-oE9" secondAttribute="leadingMargin" constant="5" id="ERk-WQ-p2A"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="AjZ-Db-tkJ" secondAttribute="trailing" constant="5" id="LKO-0Y-pPS"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="AjZ-Db-tkJ" secondAttribute="trailing" id="Lfm-sJ-RoM"/>
+                                                <constraint firstItem="AjZ-Db-tkJ" firstAttribute="leading" secondItem="2et-jx-oE9" secondAttribute="leadingMargin" id="Wb9-QR-MPC"/>
                                                 <constraint firstItem="AjZ-Db-tkJ" firstAttribute="top" secondItem="2et-jx-oE9" secondAttribute="topMargin" id="bWJ-x2-5wT"/>
+                                                <constraint firstItem="AjZ-Db-tkJ" firstAttribute="bottom" secondItem="2et-jx-oE9" secondAttribute="bottomMargin" id="qXW-S9-PXt"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="ERk-WQ-p2A"/>
+                                                    <exclude reference="LKO-0Y-pPS"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="ojV-ar-aes">
@@ -724,9 +724,6 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wsu-0X-Cld">
-                                                                        <rect key="frame" x="17" y="8" width="25" height="25"/>
-                                                                    </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciL-8O-Poo">
                                                                         <rect key="frame" x="8" y="33" width="34" height="9"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -854,7 +851,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="setStartTime:" destination="7Vj-Hn-JIl" eventType="touchUpInside" id="hI7-NF-Khe"/>
+                                                        <segue destination="QJa-5c-fp0" kind="show" id="Khy-48-Ldw"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -900,7 +897,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="setEndTime:" destination="7Vj-Hn-JIl" eventType="touchUpInside" id="AgF-HV-E2G"/>
+                                                        <segue destination="QJa-5c-fp0" kind="show" id="Wlh-lO-J5s"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -914,9 +911,6 @@
                                                 <constraint firstItem="I0R-Ft-qSk" firstAttribute="top" secondItem="uGZ-vg-9ec" secondAttribute="topMargin" id="xIE-J2-7eQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="QJa-5c-fp0" kind="show" identifier="PickEndTime" id="Gyi-ud-qHD"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1NY-bQ-aLE" userLabel="Add to Calendar">
                                         <rect key="frame" x="0.0" y="0.0" width="568" height="44"/>
@@ -991,17 +985,15 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="endTimeButton" destination="Nth-Mc-MNa" id="bib-le-D7n"/>
                         <outlet property="eventTaggedFriendsCollectionView" destination="cDw-OP-SVv" id="PXd-Qw-f1H"/>
                         <outlet property="eventTitleTextField" destination="AjZ-Db-tkJ" id="Qvn-xq-24Z"/>
                         <outlet property="locationTextField" destination="imA-2Y-8B6" id="Xsk-rr-nmc"/>
-                        <outlet property="startTimeButton" destination="vpk-oV-3Ku" id="9wV-uL-xXu"/>
                         <outlet property="summaryTextView" destination="Btw-Ue-aw4" id="Y5y-1R-8KV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LWA-AK-nLL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1084" y="793"/>
+            <point key="canvasLocation" x="1168" y="829"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jaM-fr-31g">
@@ -1046,7 +1038,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Fuw-7V-QuT"/>
-        <segue reference="AxG-N6-dfI"/>
+        <segue reference="a2e-xx-O8E"/>
         <segue reference="atD-Vc-UQ6"/>
         <segue reference="IYG-dH-cmX"/>
     </inferredMetricsTieBreakers>

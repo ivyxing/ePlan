@@ -20,15 +20,10 @@
 @property (weak, nonatomic) IBOutlet UITextView *summaryTextView;
 @property (weak, nonatomic) IBOutlet UITextField *locationTextField;
 @property (weak, nonatomic) IBOutlet UICollectionView *eventTaggedFriendsCollectionView;
-@property (weak, nonatomic) IBOutlet UIButton *startTimeButton;
-@property (weak, nonatomic) IBOutlet UIButton *endTimeButton;
 
 @end
 
-@implementation EventInfoTableViewController {
-    BOOL settingStartTime;
-    BOOL settingEndTime;
-}
+@implementation EventInfoTableViewController
 
 #pragma mark - View Life Cycle
 
@@ -55,12 +50,11 @@
     }
     // Display start and end time.
     if (self.event.startTime) {
+        // TODO: Fix start time and end time
         NSString* startTimeStr = [self dateToString:self.event.startTime];
-        [self.startTimeButton setTitle:startTimeStr forState:UIControlStateNormal];
     }
     if (self.event.endTime) {
         NSString* endTimeStr = [self dateToString:self.event.endTime];
-        [self.endTimeButton setTitle:endTimeStr forState:UIControlStateNormal];
     }
     [self.eventTaggedFriendsCollectionView reloadData];
 }
@@ -136,24 +130,8 @@
 #pragma mark - Date/Time Handling
 #pragma message "Having state variables such as 'settingStartTime' and 'settingEndTime' is usually not a good practice. In this specific case a better solution could be that the date picker knows which date it is picking and passes that information on to the callback method"
 
-- (IBAction)setStartTime:(id)sender {
-    settingStartTime = YES;
-    settingEndTime = NO;
-}
-- (IBAction)setEndTime:(id)sender {
-    settingEndTime = YES;
-    settingStartTime = NO;
-}
-
 - (void)datePicked:(NSDate*)date {
     NSString *buttonTitle = [self dateToString:date];
-    if (settingStartTime) {
-        self.event.startTime = date;
-        [self.startTimeButton setTitle:buttonTitle forState:UIControlStateNormal];
-    } else if (settingEndTime) {
-        self.event.endTime = date;
-        [self.endTimeButton setTitle:buttonTitle forState:UIControlStateNormal];
-    }
 }
 
 - (NSString*)dateToString:(NSDate*)date {

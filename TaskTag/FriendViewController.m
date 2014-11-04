@@ -17,7 +17,6 @@
 @interface FriendViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 @property (strong, nonatomic) NSMutableArray *friendsList;
 
 @end
@@ -112,7 +111,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Remove highlighting effect.
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    // Selecting and deselecting cells.
+    // Select and deselect cells.
     FriendTableViewCell *cell = (FriendTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     if (self.addFriendsToEvent) {
         // Tagging for event.

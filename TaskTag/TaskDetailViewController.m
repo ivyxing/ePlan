@@ -38,18 +38,19 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
     // Display task name.
     [self.taskNameTextField setText:self.task.name];
     
-    if (self.task.parentEvent.persons && [self.task.parentEvent.persons count] > 0) {
+    if (self.task.parentEvent.persons && self.task.parentEvent.persons.count > 0) {
         for (Person* person in self.task.parentEvent.persons) {
             // Add the tagged friend.
             if ([person.taggedForTask isEqualToNumber:@YES]) {
+                // Do not add duplicates.
                 if (![self.friendsTagged containsObject:person]) {
                     [self.friendsTagged addObject:person];
                 }
             } else if ([self.friendsTagged containsObject:person]) {
+                // Remove untagged friends.
                 [self.friendsTagged removeObject:person];
             }
         }

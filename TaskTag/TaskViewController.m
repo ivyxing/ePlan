@@ -18,7 +18,7 @@
 @interface TaskViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *taskTableView;
-@property (weak, nonatomic) IBOutlet UILabel *eventTitle;
+@property (weak, nonatomic) IBOutlet UIButton *eventTitleButton;
 @property (weak, nonatomic) IBOutlet UITextField *taskNameTextField;
 
 @end
@@ -31,13 +31,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.taskTableView reloadData];
-    self.eventTitle.text = self.event.title;
+    [self.eventTitleButton setTitle:self.event.title forState:UIControlStateNormal];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     // Save event name and image.
-    self.event.title = self.eventTitle.text;
+    self.event.title = self.eventTitleButton.currentTitle;
   
     // Get the NSManagedObject context.
     NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
@@ -86,7 +86,7 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"EventInfo"]) {
+    if ([segue.identifier isEqualToString:@"ShowEventInfo"]) {
         EventInfoTableViewController *eventInfoTableViewController = [segue destinationViewController];
         eventInfoTableViewController.event = self.event;
     } else if ([segue.identifier isEqualToString:@"ShowTaskDetail"]) {
