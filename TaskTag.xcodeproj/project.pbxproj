@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		280726DC19F1A3A20043657C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280726DB19F1A3A20043657C /* LoginViewController.m */; };
+		281E6D1F1A0979040041F490 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E6D1E1A0979040041F490 /* Person.m */; };
 		283AEB4819E7195600B83A8A /* ReminderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AEB4719E7195600B83A8A /* ReminderTableViewController.m */; };
 		28480B0919F6F2E20030B2E4 /* FriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28480B0819F6F2E20030B2E4 /* FriendViewController.m */; };
 		28480B0C19F70ED70030B2E4 /* FriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28480B0B19F70ED70030B2E4 /* FriendTableViewCell.m */; };
@@ -24,7 +25,6 @@
 		28BA6B9719F85BD90072EC32 /* FriendCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BA6B9619F85BD90072EC32 /* FriendCollectionViewCell.m */; };
 		28CE27971A042DA300342DC6 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CE27961A042DA300342DC6 /* Event.m */; };
 		28CE279A1A042E3400342DC6 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CE27991A042E3400342DC6 /* Task.m */; };
-		28CE279D1A0432C400342DC6 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CE279C1A0432C400342DC6 /* Person.m */; };
 		28CED42619FB13BF005989D0 /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CED42419FB13BF005989D0 /* EventViewController.m */; };
 		28CED42C19FB13CE005989D0 /* EventInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CED42819FB13CE005989D0 /* EventInfoTableViewController.m */; };
 		28CED43119FB144C005989D0 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28CED42E19FB144C005989D0 /* FBAudienceNetwork.framework */; };
@@ -48,6 +48,8 @@
 /* Begin PBXFileReference section */
 		280726DA19F1A3A20043657C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		280726DB19F1A3A20043657C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		281E6D1D1A0979040041F490 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		281E6D1E1A0979040041F490 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		283AEB4619E7195600B83A8A /* ReminderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderTableViewController.h; sourceTree = "<group>"; };
 		283AEB4719E7195600B83A8A /* ReminderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderTableViewController.m; sourceTree = "<group>"; };
 		28480B0719F6F2E20030B2E4 /* FriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendViewController.h; sourceTree = "<group>"; };
@@ -76,8 +78,6 @@
 		28CE27961A042DA300342DC6 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		28CE27981A042E3400342DC6 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		28CE27991A042E3400342DC6 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
-		28CE279B1A0432C400342DC6 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
-		28CE279C1A0432C400342DC6 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		28CED42419FB13BF005989D0 /* EventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventViewController.m; sourceTree = "<group>"; };
 		28CED42719FB13CE005989D0 /* EventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventViewController.h; sourceTree = "<group>"; };
 		28CED42819FB13CE005989D0 /* EventInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventInfoTableViewController.m; sourceTree = "<group>"; };
@@ -157,8 +157,8 @@
 				28CE27961A042DA300342DC6 /* Event.m */,
 				28CE27981A042E3400342DC6 /* Task.h */,
 				28CE27991A042E3400342DC6 /* Task.m */,
-				28CE279B1A0432C400342DC6 /* Person.h */,
-				28CE279C1A0432C400342DC6 /* Person.m */,
+				281E6D1D1A0979040041F490 /* Person.h */,
+				281E6D1E1A0979040041F490 /* Person.m */,
 				289443F419DB5FC00036CDDA /* AppDelegate.h */,
 				289443F519DB5FC00036CDDA /* AppDelegate.m */,
 				280726DA19F1A3A20043657C /* LoginViewController.h */,
@@ -335,7 +335,7 @@
 				28CED42C19FB13CE005989D0 /* EventInfoTableViewController.m in Sources */,
 				283AEB4819E7195600B83A8A /* ReminderTableViewController.m in Sources */,
 				280726DC19F1A3A20043657C /* LoginViewController.m in Sources */,
-				28CE279D1A0432C400342DC6 /* Person.m in Sources */,
+				281E6D1F1A0979040041F490 /* Person.m in Sources */,
 				28CED42619FB13BF005989D0 /* EventViewController.m in Sources */,
 				2894442A19DB75210036CDDA /* TaskDetailViewController.m in Sources */,
 				289443F319DB5FC00036CDDA /* main.m in Sources */,

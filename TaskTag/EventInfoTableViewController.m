@@ -128,10 +128,7 @@
         taskViewController.event = self.event;
     } else if ([segue.identifier isEqualToString:@"ShowFriendList"]) {
         FriendViewController *friendViewController = [segue destinationViewController];
-        NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
-        Task *placeHolderTask = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:context];
-        friendViewController.task = placeHolderTask;
-        friendViewController.task.parentEvent = self.event;
+        friendViewController.event = self.event;
         friendViewController.addFriendsToEvent = YES;
     }
 }

@@ -17,7 +17,6 @@
 @interface FriendViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIImageView *tag;
 
 @property (strong, nonatomic) NSMutableArray *friendsList;
 
@@ -35,31 +34,39 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     if (self.addFriendsToEvent) {
-        // In event info table view - load all friends.
-        FBRequest* friendsRequest = [FBRequest requestForMyFriends];
-        [friendsRequest startWithCompletionHandler: ^(FBRequestConnection *connection, NSDictionary* result, NSError *error) {
-            // TODO: Cache user profile image from Login page instead of making a FB API call.
-            [self helperAddPersons:[result objectForKey:@"data"]];
-            [self.tableView reloadData];
-        }];
+        if (!self.event.persons || self.event.persons.count == 0) {
+            // Load all Facebook friends who have the app.
+            FBRequest* friendsRequest = [FBRequest requestForMyFriends];
+            [friendsRequest startWithCompletionHandler: ^(FBRequestConnection *connection, NSDictionary* result, NSError *error) {
+                // TODO: Cache user profile image from Login page instead of making a FB API call.
+                [self helperAddPersons:[result objectForKey:@"data"]];
+                self.friendsList = [NSMutableArray arrayWithArray:[self.event.persons allObjects]];
+                [self.tableView reloadData];
+            }];
+        } else {
+            self.friendsList = [NSMutableArray arrayWithArray:[self.event.persons allObjects]];
+        }
     } else {
         // In task tagging view.
-        self.friendsList = [NSMutableArray arrayWithArray:[self.task.parentEvent.persons allObjects]];
-        [self.tableView reloadData];
+        for (Person *friend in self.task.parentEvent.persons) {
+            if (friend.taggedForEvent) {
+                [self.friendsList addObject:friend];
+            }
+        }
     }
+    [self.tableView reloadData];
 }
 
 // Add Facebook friends to the allFriends array.
--(void)helperAddPersons:(NSArray*)userFriendDictionaryArray {
+- (void)helperAddPersons:(NSArray*)userFriendDictionaryArray {
     for (NSDictionary<FBGraphUser>* userFriendDictionary in userFriendDictionaryArray) {
         // Create a new object using the entity description.
         NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
-        Person *userFriend = [NSEntityDescription insertNewObjectForEntityForName:@"Person"
-                                                           inManagedObjectContext:context];
+        Person *userFriend = [NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:context];
         userFriend.fbProfilePictureID = userFriendDictionary.objectID;
         userFriend.name = userFriendDictionary.name;
         userFriend.firstName = userFriendDictionary.first_name;
-        [self.friendsList addObject:userFriend];
+        [self.event addPersonsObject:userFriend];
     }
 }
 
@@ -94,7 +101,7 @@
     }
     // Check/uncheck as user selects/deselects cells.
     if ([cell.userFriend.taggedForTask isEqualToNumber:@YES] || (self.addFriendsToEvent &&
-                                                                 [self.task.parentEvent.persons containsObject:cell.userFriend])) {
+                                                                 [cell.userFriend.taggedForEvent isEqualToNumber:@YES])) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -108,10 +115,11 @@
     // Selecting and deselecting cells.
     FriendTableViewCell *cell = (FriendTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     if (self.addFriendsToEvent) {
-        if ([self.task.parentEvent.persons containsObject:cell.userFriend]) {
-            [self.task.parentEvent removePersonsObject:cell.userFriend];
+        // Tagging for event.
+        if ([cell.userFriend.taggedForEvent isEqualToNumber:@YES]) {
+            cell.userFriend.taggedForEvent = @NO;
         } else {
-            [self.task.parentEvent addPersonsObject:cell.userFriend];
+            cell.userFriend.taggedForEvent = @YES;
         }
     } else {
         // Tagging friends for task.

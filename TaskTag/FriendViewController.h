@@ -14,6 +14,7 @@
 @interface FriendViewController : UIViewController
 
 @property (strong, nonatomic) Task *task;
+@property (strong, nonatomic) Event *event;
 @property (assign, nonatomic) BOOL addFriendsToEvent;
 
 @end

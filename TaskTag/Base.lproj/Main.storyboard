@@ -724,15 +724,15 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wsu-0X-Cld">
+                                                                        <rect key="frame" x="17" y="8" width="25" height="25"/>
+                                                                    </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciL-8O-Poo">
                                                                         <rect key="frame" x="8" y="33" width="34" height="9"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wsu-0X-Cld">
-                                                                        <rect key="frame" x="17" y="8" width="25" height="25"/>
-                                                                    </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </view>
@@ -1047,7 +1047,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Fuw-7V-QuT"/>
         <segue reference="AxG-N6-dfI"/>
-        <segue reference="IYG-dH-cmX"/>
         <segue reference="atD-Vc-UQ6"/>
+        <segue reference="IYG-dH-cmX"/>
     </inferredMetricsTieBreakers>
 </document>
