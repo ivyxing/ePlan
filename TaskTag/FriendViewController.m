@@ -19,57 +19,37 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *tag;
 
-@property (strong, nonatomic) NSMutableArray *friendsListDiff;
+@property (strong, nonatomic) NSMutableArray *friendsList;
+
 @end
 
 @implementation FriendViewController
 
 #pragma mark - View Life Cycle
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.friendsList = [NSMutableArray array];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if (self.loadFriendsInEventInfoTableView) {
+    if (self.addFriendsToEvent) {
+        // In event info table view - load all friends.
         FBRequest* friendsRequest = [FBRequest requestForMyFriends];
-        [friendsRequest startWithCompletionHandler: ^(FBRequestConnection *connection,
-                                                      NSDictionary* result,
-                                                      NSError *error) {
-            if (!self.task.parentEvent.persons || [self.task.parentEvent.persons count] == 0) {
-                // First time populating set of friends in core data. Add user him/herself.
-                // TODO: Cache user profile image from Login page instead of making a FB API call.
-                [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection,
-                                                                       NSDictionary<FBGraphUser> *me, NSError *error) {
-                    // Get managed object context.
-                    NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
-                    // Create a new object using the entity description.
-                    Person *user = [NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:context];
-                    if (!error) {
-                        user.fbProfilePictureID = me.objectID;
-                        user.name = @"Sign Me up";
-                        user.firstName = @"Me";
-                        [self.task.parentEvent addPersonsObject:user];
-                    } else {
-                        // See: https://developers.facebook.com/docs/ios/errors
-                        NSLog(@"Error occured while getting user profile info.");
-                    }
-                }];
-                // Add the user's friends.
-                [self helperAddPersons:[result objectForKey:@"data"]];
-                
-            // TODO: Add a "Renew Friends List" button so only need to check for new friends upon request.
-            // The user him/herself is in self.task.parentEvent.persons, but FB doesn't count the user as his/her own friend.
-            } else if ([[result objectForKey:@"data"] count] > self.task.parentEvent.persons.count - 1) {
-                NSMutableArray *oldFriends = [NSMutableArray arrayWithArray:[self.task.parentEvent.persons allObjects]];
-                // The result is a set of the user's new friends who are now using the app.
-                [self helperAddPersons:[result objectForKey:@"data"]];
-                [self.friendsListDiff removeObjectsInArray:oldFriends];
-            } else {
-                self.friendsListDiff = nil;
-            }
+        [friendsRequest startWithCompletionHandler: ^(FBRequestConnection *connection, NSDictionary* result, NSError *error) {
+            // TODO: Cache user profile image from Login page instead of making a FB API call.
+            [self helperAddPersons:[result objectForKey:@"data"]];
             [self.tableView reloadData];
         }];
+    } else {
+        // In task tagging view.
+        self.friendsList = [NSMutableArray arrayWithArray:[self.task.parentEvent.persons allObjects]];
+        [self.tableView reloadData];
     }
 }
 
+// Add Facebook friends to the allFriends array.
 -(void)helperAddPersons:(NSArray*)userFriendDictionaryArray {
     for (NSDictionary<FBGraphUser>* userFriendDictionary in userFriendDictionaryArray) {
         // Create a new object using the entity description.
@@ -79,7 +59,7 @@
         userFriend.fbProfilePictureID = userFriendDictionary.objectID;
         userFriend.name = userFriendDictionary.name;
         userFriend.firstName = userFriendDictionary.first_name;
-        [self.task.parentEvent addPersonsObject:userFriend];
+        [self.friendsList addObject:userFriend];
     }
 }
 
@@ -93,42 +73,32 @@
     [context save:&error];
     if (error) {
         // Error handling, e.g. display error to user.
-        NSLog(@"Error saving to core data!");
+        NSLog(@"Error saving to core data.");
     }
 }
 
 #pragma mark - Table View Data Source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.task.parentEvent.persons) {
-        // Count the user him/herself in addition to the friends list.
-        return self.task.parentEvent.persons.count;
+    if (self.friendsList) {
+        return self.friendsList.count;
     }
     return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendCell" forIndexPath:indexPath];
-
-    // Only populate friends the first time the table view is loaded, not during "reload data" when selecting cells.
-    if (!cell.userFriend) {
-        // Add the user's Facebook friends who use the app and check if there are new friends.
-        if (self.friendsListDiff && self.friendsListDiff.count > 0) {
-            cell.userFriend = self.friendsListDiff[indexPath.row];
-        } else if (self.task.parentEvent.persons && self.task.parentEvent.persons.count > 0) {
-            // Show the stored friends.
-            NSArray *taskParentEventPersonsArray = [self.task.parentEvent.persons allObjects];
-            cell.userFriend = taskParentEventPersonsArray[indexPath.row];
-        }
+    // Only populate friends the first time the table view is loaded; do not reload when selecting cells.
+    if (!cell.userFriend && self.friendsList && self.friendsList.count > 0) {
+            cell.userFriend = self.friendsList[indexPath.row];
     }
-    
     // Check/uncheck as user selects/deselects cells.
-    if ([cell.userFriend.taggedForTask isEqualToNumber:@YES]) {
+    if ([cell.userFriend.taggedForTask isEqualToNumber:@YES] || (self.addFriendsToEvent &&
+                                                                 [self.task.parentEvent.persons containsObject:cell.userFriend])) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
-    
     return cell;
 }
 
@@ -137,10 +107,19 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     // Selecting and deselecting cells.
     FriendTableViewCell *cell = (FriendTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    if ([cell.userFriend.taggedForTask isEqualToNumber:@YES]) {
-        cell.userFriend.taggedForTask = @NO;
+    if (self.addFriendsToEvent) {
+        if ([self.task.parentEvent.persons containsObject:cell.userFriend]) {
+            [self.task.parentEvent removePersonsObject:cell.userFriend];
+        } else {
+            [self.task.parentEvent addPersonsObject:cell.userFriend];
+        }
     } else {
-        cell.userFriend.taggedForTask = @YES;
+        // Tagging friends for task.
+        if ([cell.userFriend.taggedForTask isEqualToNumber:@YES]) {
+            cell.userFriend.taggedForTask = @NO;
+        } else {
+            cell.userFriend.taggedForTask = @YES;
+        }
     }
     [tableView reloadData];
 }

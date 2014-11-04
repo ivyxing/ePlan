@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet FBProfilePictureView *profilePictureView;
+@property (weak, nonatomic) IBOutlet UILabel *eventTaggedName;
 
 @end
 
@@ -25,6 +26,7 @@
     // Set name label.
     _userFriend.name = [someFriend.name copy];
     self.name.text = self.userFriend.firstName;
+    self.eventTaggedName.text = self.userFriend.firstName;
     [self.name setBackgroundColor:[UIColor blackColor]];
     
     // Set Facebook profile picture.

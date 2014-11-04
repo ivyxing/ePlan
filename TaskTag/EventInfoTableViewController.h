@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <EventKit/EventKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 #import "DatePickerViewController.h"
 @class Event;
 
 
 @interface EventInfoTableViewController : UITableViewController
-<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, DatePickerViewControllerDelegate>
+<UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, DatePickerViewControllerDelegate>
 
 @property (strong, nonatomic) Event *event;
 

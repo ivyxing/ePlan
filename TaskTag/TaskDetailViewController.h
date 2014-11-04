@@ -11,7 +11,7 @@
 @class Task;
 @class Person;
 
-@interface TaskDetailViewController : UIViewController <UITextFieldDelegate, DatePickerViewControllerDelegate>
+@interface TaskDetailViewController : UIViewController <UITextFieldDelegate, DatePickerViewControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong, nonatomic) Task *task;
 

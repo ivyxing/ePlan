@@ -11,6 +11,7 @@
 #import "FriendViewController.h"
 #import "FriendCollectionViewCell.h"
 #import "Task.h"
+#import "Event.h"
 #import "Person.h"
 #import "AppDelegate.h"
 
@@ -41,16 +42,14 @@
     // Display task name.
     [self.taskNameTextField setText:self.task.name];
     
-    if (self.task.persons && [self.task.persons count] > 0) {
-        for (Person* person in self.task.persons) {
+    if (self.task.parentEvent.persons && [self.task.parentEvent.persons count] > 0) {
+        for (Person* person in self.task.parentEvent.persons) {
             // Add the tagged friend.
             if ([person.taggedForTask isEqualToNumber:@YES]) {
-                // Do not add duplicated entries.
                 if (![self.friendsTagged containsObject:person]) {
                     [self.friendsTagged addObject:person];
                 }
             } else if ([self.friendsTagged containsObject:person]) {
-                // Remove untagged friend.
                 [self.friendsTagged removeObject:person];
             }
         }
@@ -122,7 +121,7 @@
     } else if ([segue.identifier isEqualToString:@"ShowFriendsList"]) {
         FriendViewController *friendViewController = [segue destinationViewController];
         friendViewController.task = self.task;
-        friendViewController.loadFriendsInEventInfoTableView = NO;
+        friendViewController.addFriendsToEvent= NO;
     }
 }
 
@@ -130,8 +129,7 @@
 
 - (void)datePicked:(NSDate*)date {
     self.task.dueDate = date;
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:date
-                                                          dateStyle:NSDateFormatterShortStyle
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterShortStyle
                                                           timeStyle:NSDateFormatterShortStyle];
     NSLog(@"%@", dateString);
     NSString *buttonTitle = [NSString stringWithFormat:@"Due Date: %@", dateString];

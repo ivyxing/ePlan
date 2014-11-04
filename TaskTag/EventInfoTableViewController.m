@@ -36,6 +36,9 @@
     [super viewDidLoad];
     // To get rid of the extra lines in the table views.
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
+    [self.eventTaggedFriendsCollectionView registerClass:[FriendCollectionViewCell class] forCellWithReuseIdentifier:@"TaggedFriendCell"];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -100,10 +103,12 @@
     return self.event.persons.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FriendCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TaggedFriendCell" forIndexPath:indexPath];
-    NSArray *eventPersonsArray = [self.event.persons allObjects];
-    cell.userFriend = eventPersonsArray[indexPath.row];
+    if (self.event.persons) {
+        NSArray *eventPersonsArray = [self.event.persons allObjects];
+        cell.userFriend = eventPersonsArray[indexPath.row];
+    }
     return cell;
 }
 
@@ -124,11 +129,10 @@
     } else if ([segue.identifier isEqualToString:@"ShowFriendList"]) {
         FriendViewController *friendViewController = [segue destinationViewController];
         NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
-        Task *placeHolderTask = [NSEntityDescription insertNewObjectForEntityForName:@"Task"
-                                                           inManagedObjectContext:context];
+        Task *placeHolderTask = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:context];
         friendViewController.task = placeHolderTask;
         friendViewController.task.parentEvent = self.event;
-        friendViewController.loadFriendsInEventInfoTableView = YES;
+        friendViewController.addFriendsToEvent = YES;
     }
 }
 
@@ -156,8 +160,7 @@
 }
 
 - (NSString*)dateToString:(NSDate*)date {
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:date
-                                                          dateStyle:NSDateFormatterShortStyle
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterShortStyle
                                                           timeStyle:NSDateFormatterShortStyle];
     return dateString;
 }

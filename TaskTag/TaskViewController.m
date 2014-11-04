@@ -78,7 +78,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
     NSArray *tasksArray = [self tasksSetToSortedArray:self.event.tasks];
     cell.textLabel.text = [tasksArray[indexPath.row] name];
     
@@ -89,7 +89,7 @@
     if ([segue.identifier isEqualToString:@"EventInfo"]) {
         EventInfoTableViewController *eventInfoTableViewController = [segue destinationViewController];
         eventInfoTableViewController.event = self.event;
-    } else if ([segue.identifier isEqualToString:@"TaskDetail"]) {
+    } else if ([segue.identifier isEqualToString:@"ShowTaskDetail"]) {
         TaskDetailViewController *taskDetailViewController = [segue destinationViewController];
         NSIndexPath *selectedIndexPath = self.taskTableView.indexPathForSelectedRow;
         NSArray *tasksArray = [self tasksSetToSortedArray:self.event.tasks];
