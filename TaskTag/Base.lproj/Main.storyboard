@@ -76,7 +76,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add task..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gN1-6l-CFl">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add task..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gN1-6l-CFl">
                                 <rect key="frame" x="21" y="104" width="558" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -84,7 +84,7 @@
                                     <outlet property="delegate" destination="fiO-V3-Orb" id="cEh-NI-x0V"/>
                                 </connections>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8wO-Gy-xil">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8wO-Gy-xil">
                                 <rect key="frame" x="26" y="139" width="548" height="451"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -104,7 +104,7 @@
                                     <outlet property="delegate" destination="fiO-V3-Orb" id="8OD-Kb-hJ6"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIW-eO-xSc">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIW-eO-xSc">
                                 <rect key="frame" x="16" y="69" width="568" height="30"/>
                                 <state key="normal" title="Event Title">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -345,8 +345,8 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <outlet property="name" destination="KZW-Hq-nOq" id="Ees-bc-zyN"/>
-                                            <outlet property="profilePictureView" destination="MrB-xC-HiM" id="bXg-Kh-ute"/>
+                                            <outlet property="friendNameLabelInTask" destination="KZW-Hq-nOq" id="Wk9-BJ-buv"/>
+                                            <outlet property="friendProfilePictureViewInTask" destination="MrB-xC-HiM" id="Kg3-Ai-z0I"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -693,14 +693,14 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="ojV-ar-aes">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="ojV-ar-aes">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ojV-ar-aes" id="aL6-pb-toF">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZW7-oZ-xLQ">
-                                                    <rect key="frame" x="8" y="8" width="30" height="83"/>
+                                                    <rect key="frame" x="8" y="8" width="30" height="53"/>
                                                     <state key="normal" title="Tag">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -709,7 +709,7 @@
                                                     </connections>
                                                 </button>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cDw-OP-SVv">
-                                                    <rect key="frame" x="48" y="8" width="544" height="83"/>
+                                                    <rect key="frame" x="38" y="8" width="554" height="43"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jqP-PR-dBo">
                                                         <size key="itemSize" width="50" height="50"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -724,23 +724,50 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciL-8O-Poo">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciL-8O-Poo">
                                                                         <rect key="frame" x="8" y="33" width="34" height="9"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d0o-af-u9G" customClass="FBProfilePictureView">
+                                                                        <rect key="frame" x="8" y="8" width="34" height="34"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </view>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </view>
                                                             <constraints>
+                                                                <constraint firstItem="ciL-8O-Poo" firstAttribute="top" secondItem="J8R-f0-9Nz" secondAttribute="topMargin" constant="20" id="06O-Wf-jwP"/>
+                                                                <constraint firstAttribute="bottomMargin" secondItem="d0o-af-u9G" secondAttribute="bottom" id="0X7-rv-ScV"/>
+                                                                <constraint firstAttribute="bottomMargin" secondItem="d0o-af-u9G" secondAttribute="bottom" constant="2" id="3lR-nm-l0f"/>
+                                                                <constraint firstAttribute="bottomMargin" secondItem="d0o-af-u9G" secondAttribute="bottom" constant="5" id="5Qw-gI-yhd"/>
                                                                 <constraint firstAttribute="bottomMargin" secondItem="ciL-8O-Poo" secondAttribute="bottom" id="A9K-BO-osb"/>
+                                                                <constraint firstItem="d0o-af-u9G" firstAttribute="top" secondItem="J8R-f0-9Nz" secondAttribute="topMargin" id="AAx-Cm-joZ"/>
                                                                 <constraint firstAttribute="trailingMargin" secondItem="ciL-8O-Poo" secondAttribute="trailing" id="DbU-rq-plS"/>
+                                                                <constraint firstItem="d0o-af-u9G" firstAttribute="trailing" secondItem="J8R-f0-9Nz" secondAttribute="trailingMargin" id="UkW-qm-drJ"/>
                                                                 <constraint firstItem="ciL-8O-Poo" firstAttribute="leading" secondItem="J8R-f0-9Nz" secondAttribute="leadingMargin" id="dxl-h1-fjb"/>
+                                                                <constraint firstAttribute="trailingMargin" secondItem="d0o-af-u9G" secondAttribute="trailing" id="jvh-Kc-pk7"/>
+                                                                <constraint firstItem="ciL-8O-Poo" firstAttribute="top" secondItem="J8R-f0-9Nz" secondAttribute="topMargin" constant="25" id="pRG-gq-S55"/>
+                                                                <constraint firstItem="d0o-af-u9G" firstAttribute="leading" secondItem="J8R-f0-9Nz" secondAttribute="leadingMargin" id="voH-Wx-tdP"/>
                                                                 <constraint firstItem="ciL-8O-Poo" firstAttribute="top" secondItem="J8R-f0-9Nz" secondAttribute="topMargin" constant="25" id="ytZ-9R-Wca"/>
+                                                                <constraint firstItem="ciL-8O-Poo" firstAttribute="top" secondItem="J8R-f0-9Nz" secondAttribute="topMargin" id="zA8-Fb-g7J"/>
+                                                                <constraint firstItem="ciL-8O-Poo" firstAttribute="top" secondItem="J8R-f0-9Nz" secondAttribute="topMargin" constant="20" id="znC-bo-rK1"/>
                                                             </constraints>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="3lR-nm-l0f"/>
+                                                                    <exclude reference="5Qw-gI-yhd"/>
+                                                                    <exclude reference="UkW-qm-drJ"/>
+                                                                    <exclude reference="pRG-gq-S55"/>
+                                                                    <exclude reference="ytZ-9R-Wca"/>
+                                                                    <exclude reference="zA8-Fb-g7J"/>
+                                                                    <exclude reference="znC-bo-rK1"/>
+                                                                </mask>
+                                                            </variation>
                                                             <connections>
-                                                                <outlet property="eventTaggedName" destination="ciL-8O-Poo" id="6cd-xJ-nPz"/>
+                                                                <outlet property="friendNameLabelInEvent" destination="ciL-8O-Poo" id="14d-sf-0qk"/>
+                                                                <outlet property="friendProfilePictureViewInEvent" destination="d0o-af-u9G" id="TV6-JX-2WA"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -756,9 +783,17 @@
                                                 <constraint firstItem="ZW7-oZ-xLQ" firstAttribute="top" secondItem="aL6-pb-toF" secondAttribute="topMargin" id="JRd-Un-InR"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="cDw-OP-SVv" secondAttribute="trailing" id="Mdv-f7-Onw"/>
                                                 <constraint firstItem="ZW7-oZ-xLQ" firstAttribute="leading" secondItem="aL6-pb-toF" secondAttribute="leadingMargin" id="QO1-rL-qhp"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="cDw-OP-SVv" secondAttribute="bottom" id="jii-h7-Tsj"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ZW7-oZ-xLQ" secondAttribute="bottom" id="bAT-Ys-YW6"/>
+                                                <constraint firstItem="cDw-OP-SVv" firstAttribute="leading" secondItem="ZW7-oZ-xLQ" secondAttribute="trailing" id="hla-rS-zGu"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="cDw-OP-SVv" secondAttribute="bottom" constant="10" id="jii-h7-Tsj"/>
                                                 <constraint firstItem="cDw-OP-SVv" firstAttribute="top" secondItem="aL6-pb-toF" secondAttribute="topMargin" id="qsw-U0-P0G"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="bAT-Ys-YW6"/>
+                                                    <exclude reference="1Bi-am-fHt"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="Z21-5h-pBq" userLabel="Summary">
@@ -985,7 +1020,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="eventTaggedFriendsCollectionView" destination="cDw-OP-SVv" id="PXd-Qw-f1H"/>
+                        <outlet property="collectionView" destination="cDw-OP-SVv" id="baV-2D-rLv"/>
                         <outlet property="eventTitleTextField" destination="AjZ-Db-tkJ" id="Qvn-xq-24Z"/>
                         <outlet property="locationTextField" destination="imA-2Y-8B6" id="Xsk-rr-nmc"/>
                         <outlet property="summaryTextView" destination="Btw-Ue-aw4" id="Y5y-1R-8KV"/>
@@ -1039,7 +1074,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Fuw-7V-QuT"/>
         <segue reference="a2e-xx-O8E"/>
+        <segue reference="Wlh-lO-J5s"/>
         <segue reference="atD-Vc-UQ6"/>
-        <segue reference="IYG-dH-cmX"/>
     </inferredMetricsTieBreakers>
 </document>

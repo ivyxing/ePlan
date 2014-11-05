@@ -12,9 +12,10 @@
 
 @interface FriendCollectionViewCell ()
 
-@property (weak, nonatomic) IBOutlet UILabel *name;
-@property (weak, nonatomic) IBOutlet FBProfilePictureView *profilePictureView;
-@property (weak, nonatomic) IBOutlet UILabel *eventTaggedName;
+@property (weak, nonatomic) IBOutlet UILabel *friendNameLabelInTask;
+@property (weak, nonatomic) IBOutlet UILabel *friendNameLabelInEvent;
+@property (weak, nonatomic) IBOutlet FBProfilePictureView *friendProfilePictureViewInTask;
+@property (weak, nonatomic) IBOutlet FBProfilePictureView *friendProfilePictureViewInEvent;
 
 @end
 
@@ -25,13 +26,15 @@
     
     // Set name label.
     _userFriend.name = [someFriend.name copy];
-    self.name.text = self.userFriend.firstName;
-    self.eventTaggedName.text = self.userFriend.firstName;
-    [self.name setBackgroundColor:[UIColor blackColor]];
+    self.friendNameLabelInTask.text = self.userFriend.firstName;
+    self.friendNameLabelInEvent.text = self.userFriend.firstName;
+    [self.friendNameLabelInTask setBackgroundColor:[UIColor blackColor]];
+    [self.friendNameLabelInEvent setBackgroundColor:[UIColor blackColor]];
     
     // Set Facebook profile picture.
-    self.userFriend.fbProfilePictureID = [someFriend.fbProfilePictureID copy];
-    self.profilePictureView.profileID = _userFriend.fbProfilePictureID;
+    _userFriend.fbProfilePictureID = [someFriend.fbProfilePictureID copy];
+    self.friendProfilePictureViewInTask.profileID = _userFriend.fbProfilePictureID;
+    self.friendProfilePictureViewInEvent.profileID = _userFriend.fbProfilePictureID;
 }
 
 @end

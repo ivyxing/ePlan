@@ -9,6 +9,7 @@
 #import "EventInfoTableViewController.h"
 #import "Event.h"
 #import "Task.h"
+#import "Person.h"
 #import "TaskViewController.h"
 #import "FriendViewController.h"
 #import "FriendCollectionViewCell.h"
@@ -19,7 +20,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *eventTitleTextField;
 @property (weak, nonatomic) IBOutlet UITextView *summaryTextView;
 @property (weak, nonatomic) IBOutlet UITextField *locationTextField;
-@property (weak, nonatomic) IBOutlet UICollectionView *eventTaggedFriendsCollectionView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (strong, nonatomic) NSMutableArray *friendsTagged;
 
 @end
 
@@ -31,9 +34,7 @@
     [super viewDidLoad];
     // To get rid of the extra lines in the table views.
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
-    [self.eventTaggedFriendsCollectionView registerClass:[FriendCollectionViewCell class] forCellWithReuseIdentifier:@"TaggedFriendCell"];
-
+    self.friendsTagged = [NSMutableArray array];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -56,7 +57,22 @@
     if (self.event.endTime) {
         NSString* endTimeStr = [self dateToString:self.event.endTime];
     }
-    [self.eventTaggedFriendsCollectionView reloadData];
+    // Stored tagged friends for event.
+    if (self.event.persons && self.event.persons.count > 0) {
+        for (Person* person in self.event.persons) {
+            // Add the tagged friend.
+            if ([person.taggedForEvent isEqualToNumber:@YES]) {
+                // Do not add duplicates.
+                if (![self.friendsTagged containsObject:person]) {
+                    [self.friendsTagged addObject:person];
+                }
+            } else if ([self.friendsTagged containsObject:person]) {
+                // Remove untagged friends.
+                [self.friendsTagged removeObject:person];
+            }
+        }
+    }
+    [self.collectionView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -94,15 +110,12 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.event.persons.count;
+    return self.friendsTagged.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FriendCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TaggedFriendCell" forIndexPath:indexPath];
-    if (self.event.persons) {
-        NSArray *eventPersonsArray = [self.event.persons allObjects];
-        cell.userFriend = eventPersonsArray[indexPath.row];
-    }
+    cell.userFriend = self.friendsTagged[indexPath.row];
     return cell;
 }
 

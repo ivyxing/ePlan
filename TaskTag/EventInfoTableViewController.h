@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <EventKit/EventKit.h>
-#import <FacebookSDK/FacebookSDK.h>
 #import "DatePickerViewController.h"
 @class Event;
 
