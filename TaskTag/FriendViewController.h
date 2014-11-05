@@ -10,11 +10,13 @@
 #import <FacebookSDK/FacebookSDK.h>
 @class Task;
 @class Event;
+@class LoginViewController;
 
 @interface FriendViewController : UIViewController
 
 @property (strong, nonatomic) Task *task;
 @property (strong, nonatomic) Event *event;
 @property (assign, nonatomic) BOOL addFriendsToEvent;
+
 
 @end

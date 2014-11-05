@@ -1068,12 +1068,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="Shf-zd-TSs"/>
                     <connections>
-                        <segue destination="wDC-qT-HkC" kind="show" identifier="showEventTable" id="6lY-fY-aA1"/>
+                        <segue destination="wDC-qT-HkC" kind="show" identifier="ShowEventViewController" id="6lY-fY-aA1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uU1-6Y-Yh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="433" y="80"/>
+            <point key="canvasLocation" x="379" y="80"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

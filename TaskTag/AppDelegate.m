@@ -149,11 +149,8 @@
 
 #pragma mark - FB: Handling Return Calls
 
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
-
     // Note this handler block should be the exact same as the handler passed to any open calls.
     [FBSession.activeSession setStateChangeHandler:
      ^(FBSession *session, FBSessionState state, NSError *error) {

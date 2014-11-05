@@ -13,6 +13,7 @@
 #import "Event.h"
 #import "Task.h"
 #import "Person.h"
+#import "LoginViewController.h"
 
 @interface FriendViewController ()
 
@@ -33,22 +34,27 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     if (self.addFriendsToEvent) {
-        if (!self.event.persons || self.event.persons.count == 0) {
-            // Load all Facebook friends who have the app.
+        if (self.event.persons.count <= 1) {
+            // First time populating friends. Load all Facebook friends who have the app.
             FBRequest* friendsRequest = [FBRequest requestForMyFriends];
-            [friendsRequest startWithCompletionHandler: ^(FBRequestConnection *connection, NSDictionary* result, NSError *error) {
-                // TODO: Cache user profile image from Login page instead of making a FB API call.
+            [friendsRequest startWithCompletionHandler: ^(FBRequestConnection *connection, NSDictionary* result,
+                                                          NSError *error) {
                 [self helperAddPersons:[result objectForKey:@"data"]];
                 self.friendsList = [NSMutableArray arrayWithArray:[self.event.persons allObjects]];
                 [self.tableView reloadData];
             }];
         } else {
             self.friendsList = [NSMutableArray arrayWithArray:[self.event.persons allObjects]];
+            // TODO: Add new friends.
         }
     } else {
         // In task tagging view.
         for (Person *friend in self.task.parentEvent.persons) {
             if (friend.taggedForEvent) {
+                if (friend.isCurrentUser) {
+                    friend.name = @"Sign Me up";
+                    friend.firstName = @"Me";
+                }
                 [self.friendsList addObject:friend];
             }
         }
@@ -95,12 +101,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendCell" forIndexPath:indexPath];
     // Only populate friends the first time the table view is loaded; do not reload when selecting cells.
-    if (!cell.userFriend && self.friendsList && self.friendsList.count > 0) {
+    if (!cell.userFriend && self.friendsList) {
             cell.userFriend = self.friendsList[indexPath.row];
     }
     // Check/uncheck as user selects/deselects cells.
-    if ([cell.userFriend.taggedForTask isEqualToNumber:@YES] || (self.addFriendsToEvent &&
-                                                                 [cell.userFriend.taggedForEvent isEqualToNumber:@YES])) {
+    if ([cell.userFriend.taggedForTask isEqualToNumber:@YES] || (self.addFriendsToEvent && ([cell.userFriend.taggedForEvent isEqualToNumber:@YES] || [cell.userFriend.isCurrentUser isEqualToNumber:@YES]))) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;

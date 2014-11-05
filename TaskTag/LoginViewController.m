@@ -8,11 +8,11 @@
 
 #import "LoginViewController.h"
 #import "AppDelegate.h"
+#import "EventViewController.h"
+#import "Person.h"
 
 @interface LoginViewController ()
-@property (strong, nonatomic) IBOutlet FBProfilePictureView *profilePictureView;
-@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *statusLabel;
+
 @end
 
 @implementation LoginViewController
@@ -30,23 +30,41 @@
 #pragma mark - Storing Login Info
 
 // This method will be called when the user information has been fetched
-- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
-                            user:(id<FBGraphUser>)user {
-    self.profilePictureView.profileID = user.objectID;
-    self.nameLabel.text = user.name;
+- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
+    self.userFBProfilePictuteID = user.objectID;
+    self.userName = user.name;
+    self.userFirstName = user.first_name;
 }
 
 // Logged-in user experience
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
-    self.statusLabel.text = @"You're logged in as";
-    [self performSegueWithIdentifier:@"showEventTable" sender:nil];
+//    self.statusLabel.text = @"You're logged in as";
+    [self performSegueWithIdentifier:@"ShowEventViewController" sender:nil];
 }
 
 // Logged-out user experience
 - (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
-    self.profilePictureView.profileID = nil;
-    self.nameLabel.text = @"";
-    self.statusLabel.text= @"You're not logged in!";
+//    self.profilePictureView.profileID = nil;
+//    self.nameLabel.text = @"";
+//    self.statusLabel.text= @"You're not logged in!";
+}
+
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowEventViewController"]) {
+        EventViewController *eventViewController = [segue destinationViewController];
+        // Get access to the managed object context.
+        NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+        // Create a new object using the entity description.
+        Person *user = [NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:context];
+        user.fbProfilePictureID = self.userFBProfilePictuteID;
+        user.name = self.userName;
+        user.firstName = self.userFirstName;
+        user.isCurrentUser = @YES;
+        user.taggedForEvent = @YES;
+        eventViewController.currentUser = user;
+    }
 }
 
 #pragma mark - Error Handling
@@ -110,9 +128,7 @@
     } else {
         // Open a session showing the user the login UI
         // You must ALWAYS ask for public_profile permissions when opening a session
-        [FBSession openActiveSessionWithReadPermissions:@[@"public_profile"]
-                                           allowLoginUI:YES
-                                      completionHandler:
+        [FBSession openActiveSessionWithReadPermissions:@[@"public_profile"] allowLoginUI:YES completionHandler:
          ^(FBSession *session, FBSessionState state, NSError *error) {
              // Retrieve the app delegate
              AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;

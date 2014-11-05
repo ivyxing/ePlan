@@ -12,6 +12,7 @@
     <entity name="Person" representedClassName="Person" syncable="YES">
         <attribute name="fbProfilePictureID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isCurrentUser" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="taggedForEvent" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="taggedForTask" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -28,7 +29,7 @@
     </entity>
     <elements>
         <element name="Event" positionX="18" positionY="-153" width="128" height="150"/>
-        <element name="Person" positionX="126" positionY="189" width="128" height="148"/>
+        <element name="Person" positionX="126" positionY="189" width="128" height="163"/>
         <element name="Task" positionX="286" positionY="-72" width="128" height="135"/>
     </elements>
 </model>

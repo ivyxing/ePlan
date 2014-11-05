@@ -70,11 +70,12 @@
         Event *newEvent = [NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:context];
         EventInfoTableViewController *eventInfoTableViewController = [segue destinationViewController];
         eventInfoTableViewController.event = newEvent;
+        [eventInfoTableViewController.event addPersonsObject:self.currentUser];
         [self.events addObject:newEvent];
     } else if ([segue.identifier isEqualToString:@"ExistingEvent"]) {
         TaskViewController *eventTaskViewController = [segue destinationViewController];
         NSIndexPath *selectedIndexPath = self.eventTableView.indexPathForSelectedRow;
-        eventTaskViewController.event =self.events[selectedIndexPath.row];
+        eventTaskViewController.event = self.events[selectedIndexPath.row];
     }
 }
 

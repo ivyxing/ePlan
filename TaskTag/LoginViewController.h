@@ -11,4 +11,8 @@
 
 @interface LoginViewController : UIViewController <FBLoginViewDelegate>
 
+@property (copy, nonatomic) NSString *userFBProfilePictuteID;
+@property (copy, nonatomic) NSString *userName;
+@property (copy, nonatomic) NSString *userFirstName;
+
 @end
