@@ -709,7 +709,7 @@
                                                     </connections>
                                                 </button>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cDw-OP-SVv">
-                                                    <rect key="frame" x="38" y="8" width="554" height="43"/>
+                                                    <rect key="frame" x="38" y="8" width="554" height="53"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jqP-PR-dBo">
                                                         <size key="itemSize" width="50" height="50"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -724,16 +724,16 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciL-8O-Poo">
-                                                                        <rect key="frame" x="8" y="33" width="34" height="9"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d0o-af-u9G" customClass="FBProfilePictureView">
                                                                         <rect key="frame" x="8" y="8" width="34" height="34"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </view>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciL-8O-Poo">
+                                                                        <rect key="frame" x="8" y="33" width="42" height="9"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </view>
@@ -742,6 +742,7 @@
                                                                 <constraint firstAttribute="bottomMargin" secondItem="d0o-af-u9G" secondAttribute="bottom" id="0X7-rv-ScV"/>
                                                                 <constraint firstAttribute="bottomMargin" secondItem="d0o-af-u9G" secondAttribute="bottom" constant="2" id="3lR-nm-l0f"/>
                                                                 <constraint firstAttribute="bottomMargin" secondItem="d0o-af-u9G" secondAttribute="bottom" constant="5" id="5Qw-gI-yhd"/>
+                                                                <constraint firstItem="ciL-8O-Poo" firstAttribute="top" secondItem="J8R-f0-9Nz" secondAttribute="topMargin" constant="25" id="7G5-ri-hPw"/>
                                                                 <constraint firstAttribute="bottomMargin" secondItem="ciL-8O-Poo" secondAttribute="bottom" id="A9K-BO-osb"/>
                                                                 <constraint firstItem="d0o-af-u9G" firstAttribute="top" secondItem="J8R-f0-9Nz" secondAttribute="topMargin" id="AAx-Cm-joZ"/>
                                                                 <constraint firstAttribute="trailingMargin" secondItem="ciL-8O-Poo" secondAttribute="trailing" id="DbU-rq-plS"/>
@@ -759,6 +760,8 @@
                                                                     <exclude reference="3lR-nm-l0f"/>
                                                                     <exclude reference="5Qw-gI-yhd"/>
                                                                     <exclude reference="UkW-qm-drJ"/>
+                                                                    <exclude reference="06O-Wf-jwP"/>
+                                                                    <exclude reference="DbU-rq-plS"/>
                                                                     <exclude reference="pRG-gq-S55"/>
                                                                     <exclude reference="ytZ-9R-Wca"/>
                                                                     <exclude reference="zA8-Fb-g7J"/>
@@ -783,6 +786,7 @@
                                                 <constraint firstItem="ZW7-oZ-xLQ" firstAttribute="top" secondItem="aL6-pb-toF" secondAttribute="topMargin" id="JRd-Un-InR"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="cDw-OP-SVv" secondAttribute="trailing" id="Mdv-f7-Onw"/>
                                                 <constraint firstItem="ZW7-oZ-xLQ" firstAttribute="leading" secondItem="aL6-pb-toF" secondAttribute="leadingMargin" id="QO1-rL-qhp"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="cDw-OP-SVv" secondAttribute="bottom" id="Wnm-vz-r5C"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="ZW7-oZ-xLQ" secondAttribute="bottom" id="bAT-Ys-YW6"/>
                                                 <constraint firstItem="cDw-OP-SVv" firstAttribute="leading" secondItem="ZW7-oZ-xLQ" secondAttribute="trailing" id="hla-rS-zGu"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="cDw-OP-SVv" secondAttribute="bottom" constant="10" id="jii-h7-Tsj"/>
@@ -792,6 +796,7 @@
                                                 <mask key="constraints">
                                                     <exclude reference="bAT-Ys-YW6"/>
                                                     <exclude reference="1Bi-am-fHt"/>
+                                                    <exclude reference="jii-h7-Tsj"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
