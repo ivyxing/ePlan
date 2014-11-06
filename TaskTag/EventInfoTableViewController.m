@@ -60,6 +60,9 @@
     // Stored tagged friends for event.
     if (self.event.persons && self.event.persons.count > 0) {
         for (Person* person in self.event.persons) {
+            if ([person.isCurrentUser isEqualToNumber:@YES]) {
+                person.taggedForEvent = @YES;
+            }
             // Add the tagged friend.
             if ([person.taggedForEvent isEqualToNumber:@YES]) {
                 // Do not add duplicates.
