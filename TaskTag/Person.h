@@ -2,7 +2,7 @@
 //  Person.h
 //  TaskTag
 //
-//  Created by Min Xing on 11/5/14.
+//  Created by Min Xing on 11/7/14.
 //  Copyright (c) 2014 MakeSchool. All rights reserved.
 //
 
@@ -15,10 +15,11 @@
 
 @property (nonatomic, retain) NSString * fbProfilePictureID;
 @property (nonatomic, retain) NSString * firstName;
+@property (nonatomic, retain) NSNumber * isCurrentUser;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * taggedForEvent;
 @property (nonatomic, retain) NSNumber * taggedForTask;
-@property (nonatomic, retain) NSNumber * isCurrentUser;
+@property (nonatomic, retain) NSString * serverID;
 @property (nonatomic, retain) NSSet *parentEvent;
 @property (nonatomic, retain) NSSet *parentTask;
 @end
@@ -34,5 +35,13 @@
 - (void)removeParentTaskObject:(Task *)value;
 - (void)addParentTask:(NSSet *)values;
 - (void)removeParentTask:(NSSet *)values;
+
+@end
+
+
+@interface Person (CustomAccessors)
+
+- (void) updateWithDictionary:(NSDictionary*)dictionary;
+- (NSDictionary*) toDictionary;
 
 @end

@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "DatePickerViewController.h"
-@class Task;
-@class Person;
+
+@class Task, Person;
 
 @interface TaskDetailViewController : UIViewController <UITextFieldDelegate, DatePickerViewControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "Events.h"
+
 @class LoginViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

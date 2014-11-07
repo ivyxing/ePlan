@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-@class TaskDetailViewController;
-@class Task;
+
+@class TaskDetailViewController, Task;
 
 @protocol DatePickerViewControllerDelegate
 

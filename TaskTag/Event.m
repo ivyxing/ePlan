@@ -2,7 +2,7 @@
 //  Event.m
 //  TaskTag
 //
-//  Created by Min Xing on 10/31/14.
+//  Created by Min Xing on 11/7/14.
 //  Copyright (c) 2014 MakeSchool. All rights reserved.
 //
 
@@ -10,15 +10,39 @@
 #import "Person.h"
 #import "Task.h"
 
+#define safeSet(d,k,v) if (v) d[k] = v;
 
 @implementation Event
 
-@dynamic startTime;
 @dynamic endTime;
 @dynamic location;
+@dynamic startTime;
 @dynamic summary;
 @dynamic title;
+@dynamic serverID;
 @dynamic persons;
 @dynamic tasks;
+
+- (void) updateWithDictionary:(NSDictionary*)dictionary {
+    self.startTime = dictionary[@"startTime"];
+    self.endTime = dictionary[@"endTime"];
+    self.location = dictionary[@"location"];
+    self.summary = dictionary[@"summary"];
+    self.title = dictionary[@"title"];
+    self.persons = [NSSet setWithArray:dictionary[@"persons"]];
+    self.tasks = [NSSet setWithArray:dictionary[@"tasks"]];
+}
+
+- (NSDictionary*) toDictionary {
+    NSMutableDictionary* jsonable = [NSMutableDictionary dictionary];
+    safeSet(jsonable, @"startTime", self.startTime);
+    safeSet(jsonable, @"endTime", self.endTime);
+    safeSet(jsonable, @"location", self.location);
+    safeSet(jsonable, @"summary", self.summary);
+    safeSet(jsonable, @"title", self.title);
+    safeSet(jsonable, @"persons", [self.persons allObjects]);
+    safeSet(jsonable, @"tasks", [self.tasks allObjects]);
+    return jsonable;
+}
 
 @end

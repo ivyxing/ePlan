@@ -11,11 +11,12 @@
 #import "EventInfoTableViewController.h"
 #import "Event.h"
 #import "AppDelegate.h"
-
+#import "ServerBackend.h"
 
 @interface EventViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *eventTableView;
+@property (strong, nonatomic) NSMutableArray *events;
 
 @end
 
@@ -99,49 +100,36 @@
     [self.eventTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-#pragma mark - Server Communication
+#pragma mark - Pulling from Server
 
-//TODO: Server
+- (void)pullEventsFromServer {
+    ServerBackend *serverBackend = [[ServerBackend alloc] init];
+    [serverBackend import];
+    [self addToArrayJSONDictionary:serverBackend.serverEvents];
+}
 
-//- (void)sendEventToServer:(NSDictionary*)dictionary {
-//    NSURL *url = [NSURL URLWithString:@"http://polar-refuge-5597.herokuapp.com/"];
-//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
-//    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-//    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-//    [request setHTTPMethod:@"POST"];
-//    
-//    // Convert dictionary to NSData.
-//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:nil];
-//    
-//    [request setHTTPBody:jsonData];
-//    
-//    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-//    NSURLSession *urlSession = [NSURLSession
-//                                sessionWithConfiguration:config delegate:self delegateQueue:nil];
-//    
-//    NSURLSessionDataTask *dataTask = [urlSession dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-//        NSInteger responseStatusCode = [httpResponse statusCode];
-//        if (responseStatusCode == 200 && data) {
-//            NSArray *downloadedJSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-//            [self addToArrayJSONDictionary:downloadedJSON];
-//        } else {
-//            // error handling
-//        }
-//    }];
-//    
-//    [dataTask resume];
-//}
-//
-//- (void)addToArrayJSONDictionary:(NSArray *)msgArray {
-//    for (NSDictionary *jsonMsg in msgArray) {
-////        Event *event = [Event eventWithJSONDictionary:jsonMsg];
-//        [self.events addObject:event];
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self.eventTableView reloadData];
-//        });
-//    }
-//}
-
+- (void)addToArrayJSONDictionary:(NSArray *)eventsArray {
+    for (NSDictionary *jsonEvent in eventsArray) {
+        BOOL isExistingEvent = NO;
+        for (Event *existingEvent in self.events) {
+            if (existingEvent.serverID && [existingEvent.serverID isEqualToString:jsonEvent[@"serverID"]]) {
+                // Update existing event.
+                isExistingEvent = YES;
+                NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+            }
+        }
+        // Create new event.
+        if (isExistingEvent == NO) {
+            NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+            Event *newEvent = [NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:context];
+            newEvent.serverID = jsonEvent[@"serverID"];
+            [self.events addObject:newEvent];
+        }
+        // Update UI.
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.eventTableView reloadData];
+        });
+    }
+}
 
 @end

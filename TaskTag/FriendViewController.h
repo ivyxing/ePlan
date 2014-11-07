@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
-@class Task;
-@class Event;
-@class LoginViewController;
+
+@class Task, Event, LoginViewController;
 
 @interface FriendViewController : UIViewController
 

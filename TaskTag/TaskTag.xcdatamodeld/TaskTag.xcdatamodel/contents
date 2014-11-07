@@ -3,6 +3,7 @@
     <entity name="Event" representedClassName="Event" syncable="YES">
         <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serverID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,6 +15,7 @@
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isCurrentUser" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serverID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="taggedForEvent" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="taggedForTask" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="parentEvent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="persons" inverseEntity="Event" syncable="YES"/>
@@ -21,15 +23,17 @@
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES">
         <attribute name="alert" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="commentsArray" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="dueDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serverID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="parentEvent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="tasks" inverseEntity="Event" syncable="YES"/>
         <relationship name="persons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="parentTask" inverseEntity="Person" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="18" positionY="-153" width="128" height="150"/>
-        <element name="Person" positionX="126" positionY="189" width="128" height="163"/>
-        <element name="Task" positionX="286" positionY="-72" width="128" height="135"/>
+        <element name="Event" positionX="18" positionY="-153" width="128" height="163"/>
+        <element name="Person" positionX="126" positionY="189" width="128" height="178"/>
+        <element name="Task" positionX="286" positionY="-72" width="128" height="163"/>
     </elements>
 </model>

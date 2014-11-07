@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class Person;
 
 @interface EventViewController : UIViewController
 <UITableViewDelegate, UITableViewDataSource, NSURLSessionDataDelegate>
 
-@property (strong, nonatomic) NSMutableArray *events;
 @property (strong, nonatomic) Person *currentUser;
 
 @end

@@ -2,7 +2,7 @@
 //  Event.h
 //  TaskTag
 //
-//  Created by Min Xing on 10/31/14.
+//  Created by Min Xing on 11/7/14.
 //  Copyright (c) 2014 MakeSchool. All rights reserved.
 //
 
@@ -13,11 +13,12 @@
 
 @interface Event : NSManagedObject
 
-@property (nonatomic, retain) NSDate * startTime;
 @property (nonatomic, retain) NSDate * endTime;
 @property (nonatomic, retain) NSString * location;
+@property (nonatomic, retain) NSDate * startTime;
 @property (nonatomic, retain) NSString * summary;
 @property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSString * serverID;
 @property (nonatomic, retain) NSSet *persons;
 @property (nonatomic, retain) NSSet *tasks;
 @end
@@ -33,5 +34,12 @@
 - (void)removeTasksObject:(Task *)value;
 - (void)addTasks:(NSSet *)values;
 - (void)removeTasks:(NSSet *)values;
+
+@end
+
+@interface Event (CustomAccessors)
+
+- (void) updateWithDictionary:(NSDictionary*)dictionary;
+- (NSDictionary*) toDictionary;
 
 @end
