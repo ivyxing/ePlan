@@ -14,7 +14,6 @@
 #import "Event.h"
 #import "AppDelegate.h"
 
-
 @interface TaskViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *taskTableView;
@@ -22,7 +21,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *taskNameTextField;
 
 @end
-
 
 @implementation TaskViewController
 
@@ -85,19 +83,6 @@
     return cell;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"ShowEventInfo"]) {
-        EventInfoTableViewController *eventInfoTableViewController = [segue destinationViewController];
-        eventInfoTableViewController.event = self.event;
-    } else if ([segue.identifier isEqualToString:@"ShowTaskDetail"]) {
-        TaskDetailViewController *taskDetailViewController = [segue destinationViewController];
-        NSIndexPath *selectedIndexPath = self.taskTableView.indexPathForSelectedRow;
-        NSArray *tasksArray = [self tasksSetToSortedArray:self.event.tasks];
-        taskDetailViewController.task = tasksArray[selectedIndexPath.row];
-        taskDetailViewController.task.parentEvent = self.event;
-    }
-}
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // Get the context.
@@ -118,6 +103,21 @@
     [self.event removeTasksObject:task];
     // Delete entry in the UI.
     [self.taskTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowEventInfo"]) {
+        EventInfoTableViewController *eventInfoTableViewController = [segue destinationViewController];
+        eventInfoTableViewController.event = self.event;
+    } else if ([segue.identifier isEqualToString:@"ShowTaskDetail"]) {
+        TaskDetailViewController *taskDetailViewController = [segue destinationViewController];
+        NSIndexPath *selectedIndexPath = self.taskTableView.indexPathForSelectedRow;
+        NSArray *tasksArray = [self tasksSetToSortedArray:self.event.tasks];
+        taskDetailViewController.task = tasksArray[selectedIndexPath.row];
+        taskDetailViewController.task.parentEvent = self.event;
+    }
 }
 
 #pragma mark - Data Type Convertion

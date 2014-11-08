@@ -12,7 +12,6 @@
 
 @class Event;
 
-
 @interface EventInfoTableViewController : UITableViewController
 <UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, DatePickerViewControllerDelegate>
 

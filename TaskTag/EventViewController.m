@@ -32,6 +32,10 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    // Pull events from server.
+    ServerBackend *sharedServerBackend = [ServerBackend sharedServerBackend];
+    [sharedServerBackend import];
+    
     // Get access to the managed object context.
     NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
     // Create a new object using the entity description.
@@ -98,38 +102,6 @@
     [self.events removeObjectAtIndex:indexPath.row];
     // Delete entry in the UI.
     [self.eventTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-}
-
-#pragma mark - Pulling from Server
-
-- (void)pullEventsFromServer {
-    ServerBackend *serverBackend = [[ServerBackend alloc] init];
-    [serverBackend import];
-    [self addToArrayJSONDictionary:serverBackend.serverEvents];
-}
-
-- (void)addToArrayJSONDictionary:(NSArray *)eventsArray {
-    for (NSDictionary *jsonEvent in eventsArray) {
-        BOOL isExistingEvent = NO;
-        for (Event *existingEvent in self.events) {
-            if (existingEvent.serverID && [existingEvent.serverID isEqualToString:jsonEvent[@"serverID"]]) {
-                // Update existing event.
-                isExistingEvent = YES;
-                NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
-            }
-        }
-        // Create new event.
-        if (isExistingEvent == NO) {
-            NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
-            Event *newEvent = [NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:context];
-            newEvent.serverID = jsonEvent[@"serverID"];
-            [self.events addObject:newEvent];
-        }
-        // Update UI.
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.eventTableView reloadData];
-        });
-    }
 }
 
 @end

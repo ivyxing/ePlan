@@ -10,6 +10,7 @@
 #import "Event.h"
 #import "Task.h"
 #import "Person.h"
+#import "AppDelegate.h"
 
 static NSString* const kBaseURL = @"http://polar-refuge-5597.herokuapp.com/";
 static NSString* const kEvents = @"events";
@@ -20,6 +21,16 @@ static NSString* const kEvents = @"events";
 
 @implementation ServerBackend
 
++ (id)sharedServerBackend {
+    static ServerBackend *sharedServerBackend = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedServerBackend = [[self alloc] init];
+    });
+    return sharedServerBackend;
+}
+
+// Pull all events from server.
 - (void)import {
     NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:kEvents]];
     
@@ -33,13 +44,14 @@ static NSString* const kEvents = @"events";
     NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error == nil) {
             NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
-            self.serverEvents = responseArray;
+            [self parseAndAddEvents:responseArray];
         }
     }];
     
     [dataTask resume];
 }
 
+// Push all events to server.
 - (void)persistEvent:(Event *)event {
     if (!event || event.title == nil || event.title.length == 0) {
         return; //input safety check
@@ -64,11 +76,46 @@ static NSString* const kEvents = @"events";
     NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
             NSArray* responseArray = @[[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
-            self.serverEvents = responseArray;
+            //TODO: Assign serverID here.
         }
     }];
     
     [dataTask resume];
+}
+
+// Parse json dictionary into events objects.
+- (void)parseAndAddEvents:(NSArray *)jsonEventsArray {
+    // Get access to the managed object context.
+    NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+    // Create a new object using the entity description.
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    // Create an error variable to pass to the execute method.
+    NSError *error;
+    // Retrieve results.
+    NSArray *array = [context executeFetchRequest:request error:&error];
+    if (array == nil) {
+        // Error handling, e.g. display error to user.
+    }
+    
+    // Parsing events - either update an existing event or create a new event.
+    for (NSDictionary *jsonEventDictionary in jsonEventsArray) {
+        Event *event;
+        BOOL matchesExistingEvent = NO;
+        for (Event *existingEvent in array) {
+            if ([[existingEvent valueForKey:@"serverID"] isEqualToString:jsonEventDictionary[@"serverID"]]) {
+                event = existingEvent;
+                matchesExistingEvent = YES;
+            }
+        }
+        if (!matchesExistingEvent) {
+            // Create new event.
+            event = [NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:context];
+        }
+        [event updateWithDictionary:jsonEventDictionary];
+    }
 }
 
 @end

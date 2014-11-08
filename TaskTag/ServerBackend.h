@@ -12,10 +12,10 @@
 
 @interface ServerBackend : NSObject
 
-@property (strong, nonatomic) NSArray *serverEvents;
-
 - (void) import;
 - (void) persistEvent:(Event *)event;
+
++ (id)sharedServerBackend;
 
 @end
 
