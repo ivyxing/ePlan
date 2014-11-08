@@ -12,7 +12,7 @@
 #import "Person.h"
 #import "AppDelegate.h"
 
-static NSString* const kBaseURL = @"http://polar-refuge-5597.herokuapp.com/";
+static NSString* const kBaseURL = @"https://tasktag.herokuapp.com/";
 static NSString* const kEvents = @"events";
 
 @interface ServerBackend ()
