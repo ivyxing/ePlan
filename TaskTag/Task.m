@@ -37,8 +37,17 @@
     safeSet(jsonable, @"name", self.name);
     safeSet(jsonable, @"timeStamp", self.timeStamp);
     safeSet(jsonable, @"alert", self.alert);
-    safeSet(jsonable, @"persons", [self.persons allObjects]);
+    safeSet(jsonable, @"persons", [self convertPersons]);
     return jsonable;
+}
+
+- (NSMutableArray *)convertPersons {
+    NSMutableArray *personsDictionaryArray = [NSMutableArray array];
+    for (Person *person in self.persons) {
+        NSDictionary *personDictionary = [person toDictionary];
+        [personsDictionaryArray addObject:personDictionary];
+    }
+    return personsDictionaryArray;
 }
 
 @end

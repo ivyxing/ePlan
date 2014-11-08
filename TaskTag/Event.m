@@ -40,9 +40,27 @@
     safeSet(jsonable, @"location", self.location);
     safeSet(jsonable, @"summary", self.summary);
     safeSet(jsonable, @"title", self.title);
-    safeSet(jsonable, @"persons", [self.persons allObjects]);
-    safeSet(jsonable, @"tasks", [self.tasks allObjects]);
+    safeSet(jsonable, @"persons", [self convertPersons]);
+    safeSet(jsonable, @"tasks", [self convertTasks]);
     return jsonable;
+}
+
+- (NSMutableArray *)convertTasks {
+    NSMutableArray *tasksDictionaryArray = [NSMutableArray array];
+    for (Task *task in self.tasks) {
+        NSDictionary *taskDictionary = [task toDictionary];
+        [tasksDictionaryArray addObject:taskDictionary];
+    }
+    return tasksDictionaryArray;
+}
+
+- (NSMutableArray *)convertPersons {
+    NSMutableArray *personsDictionaryArray = [NSMutableArray array];
+    for (Person *person in self.persons) {
+        NSDictionary *personDictionary = [person toDictionary];
+        [personsDictionaryArray addObject:personDictionary];
+    }
+    return personsDictionaryArray;
 }
 
 @end

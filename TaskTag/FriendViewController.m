@@ -14,6 +14,7 @@
 #import "Task.h"
 #import "Person.h"
 #import "LoginViewController.h"
+#import "ServerBackend.h"
 
 @interface FriendViewController ()
 
@@ -86,6 +87,14 @@
     if (error) {
         // Error handling, e.g. display error to user.
         NSLog(@"Error saving to core data.");
+    }
+    
+    // Save to server.
+    ServerBackend *sharedServerBackend = [ServerBackend sharedServerBackend];
+    if (self.addFriendsToEvent) {
+        [sharedServerBackend persistEvent:self.event];
+    } else {
+        [sharedServerBackend persistEvent:self.task.parentEvent];
     }
 }
 

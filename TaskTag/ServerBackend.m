@@ -56,10 +56,10 @@ static NSString* const kEvents = @"events";
     if (!event || event.title == nil || event.title.length == 0) {
         return; //input safety check
     }
-    NSString *events = [kBaseURL stringByAppendingPathComponent:kEvents];
+    NSString *eventsStr = [kBaseURL stringByAppendingPathComponent:kEvents];
     BOOL isExistingEvent = event.serverID != nil;
-    NSURL* url = isExistingEvent ? [NSURL URLWithString:[events stringByAppendingPathComponent:event.serverID]] :
-    [NSURL URLWithString:events];
+    NSURL* url = isExistingEvent ? [NSURL URLWithString:[eventsStr stringByAppendingPathComponent:event.serverID]] :
+    [NSURL URLWithString:eventsStr];
 
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
     request.HTTPMethod = isExistingEvent ? @"PUT" : @"POST";
@@ -76,7 +76,10 @@ static NSString* const kEvents = @"events";
     NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
             NSArray* responseArray = @[[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
-            //TODO: Assign serverID here.
+            //TODO: Assign serverID here - is this right??
+            for (NSDictionary *jsonDictionary in responseArray) {
+                event.serverID = jsonDictionary[@"_id"];
+            }
         }
     }];
     

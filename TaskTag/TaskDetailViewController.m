@@ -14,6 +14,7 @@
 #import "Event.h"
 #import "Person.h"
 #import "AppDelegate.h"
+#import "ServerBackend.h"
 
 @interface TaskDetailViewController ()
 
@@ -57,6 +58,10 @@
     }
     [self.friendsCollectionView reloadData];
     [self.dueDateAlertTableView reloadData];
+    
+    // Save to server.
+    ServerBackend *sharedServerBackend = [ServerBackend sharedServerBackend];
+    [sharedServerBackend persistEvent:self.task.parentEvent];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

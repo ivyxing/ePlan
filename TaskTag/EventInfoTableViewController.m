@@ -14,6 +14,7 @@
 #import "FriendViewController.h"
 #import "FriendCollectionViewCell.h"
 #import "AppDelegate.h"
+#import "ServerBackend.h"
 
 @interface EventInfoTableViewController ()
 
@@ -93,6 +94,10 @@
     if (error) {
         // Error handling, e.g. display error to user.
     }
+    
+    // Save to server.
+    ServerBackend *sharedServerBackend = [ServerBackend sharedServerBackend];
+    [sharedServerBackend persistEvent:self.event];
 }
 
 #pragma mark - User Interaction

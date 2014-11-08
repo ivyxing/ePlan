@@ -13,6 +13,7 @@
 #import "Task.h"
 #import "Event.h"
 #import "AppDelegate.h"
+#import "ServerBackend.h"
 
 @interface TaskViewController ()
 
@@ -46,6 +47,10 @@
     if (error) {
         // Error handling, e.g. display error to user.
     }
+    
+    // Save to server.
+    ServerBackend *sharedServerBackend = [ServerBackend sharedServerBackend];
+    [sharedServerBackend persistEvent:self.event];
 }
 
 #pragma mark - User Interaction
