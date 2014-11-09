@@ -79,7 +79,9 @@ static NSString* const kEvents = @"events";
             //TODO: Assign serverID here - is this right??
             if (responseArray) {
                 for (NSDictionary *jsonDictionary in responseArray) {
-                    event.serverID = jsonDictionary[@"_id"];
+                    event.serverID = jsonDictionary[@"id"];
+                    NSLog(@"Event serverID: %@", event.serverID);
+                    NSLog(@"Event title: %@", event.title);
                 }
             }
         }
@@ -113,13 +115,16 @@ static NSString* const kEvents = @"events";
             if ([[existingEvent valueForKey:@"serverID"] isEqualToString:jsonEventDictionary[@"serverID"]]) {
                 event = existingEvent;
                 matchesExistingEvent = YES;
+                NSLog(@"Existing Event");
             }
         }
         if (!matchesExistingEvent) {
             // Create new event.
             event = [NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:context];
+            NSLog(@"New Event");
         }
         [event updateWithDictionary:jsonEventDictionary];
+        NSLog(@"Pulling from server - event: %@", event.title);
     }
 }
 
