@@ -24,18 +24,18 @@
 @dynamic persons;
 
 - (void) updateWithDictionary:(NSDictionary*)dictionary {
-    self.dueDate = dictionary[@"dueDate"];
+    self.dueDate = [self.parentEvent convertStringToDate:dictionary[@"dueDate"]];
     self.name = dictionary[@"name"];
-    self.timeStamp = dictionary[@"timeStamp"];
+    self.timeStamp = [self.parentEvent convertStringToDate:dictionary[@"timeStamp"]];
     self.alert = dictionary[@"alert"];
     self.persons = [NSSet setWithArray:dictionary[@"persons"]];
 }
 
 - (NSDictionary*) toDictionary {
     NSMutableDictionary* jsonable = [NSMutableDictionary dictionary];
-    safeSet(jsonable, @"dueDate", self.dueDate);
+    safeSet(jsonable, @"dueDate", [self.parentEvent convertDateToString:self.dueDate]);
     safeSet(jsonable, @"name", self.name);
-    safeSet(jsonable, @"timeStamp", self.timeStamp);
+    safeSet(jsonable, @"timeStamp", [self.parentEvent convertDateToString:self.timeStamp]);
     safeSet(jsonable, @"alert", self.alert);
     safeSet(jsonable, @"persons", [self convertPersons]);
     return jsonable;

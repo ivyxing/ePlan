@@ -41,5 +41,8 @@
 
 - (void) updateWithDictionary:(NSDictionary*)dictionary;
 - (NSDictionary*) toDictionary;
+- (NSString *)convertDateToString:(NSDate *)date;
+- (NSDate *)convertStringToDate:(NSString *)dateStr;
+- (NSDateFormatter *)standardizedDateFormatter;
 
 @end

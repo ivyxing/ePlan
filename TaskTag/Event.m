@@ -24,8 +24,8 @@
 @dynamic tasks;
 
 - (void) updateWithDictionary:(NSDictionary*)dictionary {
-    self.startTime = dictionary[@"startTime"];
-    self.endTime = dictionary[@"endTime"];
+    self.startTime = [self convertStringToDate:dictionary[@"startTime"]];
+    self.endTime = [self convertStringToDate:dictionary[@"endTime"]];
     self.location = dictionary[@"location"];
     self.summary = dictionary[@"summary"];
     self.title = dictionary[@"title"];
@@ -35,8 +35,8 @@
 
 - (NSDictionary*) toDictionary {
     NSMutableDictionary* jsonable = [NSMutableDictionary dictionary];
-    safeSet(jsonable, @"startTime", self.startTime);
-    safeSet(jsonable, @"endTime", self.endTime);
+    safeSet(jsonable, @"startTime", [self convertDateToString:self.startTime]);
+    safeSet(jsonable, @"endTime", [self convertDateToString:self.endTime]);
     safeSet(jsonable, @"location", self.location);
     safeSet(jsonable, @"summary", self.summary);
     safeSet(jsonable, @"title", self.title);
@@ -61,6 +61,25 @@
         [personsDictionaryArray addObject:personDictionary];
     }
     return personsDictionaryArray;
+}
+
+- (NSString *)convertDateToString:(NSDate *)date {
+    NSDateFormatter *dateFormatter = [self standardizedDateFormatter];
+    NSString *dateString = [dateFormatter stringFromDate:date];
+    return dateString;
+}
+
+- (NSDate *)convertStringToDate:(NSString *)dateStr {
+    NSDateFormatter *dateFormatter = [self standardizedDateFormatter];
+    NSDate *date = [dateFormatter dateFromString:dateStr];
+    return date;
+}
+
+- (NSDateFormatter *)standardizedDateFormatter {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterFullStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterFullStyle];
+    return dateFormatter;
 }
 
 @end

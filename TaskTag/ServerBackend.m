@@ -51,7 +51,7 @@ static NSString* const kEvents = @"events";
     [dataTask resume];
 }
 
-// Push all events to server.
+// Push event to server.
 - (void)persistEvent:(Event *)event {
     if (!event || event.title == nil || event.title.length == 0) {
         return; //input safety check
@@ -75,10 +75,12 @@ static NSString* const kEvents = @"events";
 
     NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
-            NSArray* responseArray = @[[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
+            NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
             //TODO: Assign serverID here - is this right??
-            for (NSDictionary *jsonDictionary in responseArray) {
-                event.serverID = jsonDictionary[@"_id"];
+            if (responseArray) {
+                for (NSDictionary *jsonDictionary in responseArray) {
+                    event.serverID = jsonDictionary[@"_id"];
+                }
             }
         }
     }];
