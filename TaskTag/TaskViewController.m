@@ -14,6 +14,7 @@
 #import "Event.h"
 #import "AppDelegate.h"
 #import "ServerBackend.h"
+#import "DataTypeConversion.h"
 
 @interface TaskViewController ()
 
@@ -82,7 +83,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
-    NSArray *tasksArray = [self tasksSetToSortedArray:self.event.tasks];
+    NSArray *tasksArray = [DataTypeConversion tasksSetToSortedArray:self.event.tasks];
     cell.textLabel.text = [tasksArray[indexPath.row] name];
     
     return cell;
@@ -93,7 +94,7 @@
     // Get the context.
     NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
     // Get and delete object
-    NSArray *tasksArray = [self tasksSetToSortedArray:self.event.tasks];
+    NSArray *tasksArray = [DataTypeConversion tasksSetToSortedArray:self.event.tasks];
     Task *task = [tasksArray objectAtIndex:indexPath.row];
     [context deleteObject:task];
     // Create an error variable to pass to the save method.
@@ -119,21 +120,10 @@
     } else if ([segue.identifier isEqualToString:@"ShowTaskDetail"]) {
         TaskDetailViewController *taskDetailViewController = [segue destinationViewController];
         NSIndexPath *selectedIndexPath = self.taskTableView.indexPathForSelectedRow;
-        NSArray *tasksArray = [self tasksSetToSortedArray:self.event.tasks];
+        NSArray *tasksArray = [DataTypeConversion tasksSetToSortedArray:self.event.tasks];
         taskDetailViewController.task = tasksArray[selectedIndexPath.row];
         taskDetailViewController.task.parentEvent = self.event;
     }
-}
-
-#pragma mark - Data Type Convertion
-
-- (NSArray*)tasksSetToSortedArray:(NSSet*)tasksSet {
-    NSArray *tasksArray = [tasksSet allObjects];
-    NSArray *sortedArray = [tasksArray sortedArrayUsingComparator:^NSComparisonResult(Task* a, Task* b) {
-        return [a.timeStamp compare:b.timeStamp];
-    }];
-    
-    return sortedArray;
 }
 
 @end

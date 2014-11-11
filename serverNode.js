@@ -28,6 +28,10 @@ app.get('/events', function(req, res) {
   res.send({title:"Test", date:"test"})
 })
 
+app.post('/events', function(req, res) {
+	var eventsCollection = db.collection("events")
+})
+
 app.listen(app.get('port'), function() {
   console.log("Listening on " + app.get('port'));
 });

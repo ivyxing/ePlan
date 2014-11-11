@@ -9,6 +9,7 @@
 #import "Event.h"
 #import "Person.h"
 #import "Task.h"
+#import "DataTypeConversion.h"
 
 #define safeSet(d,k,v) if (v) d[k] = v;
 
@@ -24,8 +25,8 @@
 @dynamic tasks;
 
 - (void) updateWithDictionary:(NSDictionary*)dictionary {
-    self.startTime = [self convertStringToDate:dictionary[@"startTime"]];
-    self.endTime = [self convertStringToDate:dictionary[@"endTime"]];
+    self.startTime = [DataTypeConversion stringToDate:dictionary[@"startTime"]];
+    self.endTime = [DataTypeConversion stringToDate:dictionary[@"endTime"]];
     self.location = dictionary[@"location"];
     self.summary = dictionary[@"summary"];
     self.title = dictionary[@"title"];
@@ -35,51 +36,14 @@
 
 - (NSDictionary*) toDictionary {
     NSMutableDictionary* jsonable = [NSMutableDictionary dictionary];
-    safeSet(jsonable, @"startTime", [self convertDateToString:self.startTime]);
-    safeSet(jsonable, @"endTime", [self convertDateToString:self.endTime]);
+    safeSet(jsonable, @"startTime", [DataTypeConversion dateToString:self.startTime]);
+    safeSet(jsonable, @"endTime", [DataTypeConversion dateToString:self.endTime]);
     safeSet(jsonable, @"location", self.location);
     safeSet(jsonable, @"summary", self.summary);
     safeSet(jsonable, @"title", self.title);
-    safeSet(jsonable, @"persons", [self convertPersons]);
-    safeSet(jsonable, @"tasks", [self convertTasks]);
+    safeSet(jsonable, @"persons", [DataTypeConversion extractPersonsServerIDs:self.persons]);
+    safeSet(jsonable, @"tasks", [DataTypeConversion tasksToDictionary:self.tasks]);
     return jsonable;
-}
-
-- (NSMutableArray *)convertTasks {
-    NSMutableArray *tasksDictionaryArray = [NSMutableArray array];
-    for (Task *task in self.tasks) {
-        NSDictionary *taskDictionary = [task toDictionary];
-        [tasksDictionaryArray addObject:taskDictionary];
-    }
-    return tasksDictionaryArray;
-}
-
-- (NSMutableArray *)convertPersons {
-    NSMutableArray *personsDictionaryArray = [NSMutableArray array];
-    for (Person *person in self.persons) {
-        NSDictionary *personDictionary = [person toDictionary];
-        [personsDictionaryArray addObject:personDictionary];
-    }
-    return personsDictionaryArray;
-}
-
-- (NSString *)convertDateToString:(NSDate *)date {
-    NSDateFormatter *dateFormatter = [self standardizedDateFormatter];
-    NSString *dateString = [dateFormatter stringFromDate:date];
-    return dateString;
-}
-
-- (NSDate *)convertStringToDate:(NSString *)dateStr {
-    NSDateFormatter *dateFormatter = [self standardizedDateFormatter];
-    NSDate *date = [dateFormatter dateFromString:dateStr];
-    return date;
-}
-
-- (NSDateFormatter *)standardizedDateFormatter {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterFullStyle];
-    [dateFormatter setTimeStyle:NSDateFormatterFullStyle];
-    return dateFormatter;
 }
 
 @end

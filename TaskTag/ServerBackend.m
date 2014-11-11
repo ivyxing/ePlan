@@ -56,7 +56,8 @@ static NSString* const kEvents = @"events";
     if (!event || event.title == nil || event.title.length == 0) {
         return; //input safety check
     }
-    NSString *eventsStr = kBaseURL;
+    
+    NSString *eventsStr = [kBaseURL stringByAppendingPathComponent:kEvents];
     BOOL isExistingEvent = event.serverID != nil;
     NSURL* url = isExistingEvent ? [NSURL URLWithString:[eventsStr stringByAppendingPathComponent:event.serverID]] :
     [NSURL URLWithString:eventsStr];

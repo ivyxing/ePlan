@@ -33,6 +33,7 @@
 		28CED43319FB144C005989D0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28CED43019FB144C005989D0 /* Bolts.framework */; };
 		28DBB20819FEE491002ACBA1 /* TaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DBB20619FEE491002ACBA1 /* TaskViewController.m */; };
 		28DBB20B19FEE538002ACBA1 /* Star@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28DBB20A19FEE538002ACBA1 /* Star@4x.png */; };
+		28E8F5BB1A12CF4000F1BCFF /* DataTypeConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E8F5BA1A12CF4000F1BCFF /* DataTypeConversion.m */; };
 		28EF068219E35614002AB675 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EF068119E35614002AB675 /* DatePickerViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,8 @@
 		28DBB20619FEE491002ACBA1 /* TaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskViewController.m; sourceTree = "<group>"; };
 		28DBB20719FEE491002ACBA1 /* TaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskViewController.h; sourceTree = "<group>"; };
 		28DBB20A19FEE538002ACBA1 /* Star@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star@4x.png"; sourceTree = "<group>"; };
+		28E8F5B91A12CF4000F1BCFF /* DataTypeConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataTypeConversion.h; sourceTree = "<group>"; };
+		28E8F5BA1A12CF4000F1BCFF /* DataTypeConversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataTypeConversion.m; sourceTree = "<group>"; };
 		28EF068019E35614002AB675 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		28EF068119E35614002AB675 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,6 +165,8 @@
 				287077DE1A0D4EB2008B1B47 /* Task.m */,
 				287077DA1A0D4EB1008B1B47 /* Person.h */,
 				287077DB1A0D4EB1008B1B47 /* Person.m */,
+				28E8F5B91A12CF4000F1BCFF /* DataTypeConversion.h */,
+				28E8F5BA1A12CF4000F1BCFF /* DataTypeConversion.m */,
 				287077C21A0C122B008B1B47 /* ServerBackend.h */,
 				287077C31A0C122C008B1B47 /* ServerBackend.m */,
 				289443F419DB5FC00036CDDA /* AppDelegate.h */,
@@ -345,6 +350,7 @@
 				2894442A19DB75210036CDDA /* TaskDetailViewController.m in Sources */,
 				289443F319DB5FC00036CDDA /* main.m in Sources */,
 				28480B0C19F70ED70030B2E4 /* FriendTableViewCell.m in Sources */,
+				28E8F5BB1A12CF4000F1BCFF /* DataTypeConversion.m in Sources */,
 				287077DF1A0D4EB2008B1B47 /* Task.m in Sources */,
 				289443F919DB5FC00036CDDA /* TaskTag.xcdatamodeld in Sources */,
 			);

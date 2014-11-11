@@ -15,6 +15,7 @@
 #import "Person.h"
 #import "AppDelegate.h"
 #import "ServerBackend.h"
+#import "DataTypeConversion.h"
 
 @interface TaskDetailViewController ()
 
@@ -135,10 +136,7 @@
 
 - (void)datePicked:(NSDate*)date {
     self.task.dueDate = date;
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterShortStyle
-                                                          timeStyle:NSDateFormatterShortStyle];
-    NSLog(@"%@", dateString);
-    NSString *buttonTitle = [NSString stringWithFormat:@"Due Date: %@", dateString];
+    NSString *buttonTitle = [NSString stringWithFormat:@"Due Date: %@", [DataTypeConversion dateToString:date]];
     [self.dueDateButton setTitle:buttonTitle forState:UIControlStateNormal];
 }
 

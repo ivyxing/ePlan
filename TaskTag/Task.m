@@ -9,6 +9,7 @@
 #import "Task.h"
 #import "Event.h"
 #import "Person.h"
+#import "DataTypeConversion.h"
 
 #define safeSet(d,k,v) if (v) d[k] = v;
 
@@ -24,30 +25,21 @@
 @dynamic persons;
 
 - (void) updateWithDictionary:(NSDictionary*)dictionary {
-    self.dueDate = [self.parentEvent convertStringToDate:dictionary[@"dueDate"]];
+    self.dueDate = [DataTypeConversion stringToDate:dictionary[@"dueDate"]];
     self.name = dictionary[@"name"];
-    self.timeStamp = [self.parentEvent convertStringToDate:dictionary[@"timeStamp"]];
+    self.timeStamp = [DataTypeConversion stringToDate:dictionary[@"timeStamp"]];
     self.alert = dictionary[@"alert"];
     self.persons = [NSSet setWithArray:dictionary[@"persons"]];
 }
 
 - (NSDictionary*) toDictionary {
     NSMutableDictionary* jsonable = [NSMutableDictionary dictionary];
-    safeSet(jsonable, @"dueDate", [self.parentEvent convertDateToString:self.dueDate]);
+    safeSet(jsonable, @"dueDate", [DataTypeConversion dateToString:self.dueDate]);
     safeSet(jsonable, @"name", self.name);
-    safeSet(jsonable, @"timeStamp", [self.parentEvent convertDateToString:self.timeStamp]);
+    safeSet(jsonable, @"timeStamp", [DataTypeConversion dateToString:self.timeStamp]);
     safeSet(jsonable, @"alert", self.alert);
-    safeSet(jsonable, @"persons", [self convertPersons]);
+    safeSet(jsonable, @"persons", [DataTypeConversion extractPersonsServerIDs:self.persons]);
     return jsonable;
-}
-
-- (NSMutableArray *)convertPersons {
-    NSMutableArray *personsDictionaryArray = [NSMutableArray array];
-    for (Person *person in self.persons) {
-        NSDictionary *personDictionary = [person toDictionary];
-        [personsDictionaryArray addObject:personDictionary];
-    }
-    return personsDictionaryArray;
 }
 
 @end
