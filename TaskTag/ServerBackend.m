@@ -32,7 +32,7 @@ static NSString* const kEvents = @"events";
 
 // Pull all events from server.
 - (void)import {
-    NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:kEvents]];
+    NSURL* url = [NSURL URLWithString:kBaseURL];
     
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"GET";
@@ -56,7 +56,7 @@ static NSString* const kEvents = @"events";
     if (!event || event.title == nil || event.title.length == 0) {
         return; //input safety check
     }
-    NSString *eventsStr = [kBaseURL stringByAppendingPathComponent:kEvents];
+    NSString *eventsStr = kBaseURL;
     BOOL isExistingEvent = event.serverID != nil;
     NSURL* url = isExistingEvent ? [NSURL URLWithString:[eventsStr stringByAppendingPathComponent:event.serverID]] :
     [NSURL URLWithString:eventsStr];
