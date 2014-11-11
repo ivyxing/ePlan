@@ -98,6 +98,7 @@ static NSString* const kEvents = @"events";
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:context];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDescription];
+//    request setPredicate:<#(NSPredicate *)#>
     
     // Create an error variable to pass to the execute method.
     NSError *error;

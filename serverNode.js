@@ -25,7 +25,7 @@ app.get('/', function(req, res) {
 })
 
 app.get('/events', function(req, res) {
-  res.send('events')
+  res.send({title:"Test", date:"test"})
 })
 
 app.listen(app.get('port'), function() {
