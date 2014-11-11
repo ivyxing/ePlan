@@ -32,7 +32,7 @@ static NSString* const kEvents = @"events";
 
 // Pull all events from server.
 - (void)import {
-    NSURL* url = [NSURL URLWithString:kBaseURL];
+    NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingString:kEvents]];
     
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"GET";

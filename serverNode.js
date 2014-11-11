@@ -24,6 +24,10 @@ app.get('/', function(req, res) {
   res.send('test')
 })
 
+app.get('/events', function(req, res) {
+  res.send('events')
+})
+
 app.listen(app.get('port'), function() {
   console.log("Listening on " + app.get('port'));
 });
