@@ -14,6 +14,7 @@
 
 static NSString* const kBaseURL = @"https://tasktag.herokuapp.com/";
 static NSString* const kEvents = @"events";
+static NSString* const kPersons = @"persons";
 
 @interface ServerBackend ()
 

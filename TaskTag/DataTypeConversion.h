@@ -13,6 +13,7 @@
 + (NSMutableArray *)tasksToDictionary:(NSSet *)tasksSet;
 + (NSArray*)tasksSetToSortedArray:(NSSet*)tasksSet;
 + (NSMutableArray *)extractPersonsServerIDs:(NSSet *)personsSet;
+
 + (NSString *)dateToString:(NSDate *)date;
 + (NSDate *)stringToDate:(NSString *)dateStr;
 + (NSDateFormatter *)standardizedShortStyleDateFormatter;

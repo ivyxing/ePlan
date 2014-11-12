@@ -38,7 +38,6 @@
 
 @end
 
-
 @interface Person (CustomAccessors)
 
 - (void) updateWithDictionary:(NSDictionary*)dictionary;

@@ -1112,7 +1112,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EWD-KC-Bmp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-231" y="80"/>
+            <point key="canvasLocation" x="-313" y="80"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="E9d-4e-GEM">

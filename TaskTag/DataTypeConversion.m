@@ -29,7 +29,6 @@
     NSArray *sortedArray = [tasksArray sortedArrayUsingComparator:^NSComparisonResult(Task* a, Task* b) {
         return [a.timeStamp compare:b.timeStamp];
     }];
-    
     return sortedArray;
 }
 
@@ -63,6 +62,5 @@
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     return dateFormatter;
 }
-
 
 @end
