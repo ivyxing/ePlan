@@ -81,7 +81,7 @@ static NSString* const kPersons = @"persons";
             //TODO: Assign serverID here - is this right??
             if (responseArray) {
                 for (NSDictionary *jsonDictionary in responseArray) {
-                    event.serverID = jsonDictionary[@"id"];
+                    event.serverID = jsonDictionary[@"_id"];
                     NSLog(@"Event serverID: %@", event.serverID);
                     NSLog(@"Event title: %@", event.title);
                 }

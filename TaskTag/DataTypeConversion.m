@@ -37,7 +37,9 @@
 + (NSMutableArray *)extractPersonsServerIDs:(NSSet *)personsSet {
     NSMutableArray *personsServerIDsDictionaryArray = [NSMutableArray array];
     for (Person *person in personsSet) {
-        [personsServerIDsDictionaryArray addObject:person.serverID];
+        if (person.serverID) {
+            [personsServerIDsDictionaryArray addObject:person.serverID];
+        }
     }
     return personsServerIDsDictionaryArray;
 }

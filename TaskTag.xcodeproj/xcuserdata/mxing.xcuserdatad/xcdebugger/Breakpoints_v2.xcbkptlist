@@ -587,6 +587,36 @@
             endingLineNumber = "78"
             landmarkName = "-persistEvent:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ServerBackend persistEvent:]"
+                  moduleName = "TaskTag"
+                  urlString = "file:///Users/mxing/Desktop/MakeSchool/TaskTag/TaskTag/ServerBackend.m"
+                  timestampString = "437524435.494603"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "1406">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__30-[ServerBackend persistEvent:]_block_invoke"
+                  moduleName = "TaskTag"
+                  urlString = "file:///Users/mxing/Desktop/MakeSchool/TaskTag/TaskTag/ServerBackend.m"
+                  timestampString = "437524435.49476"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "96">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
