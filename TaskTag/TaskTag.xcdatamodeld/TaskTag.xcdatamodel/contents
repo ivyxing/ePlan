@@ -7,7 +7,7 @@
         <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="persons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="parentEvent" inverseEntity="Person" syncable="YES"/>
+        <relationship name="persons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="parentEvents" inverseEntity="Person" syncable="YES"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="parentEvent" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="Person" representedClassName="Person" syncable="YES">
@@ -18,8 +18,8 @@
         <attribute name="serverID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="taggedForEvent" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="taggedForTask" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <relationship name="parentEvent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="persons" inverseEntity="Event" syncable="YES"/>
-        <relationship name="parentTask" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="persons" inverseEntity="Task" syncable="YES"/>
+        <relationship name="parentEvents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="persons" inverseEntity="Event" syncable="YES"/>
+        <relationship name="parentTasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="persons" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES">
         <attribute name="alert" optional="YES" attributeType="String" syncable="YES"/>
@@ -29,7 +29,7 @@
         <attribute name="serverID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="parentEvent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="tasks" inverseEntity="Event" syncable="YES"/>
-        <relationship name="persons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="parentTask" inverseEntity="Person" syncable="YES"/>
+        <relationship name="persons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="parentTasks" inverseEntity="Person" syncable="YES"/>
     </entity>
     <elements>
         <element name="Event" positionX="18" positionY="-153" width="128" height="163"/>

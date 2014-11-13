@@ -2,7 +2,7 @@
 //  Person.h
 //  TaskTag
 //
-//  Created by Min Xing on 11/7/14.
+//  Created by Min Xing on 11/13/14.
 //  Copyright (c) 2014 MakeSchool. All rights reserved.
 //
 
@@ -17,24 +17,24 @@
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSNumber * isCurrentUser;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * serverID;
 @property (nonatomic, retain) NSNumber * taggedForEvent;
 @property (nonatomic, retain) NSNumber * taggedForTask;
-@property (nonatomic, retain) NSString * serverID;
-@property (nonatomic, retain) NSSet *parentEvent;
-@property (nonatomic, retain) NSSet *parentTask;
+@property (nonatomic, retain) NSSet *parentEvents;
+@property (nonatomic, retain) NSSet *parentTasks;
 @end
 
 @interface Person (CoreDataGeneratedAccessors)
 
-- (void)addParentEventObject:(Event *)value;
-- (void)removeParentEventObject:(Event *)value;
-- (void)addParentEvent:(NSSet *)values;
-- (void)removeParentEvent:(NSSet *)values;
+- (void)addParentEventsObject:(Event *)value;
+- (void)removeParentEventsObject:(Event *)value;
+- (void)addParentEvents:(NSSet *)values;
+- (void)removeParentEvents:(NSSet *)values;
 
-- (void)addParentTaskObject:(Task *)value;
-- (void)removeParentTaskObject:(Task *)value;
-- (void)addParentTask:(NSSet *)values;
-- (void)removeParentTask:(NSSet *)values;
+- (void)addParentTasksObject:(Task *)value;
+- (void)removeParentTasksObject:(Task *)value;
+- (void)addParentTasks:(NSSet *)values;
+- (void)removeParentTasks:(NSSet *)values;
 
 @end
 

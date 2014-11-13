@@ -7,13 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
+@class Event;
 
 @interface DataTypeConversion : NSObject
 
-+ (NSMutableArray *)tasksToDictionary:(NSSet *)tasksSet;
-+ (NSArray*)tasksSetToSortedArray:(NSSet*)tasksSet;
-+ (NSMutableArray *)extractPersonsServerIDs:(NSSet *)personsSet;
+// Core data object type conversions.
++ (Event *)eventObjectFromEventServerID:(NSString *)eventServerID;
++ (NSSet *)eventObjectSetFromEventServerIDsArray:(NSArray *)eventServerID;
++ (NSArray *)eventsServerIDsArrayFromEventsObjectSet:(NSSet *)eventsSet;
 
++ (NSArray *)tasksObjectSortedArrayFromTasksObjectSet:(NSSet*)tasksSet;
++ (NSMutableArray *)tasksDictionaryArrayFromTasksObjectSet:(NSSet *)tasksSet;
++ (NSSet *)tasksObjectSetFromTasksDictionaryArray:(NSArray *)tasksDictionaryArray;
++ (NSArray *)tasksServerIDsArrayFromTasksObjectSet:(NSSet *)tasksSet;
++ (NSSet *) taskObjectFromTaskServerID:(NSString *)taskServerID;
++ (NSSet *)tasksObjectSetFromTasksServerIDsArray:(NSArray *)tasksServerIDsArray;
+    
++ (NSMutableArray *)personsServerIDsArrayFromPersonsObjectSet:(NSSet *)personsSet;
++ (NSSet *)personObjectFromPersonServerID:(NSString *)personServerID;
++ (NSSet *)personsObjectSetFromPersonsServerIDsArray:(NSArray *)personsServerIDsArray;
+
+// NSDate type conversions.
 + (NSString *)dateToString:(NSDate *)date;
 + (NSDate *)stringToDate:(NSString *)dateStr;
 + (NSDateFormatter *)standardizedShortStyleDateFormatter;

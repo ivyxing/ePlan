@@ -25,20 +25,22 @@
 @dynamic persons;
 
 - (void) updateWithDictionary:(NSDictionary*)dictionary {
+    self.alert = dictionary[@"alert"];
     self.dueDate = [DataTypeConversion stringToDate:dictionary[@"dueDate"]];
     self.name = dictionary[@"name"];
     self.timeStamp = [DataTypeConversion stringToDate:dictionary[@"timeStamp"]];
-    self.alert = dictionary[@"alert"];
-    self.persons = [NSSet setWithArray:dictionary[@"persons"]];
+    self.parentEvent = [DataTypeConversion eventObjectFromEventServerID:dictionary[@"parentEvent"]];
+    [self addPersons:[DataTypeConversion personsObjectSetFromPersonsServerIDsArray:dictionary[@"persons"]]];
 }
 
 - (NSDictionary*) toDictionary {
     NSMutableDictionary* jsonable = [NSMutableDictionary dictionary];
+    safeSet(jsonable, @"alert", self.alert);
     safeSet(jsonable, @"dueDate", [DataTypeConversion dateToString:self.dueDate]);
     safeSet(jsonable, @"name", self.name);
     safeSet(jsonable, @"timeStamp", [DataTypeConversion dateToString:self.timeStamp]);
-    safeSet(jsonable, @"alert", self.alert);
-    safeSet(jsonable, @"persons", [DataTypeConversion extractPersonsServerIDs:self.persons]);
+    safeSet(jsonable, @"parentEvent", self.parentEvent.serverID);
+    safeSet(jsonable, @"persons", [DataTypeConversion personsServerIDsArrayFromPersonsObjectSet:self.persons]);
     return jsonable;
 }
 

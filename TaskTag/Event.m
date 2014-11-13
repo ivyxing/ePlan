@@ -25,13 +25,13 @@
 @dynamic tasks;
 
 - (void) updateWithDictionary:(NSDictionary*)dictionary {
-    self.startTime = [DataTypeConversion stringToDate:dictionary[@"startTime"]];
     self.endTime = [DataTypeConversion stringToDate:dictionary[@"endTime"]];
     self.location = dictionary[@"location"];
+    self.startTime = [DataTypeConversion stringToDate:dictionary[@"startTime"]];
     self.summary = dictionary[@"summary"];
     self.title = dictionary[@"title"];
-    self.persons = [NSSet setWithArray:dictionary[@"persons"]];
-    self.tasks = [NSSet setWithArray:dictionary[@"tasks"]];
+    [self addPersons:[DataTypeConversion personsObjectSetFromPersonsServerIDsArray:dictionary[@"persons"]]];
+    [self addTasks:[DataTypeConversion tasksObjectSetFromTasksDictionaryArray:dictionary[@"tasks"]]];
 }
 
 - (NSDictionary*) toDictionary {
@@ -41,8 +41,8 @@
     safeSet(jsonable, @"location", self.location);
     safeSet(jsonable, @"summary", self.summary);
     safeSet(jsonable, @"title", self.title);
-    safeSet(jsonable, @"persons", [DataTypeConversion extractPersonsServerIDs:self.persons]);
-    safeSet(jsonable, @"tasks", [DataTypeConversion tasksToDictionary:self.tasks]);
+    safeSet(jsonable, @"persons", [DataTypeConversion personsServerIDsArrayFromPersonsObjectSet:self.persons]);
+    safeSet(jsonable, @"tasks", [DataTypeConversion tasksDictionaryArrayFromTasksObjectSet:self.tasks]);
     return jsonable;
 }
 

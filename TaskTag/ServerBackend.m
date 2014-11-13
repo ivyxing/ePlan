@@ -7,6 +7,7 @@
 //
 
 #import "ServerBackend.h"
+#import "DataTypeConversion.h"
 #import "Event.h"
 #import "Task.h"
 #import "Person.h"
@@ -55,7 +56,7 @@ static NSString* const kPersons = @"persons";
 // Push event to server.
 - (void)persistEvent:(Event *)event {
     if (!event || event.title == nil || event.title.length == 0) {
-        return; //input safety check
+        return; //Safety check.
     }
     
     NSString *eventsStr = [kBaseURL stringByAppendingPathComponent:kEvents];
@@ -79,7 +80,7 @@ static NSString* const kPersons = @"persons";
         if (!error) {
             NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
             //TODO: Assign serverID here - is this right??
-            if (responseArray) {
+            if (responseArray && !event.serverID) {
                 for (NSDictionary *jsonDictionary in responseArray) {
                     event.serverID = jsonDictionary[@"_id"];
                     NSLog(@"Event serverID: %@", event.serverID);
@@ -94,40 +95,17 @@ static NSString* const kPersons = @"persons";
 
 // Parse json dictionary into events objects.
 - (void)parseAndAddEvents:(NSArray *)jsonEventsArray {
-    // Get access to the managed object context.
-    NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
-    // Create a new object using the entity description.
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:context];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDescription];
-//    request setPredicate:<#(NSPredicate *)#>
-    
-    // Create an error variable to pass to the execute method.
-    NSError *error;
-    // Retrieve results.
-    NSArray *array = [context executeFetchRequest:request error:&error];
-    if (array == nil) {
-        // Error handling, e.g. display error to user.
-    }
-    
     // Parsing events - either update an existing event or create a new event.
     for (NSDictionary *jsonEventDictionary in jsonEventsArray) {
-        Event *event;
-        BOOL matchesExistingEvent = NO;
-        for (Event *existingEvent in array) {
-            if ([[existingEvent valueForKey:@"serverID"] isEqualToString:jsonEventDictionary[@"serverID"]]) {
-                event = existingEvent;
-                matchesExistingEvent = YES;
-                NSLog(@"Existing Event");
-            }
-        }
-        if (!matchesExistingEvent) {
+        Event *event = [DataTypeConversion eventObjectFromEventServerID:jsonEventDictionary[@"serverID"]];
+        if (!event) {
             // Create new event.
+            NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
             event = [NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:context];
             NSLog(@"New Event");
         }
         [event updateWithDictionary:jsonEventDictionary];
-        NSLog(@"Pulling from server - event: %@", event.title);
+        NSLog(@"Pulling from server: %@", event.title);
     }
 }
 

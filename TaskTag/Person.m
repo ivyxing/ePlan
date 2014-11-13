@@ -2,13 +2,14 @@
 //  Person.m
 //  TaskTag
 //
-//  Created by Min Xing on 11/7/14.
+//  Created by Min Xing on 11/13/14.
 //  Copyright (c) 2014 MakeSchool. All rights reserved.
 //
 
 #import "Person.h"
 #import "Event.h"
 #import "Task.h"
+#import "DataTypeConversion.h"
 
 #define safeSet(d,k,v) if (v) d[k] = v;
 
@@ -18,11 +19,11 @@
 @dynamic firstName;
 @dynamic isCurrentUser;
 @dynamic name;
+@dynamic serverID;
 @dynamic taggedForEvent;
 @dynamic taggedForTask;
-@dynamic serverID;
-@dynamic parentEvent;
-@dynamic parentTask;
+@dynamic parentEvents;
+@dynamic parentTasks;
 
 - (void) updateWithDictionary:(NSDictionary*)dictionary {
     self.fbProfilePictureID = dictionary[@"fbProfilePictureID"];
@@ -31,6 +32,8 @@
     self.name = dictionary[@"name"];
     self.taggedForEvent = dictionary[@"taggedForEvent"];
     self.taggedForTask = dictionary[@"taggedForTask"];
+    [self addParentEvents:[DataTypeConversion eventObjectSetFromEventServerIDsArray:dictionary[@"parentEvents"]]];
+    [self addParentTasks:[DataTypeConversion tasksObjectSetFromTasksServerIDsArray:dictionary[@"parentTasks"]]];
 }
 
 - (NSDictionary*) toDictionary {
@@ -41,6 +44,8 @@
     safeSet(jsonable, @"name", self.name);
     safeSet(jsonable, @"taggedForEvent", self.taggedForEvent);
     safeSet(jsonable, @"taggedForTask", self.taggedForTask);
+    safeSet(jsonable, @"parentEvents", [DataTypeConversion eventsServerIDsArrayFromEventsObjectSet:self.parentEvents]);
+    safeSet(jsonable, @"parentTasks", [DataTypeConversion tasksServerIDsArrayFromTasksObjectSet:self.parentTasks]);
     return jsonable;
 }
 

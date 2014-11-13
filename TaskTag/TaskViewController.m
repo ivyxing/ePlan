@@ -83,7 +83,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
-    NSArray *tasksArray = [DataTypeConversion tasksSetToSortedArray:self.event.tasks];
+    NSArray *tasksArray = [DataTypeConversion tasksObjectSortedArrayFromTasksObjectSet:self.event.tasks];
     cell.textLabel.text = [tasksArray[indexPath.row] name];
     
     return cell;
@@ -94,7 +94,7 @@
     // Get the context.
     NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
     // Get and delete object
-    NSArray *tasksArray = [DataTypeConversion tasksSetToSortedArray:self.event.tasks];
+    NSArray *tasksArray = [DataTypeConversion tasksObjectSortedArrayFromTasksObjectSet:self.event.tasks];
     Task *task = [tasksArray objectAtIndex:indexPath.row];
     [context deleteObject:task];
     // Create an error variable to pass to the save method.
@@ -120,7 +120,7 @@
     } else if ([segue.identifier isEqualToString:@"ShowTaskDetail"]) {
         TaskDetailViewController *taskDetailViewController = [segue destinationViewController];
         NSIndexPath *selectedIndexPath = self.taskTableView.indexPathForSelectedRow;
-        NSArray *tasksArray = [DataTypeConversion tasksSetToSortedArray:self.event.tasks];
+        NSArray *tasksArray = [DataTypeConversion tasksObjectSortedArrayFromTasksObjectSet:self.event.tasks];
         taskDetailViewController.task = tasksArray[selectedIndexPath.row];
         taskDetailViewController.task.parentEvent = self.event;
     }
