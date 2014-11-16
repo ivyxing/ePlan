@@ -15,6 +15,7 @@
 
 static NSString* const kBaseURL = @"https://tasktag.herokuapp.com/";
 static NSString* const kEvents = @"events";
+static NSString* const kTasks = @"tasks";
 static NSString* const kPersons = @"persons";
 
 @interface ServerBackend ()
@@ -46,7 +47,7 @@ static NSString* const kPersons = @"persons";
     NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error == nil) {
             NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
-            [self parseAndAddEvents:responseArray];
+            [DataTypeConversion eventObjectSetFromEventsDictionaryArray:responseArray];
         }
     }];
     
@@ -79,7 +80,6 @@ static NSString* const kPersons = @"persons";
     NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
             NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
-            //TODO: Assign serverID here - is this right??
             if (responseArray && !event.serverID) {
                 for (NSDictionary *jsonDictionary in responseArray) {
                     event.serverID = jsonDictionary[@"_id"];
@@ -93,20 +93,43 @@ static NSString* const kPersons = @"persons";
     [dataTask resume];
 }
 
-// Parse json dictionary into events objects.
-- (void)parseAndAddEvents:(NSArray *)jsonEventsArray {
-    // Parsing events - either update an existing event or create a new event.
-    for (NSDictionary *jsonEventDictionary in jsonEventsArray) {
-        Event *event = [DataTypeConversion eventObjectFromEventServerID:jsonEventDictionary[@"serverID"]];
-        if (!event) {
-            // Create new event.
-            NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
-            event = [NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:context];
-            NSLog(@"New Event");
-        }
-        [event updateWithDictionary:jsonEventDictionary];
-        NSLog(@"Pulling from server: %@", event.title);
+// Push task to the server.
+- (void)persistTask:(Task *)task {
+    if (!task || task.name == nil || task.name.length == 0) {
+        return; //Safety check.
     }
+    
+    NSString *tasksStr = [kBaseURL stringByAppendingPathComponent:kTasks];
+    BOOL isExistingTask = task.serverID != nil;
+    NSURL* url = isExistingTask ? [NSURL URLWithString:[tasksStr stringByAppendingPathComponent:task.serverID]] :
+    [NSURL URLWithString:tasksStr];
+    
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
+    request.HTTPMethod = isExistingTask ? @"PUT" : @"POST";
+    
+    // Convert dictionary to NSData.
+    NSData* data = [NSJSONSerialization dataWithJSONObject:[task toDictionary] options:0 error:NULL];
+    request.HTTPBody = data;
+    
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession* session = [NSURLSession sessionWithConfiguration:config];
+    
+    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (!error) {
+            NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+            if (responseArray && !task.serverID) {
+                for (NSDictionary *jsonDictionary in responseArray) {
+                    task.serverID = jsonDictionary[@"_id"];
+                    NSLog(@"Task serverID: %@", task.serverID);
+                    NSLog(@"Task name: %@", task.name);
+                }
+            }
+        }
+    }];
+    
+    [dataTask resume];
 }
 
 @end

@@ -30,6 +30,7 @@
     self.startTime = [DataTypeConversion stringToDate:dictionary[@"startTime"]];
     self.summary = dictionary[@"summary"];
     self.title = dictionary[@"title"];
+    //TODO: Fix add persons
     [self addPersons:[DataTypeConversion personsObjectSetFromPersonsServerIDsArray:dictionary[@"persons"]]];
     [self addTasks:[DataTypeConversion tasksObjectSetFromTasksDictionaryArray:dictionary[@"tasks"]]];
 }

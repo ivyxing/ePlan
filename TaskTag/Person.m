@@ -32,8 +32,8 @@
     self.name = dictionary[@"name"];
     self.taggedForEvent = dictionary[@"taggedForEvent"];
     self.taggedForTask = dictionary[@"taggedForTask"];
-    [self addParentEvents:[DataTypeConversion eventObjectSetFromEventServerIDsArray:dictionary[@"parentEvents"]]];
-    [self addParentTasks:[DataTypeConversion tasksObjectSetFromTasksServerIDsArray:dictionary[@"parentTasks"]]];
+    [self addParentEvents:[DataTypeConversion eventObjectSetFromEventsDictionaryArray:dictionary[@"parentEvents"]]];
+    [self addParentTasks:[DataTypeConversion tasksObjectSetFromTasksDictionaryArray:dictionary[@"parentTasks"]]];
 }
 
 - (NSDictionary*) toDictionary {
@@ -44,8 +44,8 @@
     safeSet(jsonable, @"name", self.name);
     safeSet(jsonable, @"taggedForEvent", self.taggedForEvent);
     safeSet(jsonable, @"taggedForTask", self.taggedForTask);
-    safeSet(jsonable, @"parentEvents", [DataTypeConversion eventsServerIDsArrayFromEventsObjectSet:self.parentEvents]);
-    safeSet(jsonable, @"parentTasks", [DataTypeConversion tasksServerIDsArrayFromTasksObjectSet:self.parentTasks]);
+    safeSet(jsonable, @"parentEvents", [DataTypeConversion eventsDictionaryArrayFromEventsObjectSet:self.parentEvents]);
+    safeSet(jsonable, @"parentTasks", [DataTypeConversion tasksDictionaryArrayFromTasksObjectSet:self.parentTasks]);
     return jsonable;
 }
 

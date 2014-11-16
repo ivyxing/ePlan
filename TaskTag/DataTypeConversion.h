@@ -7,25 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
-@class Event;
+@class Event, Task, Person;
 
 @interface DataTypeConversion : NSObject
 
-// Core data object type conversions.
-+ (Event *)eventObjectFromEventServerID:(NSString *)eventServerID;
-+ (NSSet *)eventObjectSetFromEventServerIDsArray:(NSArray *)eventServerID;
+// Core Date type conversions.
++ (NSArray *)eventsDictionaryArrayFromEventsObjectSet:(NSSet *)eventsSet;
++ (NSSet *)eventObjectSetFromEventsDictionaryArray:(NSArray *)eventsDictionaryArray;
++ (Event *)eventObjectFromEventServerID:(NSString *)eventServerID update:(NSDictionary *)dictionary;
 + (NSArray *)eventsServerIDsArrayFromEventsObjectSet:(NSSet *)eventsSet;
 
 + (NSArray *)tasksObjectSortedArrayFromTasksObjectSet:(NSSet*)tasksSet;
-+ (NSMutableArray *)tasksDictionaryArrayFromTasksObjectSet:(NSSet *)tasksSet;
-+ (NSSet *)tasksObjectSetFromTasksDictionaryArray:(NSArray *)tasksDictionaryArray;
-+ (NSArray *)tasksServerIDsArrayFromTasksObjectSet:(NSSet *)tasksSet;
-+ (NSSet *) taskObjectFromTaskServerID:(NSString *)taskServerID;
-+ (NSSet *)tasksObjectSetFromTasksServerIDsArray:(NSArray *)tasksServerIDsArray;
-    
-+ (NSMutableArray *)personsServerIDsArrayFromPersonsObjectSet:(NSSet *)personsSet;
-+ (NSSet *)personObjectFromPersonServerID:(NSString *)personServerID;
++ (NSArray *)tasksDictionaryArrayFromTasksObjectSet:(NSSet *)tasksSet;
++ (NSSet *)tasksObjectSetFromTasksDictionaryArray:(NSArray *)tasksDictionarysArray;
++ (Task *)taskObjectFromTaskServerID:(NSString *)taskServerID updateWithDictionary:(NSDictionary *)dictionary;
+
++ (NSArray *)personsServerIDsArrayFromPersonsObjectSet:(NSSet *)personsSet;
 + (NSSet *)personsObjectSetFromPersonsServerIDsArray:(NSArray *)personsServerIDsArray;
++ (Person *)personObjectFromPersonServerID:(NSString *)personServerID;
 
 // NSDate type conversions.
 + (NSString *)dateToString:(NSDate *)date;

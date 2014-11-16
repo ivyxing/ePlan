@@ -12,28 +12,54 @@
 #import "Event.h"
 #import "AppDelegate.h"
 
+#define safeInput(v,d,k) if (d[k]) v = d[k];
+
 @implementation DataTypeConversion
 
 #pragma mark - Event
 
-+ (Event *)eventObjectFromEventServerID:(NSString *)eventServerID {
++ (NSArray *)eventsDictionaryArrayFromEventsObjectSet:(NSSet *)eventsSet {
+    NSMutableArray *eventsDictionaryArray = [NSMutableArray array];
+    for (Event *event in eventsSet) {
+        NSDictionary *eventDictionary = [event toDictionary];
+        [eventsDictionaryArray addObject:eventDictionary];
+    }
+    return eventsDictionaryArray;
+}
+
++ (NSSet *)eventObjectSetFromEventsDictionaryArray:(NSArray *)eventsDictionaryArray {
+    NSMutableSet *eventsObjectSet = [NSMutableSet set];
+    for (NSDictionary *eventDictionary in eventsDictionaryArray) {
+        Event *event = [self eventObjectFromEventServerID:eventDictionary[@"_id"] update:eventDictionary];
+        if (event) {
+            [eventsObjectSet addObject:event];
+        }
+    }
+    return eventsObjectSet;
+}
+
++ (Event *)eventObjectFromEventServerID:(NSString *)eventServerID update:(NSDictionary *)dictionary{
+    if (eventServerID == nil) {
+        return nil;
+    }
     NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:context];
     [request setEntity:entity];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"Event.serverID like %@", eventServerID];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY serverID like %@", eventServerID];
     [request setPredicate:predicate];
     NSError *error;
     NSArray *array = [context executeFetchRequest:request error:&error];
-    return (array == nil) ? nil : array[0];
+    Event *event = (array == nil || array.count == 0) ?  [self createEvent] : array[0];
+    [event updateWithDictionary:dictionary];
+    return event;
 }
 
-+ (NSSet *)eventObjectSetFromEventServerIDsArray:(NSArray *)eventServerIDs {
-    NSMutableSet *eventsObjectSet = [NSMutableSet set];
-    for (NSString *eventServerID in eventServerIDs) {
-        [eventsObjectSet addObject:[self eventObjectFromEventServerID:eventServerID]];
-    }
-    return eventsObjectSet;
++ (Event *)createEvent {
+    NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+    Event *event = [NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:context];
+    NSLog(@"New Event");
+    return event;
 }
 
 + (NSArray *)eventsServerIDsArrayFromEventsObjectSet:(NSSet *)eventsSet {
@@ -63,49 +89,34 @@
     return tasksDictionaryArray;
 }
 
-+ (NSArray *)tasksServerIDsArrayFromTasksObjectSet:(NSSet *)tasksSet {
-    NSMutableArray *tasksServerIDsArray = [NSMutableArray array];
-    for (Task *task in tasksSet) {
-        [tasksServerIDsArray addObject:task.serverID];
++ (NSSet *)tasksObjectSetFromTasksDictionaryArray:(NSArray *)tasksDictionarysArray {
+    NSMutableSet *tasksObjectSet = [NSMutableSet set];
+    for (NSDictionary *taskDictionary in tasksDictionarysArray) {
+        [tasksObjectSet addObject:[self taskObjectFromTaskServerID:taskDictionary[@"_id"]
+             updateWithDictionary:taskDictionary]];
     }
-    return tasksServerIDsArray;
+    return tasksObjectSet;
 }
 
-+ (Task *)taskObjectFromTaskServerID:(NSString *)taskServerID {
++ (Task *)taskObjectFromTaskServerID:(NSString *)taskServerID updateWithDictionary:(NSDictionary *)dictionary {
     NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:context];
     [request setEntity:entity];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"Task.serverID like %@", taskServerID];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"serverID like %@", taskServerID];
     [request setPredicate:predicate];
     NSError *error;
     NSArray *array = [context executeFetchRequest:request error:&error];
-    return (array == nil) ? nil : array[0];
+    Task *task = (array == nil) ? [self createTask] : array[0];
+    [task updateWithDictionary:dictionary];
+    return task;
 }
 
-+ (NSSet *)tasksObjectSetFromTasksServerIDsArray:(NSArray *)tasksServerIDsArray {
-    NSMutableSet *tasksObjectSet = [NSMutableSet set];
-    for (NSString *taskServerID in tasksServerIDsArray) {
-        [tasksObjectSet addObject:[self taskObjectFromTaskServerID:taskServerID]];
-    }
-    return tasksObjectSet;
-}
-
-+ (NSSet *)tasksObjectSetFromTasksDictionaryArray:(NSArray *)tasksDictionaryArray {
-    NSMutableSet *tasksObjectSet = [NSMutableSet set];
-    for (NSDictionary *taskDictionary in tasksDictionaryArray) {
-        Task *task = [[Task alloc] init];
-        task.alert = taskDictionary[@"alert"];
-        task.dueDate = taskDictionary[@"dueDate"];
-        task.name = taskDictionary[@"name"];
-        task.timeStamp = taskDictionary[@"timeStamp"];
-        task.commentsArray = taskDictionary[@"commentsArray"];
-        task.serverID = taskDictionary[@"serverID"];
-        task.parentEvent.serverID = taskDictionary[@"parentEventServerID"];
-        task.persons = [self personsObjectSetFromPersonsServerIDsArray:taskDictionary[@"personsServerIDs"]];
-        [tasksObjectSet addObject:task];
-    }
-    return tasksObjectSet;
++ (Task *)createTask {
+    NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+    Task *task = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:context];
+    NSLog(@"New Task");
+    return task;
 }
 
 #pragma mark - Person
@@ -120,6 +131,14 @@
     return personsServerIDsArray;
 }
 
++ (NSSet *)personsObjectSetFromPersonsServerIDsArray:(NSArray *)personsServerIDsArray {
+    NSMutableSet *personsObjectSet = [NSMutableSet set];
+    for (NSString *personServerID in personsServerIDsArray) {
+        [personsObjectSet addObject:[self personObjectFromPersonServerID:personServerID]];
+    }
+    return personsObjectSet;
+}
+
 + (Person *)personObjectFromPersonServerID:(NSString *)personServerID {
     NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -129,15 +148,14 @@
     [request setPredicate:predicate];
     NSError *error;
     NSArray *array = [context executeFetchRequest:request error:&error];
-    return (array == nil) ? nil : array[0];
+    return (array == nil) ? [self createPerson] : array[0];
 }
 
-+ (NSSet *)personsObjectSetFromPersonsServerIDsArray:(NSArray *)personsServerIDsArray {
-    NSMutableSet *personsObjectSet = [NSMutableSet set];
-    for (NSString *personServerID in personsServerIDsArray) {
-        [personsObjectSet addObject:[self personObjectFromPersonServerID:personServerID]];
-    }
-    return personsObjectSet;
++ (Person *)createPerson {
+    NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
+    Person *person = [NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:context];
+    NSLog(@"New Person");
+    return person;
 }
 
 #pragma mark - Date
