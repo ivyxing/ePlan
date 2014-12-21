@@ -15,6 +15,7 @@
 #import "FriendCollectionViewCell.h"
 #import "AppDelegate.h"
 #import "ServerBackend.h"
+#import "DataTypeConversion.h"
 
 @interface EventInfoTableViewController ()
 
@@ -22,12 +23,16 @@
 @property (weak, nonatomic) IBOutlet UITextView *summaryTextView;
 @property (weak, nonatomic) IBOutlet UITextField *locationTextField;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIButton *startTimeButton;
+@property (weak, nonatomic) IBOutlet UIButton *endTimeButton;
 
 @property (strong, nonatomic) NSMutableArray *friendsTagged;
 
 @end
 
-@implementation EventInfoTableViewController
+@implementation EventInfoTableViewController {
+    BOOL _isStartTime;
+}
 
 #pragma mark - View Life Cycle
 
@@ -35,6 +40,7 @@
     [super viewDidLoad];
     // To get rid of the extra lines in the table views.
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     self.friendsTagged = [NSMutableArray array];
 }
 
@@ -52,11 +58,12 @@
     }
     // Display start and end time.
     if (self.event.startTime) {
-        // TODO: Fix start time and end time
-        NSString* startTimeStr = [self dateToString:self.event.startTime];
+        NSString* startTimeStr = [DataTypeConversion dateToString:self.event.startTime];
+        [self.startTimeButton setTitle:startTimeStr forState:UIControlStateNormal];
     }
     if (self.event.endTime) {
-        NSString* endTimeStr = [self dateToString:self.event.endTime];
+        NSString* endTimeStr = [DataTypeConversion dateToString:self.event.endTime];
+        [self.endTimeButton setTitle:endTimeStr forState:UIControlStateNormal];
     }
     // Stored tagged friends for event.
     if (self.event.persons && self.event.persons.count > 0) {
@@ -84,7 +91,7 @@
     self.event.title = self.eventTitleTextField.text;
     self.event.summary = self.summaryTextView.text;
     self.event.location = self.locationTextField.text;
-    
+
     // Get the NSManagedObject context
     NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
     // Create an error variable to pass to the save method.
@@ -111,6 +118,14 @@
     return YES;
 }
 
+- (IBAction)setStartTime:(id)sender {
+    _isStartTime = YES;
+}
+
+- (IBAction)setEndTime:(id)sender {
+    _isStartTime = NO;
+}
+
 #pragma mark - Collection View Data Source
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -130,11 +145,11 @@
 #pragma mark - Segue
 #pragma message "It is fairly untypical to present the DatePickerViewController as a separate ViewController, except you want to display more than only a DatePicker within the ViewController. In most cases the DatePicker gets displayed on top of the current View Controller until a date is selected"
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"PickStartTime"]) {
+    if ([segue.identifier isEqualToString:@"SetStartTime"]) {
         DatePickerViewController *datePickerViewController = [segue destinationViewController];
         datePickerViewController.delegate = self;
         datePickerViewController.displayDate = self.event.startTime;
-    } else if ([segue.identifier isEqualToString:@"PickEndTime"]) {
+    } else if ([segue.identifier isEqualToString:@"SetEndTime"]) {
         DatePickerViewController *datePickerViewController = [segue destinationViewController];
         datePickerViewController.delegate = self;
         datePickerViewController.displayDate = self.event.endTime;
@@ -152,13 +167,14 @@
 #pragma message "Having state variables such as 'settingStartTime' and 'settingEndTime' is usually not a good practice. In this specific case a better solution could be that the date picker knows which date it is picking and passes that information on to the callback method"
 
 - (void)datePicked:(NSDate*)date {
-    NSString *buttonTitle = [self dateToString:date];
-}
-
-- (NSString*)dateToString:(NSDate*)date {
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterShortStyle
-                                                          timeStyle:NSDateFormatterShortStyle];
-    return dateString;
+    NSString *buttonTitle = [DataTypeConversion dateToString:date];
+    if (_isStartTime) {
+        self.event.startTime = date;
+        [self.startTimeButton setTitle:buttonTitle forState:UIControlStateNormal];
+    } else {
+        self.event.endTime = date;
+        [self.endTimeButton setTitle:buttonTitle forState:UIControlStateNormal];
+    }
 }
 
 #pragma mark - Calendar Handling
@@ -177,6 +193,12 @@
             [store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
         }
     }];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                    message:@"Event Added to Calendar"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 @end

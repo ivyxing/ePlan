@@ -30,6 +30,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     [self.taskTableView reloadData];
     [self.eventTitleButton setTitle:self.event.title forState:UIControlStateNormal];
 }
@@ -56,8 +57,7 @@
 
 #pragma mark - User Interaction
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.taskNameTextField) {
         // Hide keyboard.
         [self.taskNameTextField resignFirstResponder];
@@ -85,7 +85,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
     NSArray *tasksArray = [DataTypeConversion tasksObjectSortedArrayFromTasksObjectSet:self.event.tasks];
     cell.textLabel.text = [tasksArray[indexPath.row] name];
-    
+    [cell.textLabel setTextColor:[UIColor whiteColor]];
     return cell;
 }
 
@@ -122,6 +122,12 @@
         NSIndexPath *selectedIndexPath = self.taskTableView.indexPathForSelectedRow;
         NSArray *tasksArray = [DataTypeConversion tasksObjectSortedArrayFromTasksObjectSet:self.event.tasks];
         taskDetailViewController.task = tasksArray[selectedIndexPath.row];
+        Task * task = tasksArray[selectedIndexPath.row];
+        
+        if ([task.timeStamp isKindOfClass:[NSString class]]) {
+            NSLog(@"Timestamp is string");
+        }
+        
         taskDetailViewController.task.parentEvent = self.event;
     }
 }

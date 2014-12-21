@@ -12,11 +12,15 @@
 #import "Task.h"
 #import "Person.h"
 #import "AppDelegate.h"
+#import "TaskDetailViewController.h"
+#import "Message.h"
 
 static NSString* const kBaseURL = @"https://tasktag.herokuapp.com/";
 static NSString* const kEvents = @"events";
 static NSString* const kTasks = @"tasks";
 static NSString* const kPersons = @"persons";
+static NSString* const kTaskCommentsTemp = @"commentsTemp";
+
 
 @interface ServerBackend ()
 
@@ -56,8 +60,9 @@ static NSString* const kPersons = @"persons";
 
 // Push event to server.
 - (void)persistEvent:(Event *)event {
+    // Safety check.
     if (!event || event.title == nil || event.title.length == 0) {
-        return; //Safety check.
+        return;
     }
     
     NSString *eventsStr = [kBaseURL stringByAppendingPathComponent:kEvents];
@@ -80,8 +85,12 @@ static NSString* const kPersons = @"persons";
     NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
             NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
-            if (responseArray && !event.serverID) {
+            if (responseArray && responseArray.count > 0 && !event.serverID) {
                 for (NSDictionary *jsonDictionary in responseArray) {
+                    NSArray* tasksArray = jsonDictionary[@"tasks"];
+                    for (Task *task in tasksArray) {
+                        [self persistTask:task];
+                    }
                     event.serverID = jsonDictionary[@"_id"];
                     NSLog(@"Event serverID: %@", event.serverID);
                     NSLog(@"Event title: %@", event.title);
@@ -131,5 +140,67 @@ static NSString* const kPersons = @"persons";
     
     [dataTask resume];
 }
+
+#pragma mark - Messages
+
+//- (void)sendCommentToServer:(NSDictionary*)dictionary {
+//    NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingString:kTaskCommentsTemp]];
+//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
+//    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//    [request setHTTPMethod:@"POST"];
+//    
+//    // Convert dictionary to NSData.
+//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:nil];
+//    
+//    [request setHTTPBody:jsonData];
+//    
+//    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    NSURLSession *urlSession = [NSURLSession sessionWithConfiguration:config];
+//    
+//    NSURLSessionDataTask *dataTask = [urlSession dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+//        NSInteger responseStatusCode = [httpResponse statusCode];
+//        if (responseStatusCode == 200 && data) {
+//            NSArray *downloadedJSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+//            [self addToArrayJSONDictionary:downloadedJSON];
+//        } else {
+//            // error handling
+//        }
+//    }];
+//    
+//    [dataTask resume];
+//}
+
+//- (void)getComments {
+//    NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingString:kTaskCommentsTemp]];
+//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
+//    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//    [request setHTTPMethod:@"GET"];
+//    
+//    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    NSURLSession *urlSession = [NSURLSession sessionWithConfiguration:config];
+//
+//    NSURLSessionDataTask *dataTask = [urlSession dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+//        NSInteger responseStatusCode = [httpResponse statusCode];
+//        if (responseStatusCode == 200 && data) {
+//            NSArray *downloadedJSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+//            // TODO: Replace this with Core Data.
+//            [self addToArrayJSONDictionary:downloadedJSON];
+//        } else {
+//            // error handling
+//        }
+//    }];
+//    
+//    [dataTask resume];
+//}
+
+//- (void)addToArrayJSONDictionary:(NSArray *)msgArray {
+//    for (NSDictionary *jsonMsg in msgArray) {
+//        Message *msg = [Message messageWithJSONDictionary:jsonMsg];
+//        [self.comments insertObject:msg atIndex:0];
+//    }
+//}
 
 @end

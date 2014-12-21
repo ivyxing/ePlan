@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.events = [NSMutableArray array];
+//    [[UILabel appearance] setFont:[UIFont fontWithName:@"Helvetica" size:17.0]];
 }
 
 #pragma mark - View Lifecycle
@@ -46,11 +47,11 @@
     // Create an error variable to pass to the execute method.
     NSError *error;
     // Retrieve results.
-    NSArray *array = [context executeFetchRequest:request error:&error];
-    if (array == nil) {
+    NSArray *eventsArray = [context executeFetchRequest:request error:&error];
+    if (eventsArray == nil) {
         // Error handling, e.g. display error to user.
     }
-    self.events = [array mutableCopy];
+    self.events = [eventsArray mutableCopy];
     [self.eventTableView reloadData];
 }
 
@@ -63,7 +64,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EventCell"];
     cell.textLabel.text = [self.events[indexPath.row] title];
-    
+    [cell.textLabel setTextColor:[UIColor whiteColor]];
     return cell;
 }
 

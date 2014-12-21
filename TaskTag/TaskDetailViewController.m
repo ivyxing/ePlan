@@ -16,12 +16,13 @@
 #import "AppDelegate.h"
 #import "ServerBackend.h"
 #import "DataTypeConversion.h"
+#import "Message.h"
 
 @interface TaskDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *taskNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *commentsTextField;
 @property (weak, nonatomic) IBOutlet UITableView *commentsTableView;
-@property (weak, nonatomic) IBOutlet UITableView *dueDateAlertTableView;
 @property (weak, nonatomic) IBOutlet UIButton *dueDateButton;
 @property (weak, nonatomic) IBOutlet UICollectionView *friendsCollectionView;
 
@@ -35,6 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.friendsTagged = [NSMutableArray array];
 }
 
@@ -42,6 +44,7 @@
     [super viewWillAppear:animated];
     // Display task name.
     [self.taskNameTextField setText:self.task.name];
+    [self.taskNameTextField setTextColor:[UIColor whiteColor]];
     
     if (self.task.parentEvent.persons && self.task.parentEvent.persons.count > 0) {
         for (Person* person in self.task.parentEvent.persons) {
@@ -58,11 +61,15 @@
         }
     }
     [self.friendsCollectionView reloadData];
-    [self.dueDateAlertTableView reloadData];
     
     // Save to server.
     ServerBackend *sharedServerBackend = [ServerBackend sharedServerBackend];
     [sharedServerBackend persistEvent:self.task.parentEvent];
+    
+    // Get comments from server.
+//    [sharedServerBackend getComments];
+//    self.messages = sharedServerBackend.comments;
+//    [self.commentsTableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -82,16 +89,42 @@
 
 #pragma mark - User Interaction
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.taskNameTextField) {
         // Hide keyboard.
         [self.taskNameTextField resignFirstResponder];
         // Save task title.
         self.task.name = textField.text;
         self.task.timeStamp = [NSDate date];
+    } else if (textField == self.commentsTextField) {
+        // Hide keyboard.
+        [self.commentsTextField resignFirstResponder];
+        // Store and send message.
+        Message *msg = [Message new];
+        msg.username = [self getCurrentUserFirstName];
+        msg.content = textField.text;
+        ServerBackend *sharedServerBackend = [ServerBackend sharedServerBackend];
+        [sharedServerBackend sendCommentToServer:[msg messageToJSONDictionary]];
     }
     return YES;
+}
+
+// TODO: Add a send button.
+- (IBAction)sendMessage:(id)sender {
+    Message *msg = [Message new];
+    msg.username = [self getCurrentUserFirstName];
+    msg.content = self.commentsTextField.text;
+    ServerBackend *sharedServerBackend = [ServerBackend sharedServerBackend];
+    [sharedServerBackend sendCommentToServer:[msg messageToJSONDictionary]];
+}
+
+- (NSString *)getCurrentUserFirstName {
+    for (Person *person in self.task.persons) {
+        if (person.isCurrentUser) {
+            return person.firstName;
+        }
+    }
+    return nil;
 }
 
 #pragma mark - Table View Data Source
@@ -101,6 +134,18 @@
 //
 //    return cell;
 //}
+
+#pragma mark - Table view data source
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.messages count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell" forIndexPath:indexPath];
+    cell.textLabel.text = [self.messages[indexPath.row] content];
+    return cell;
+}
 
 #pragma mark - Collection View Data Source
 

@@ -12,8 +12,15 @@
 
 @interface ServerBackend : NSObject
 
+//Temp. Fix later
+@property (strong, nonatomic) NSMutableArray *comments;
+
+
 - (void) import;
 - (void) persistEvent:(Event *)event;
+
+- (void)getComments;
+- (void)sendCommentToServer:(NSDictionary*)dictionary;
 
 + (id)sharedServerBackend;
 

@@ -99,6 +99,9 @@
 }
 
 + (Task *)taskObjectFromTaskServerID:(NSString *)taskServerID updateWithDictionary:(NSDictionary *)dictionary {
+    if (!taskServerID) {
+        return nil;
+    }
     NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:context];
@@ -162,14 +165,12 @@
 
 + (NSString *)dateToString:(NSDate *)date {
     NSDateFormatter *dateFormatter = [self standardizedShortStyleDateFormatter];
-    NSString *dateString = [dateFormatter stringFromDate:date];
-    return dateString;
+    return [dateFormatter stringFromDate:date];
 }
 
 + (NSDate *)stringToDate:(NSString *)dateStr {
     NSDateFormatter *dateFormatter = [self standardizedShortStyleDateFormatter];
-    NSDate *date = [dateFormatter dateFromString:dateStr];
-    return date;
+    return [dateFormatter dateFromString:dateStr];
 }
 
 + (NSDateFormatter *)standardizedShortStyleDateFormatter {

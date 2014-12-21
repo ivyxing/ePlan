@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		280726DC19F1A3A20043657C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280726DB19F1A3A20043657C /* LoginViewController.m */; };
+		2827A90A1A1A018D00057CE8 /* IT-3@4x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2827A9091A1A018C00057CE8 /* IT-3@4x.png */; };
+		2827A90D1A1A5DFB00057CE8 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 2827A90C1A1A5DFB00057CE8 /* Message.m */; };
 		283AEB4819E7195600B83A8A /* ReminderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AEB4719E7195600B83A8A /* ReminderTableViewController.m */; };
+		2844044A1A4774EC00F04BBC /* TaskDetailViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 284404491A4774EC00F04BBC /* TaskDetailViewTableViewCell.m */; };
 		28480B0919F6F2E20030B2E4 /* FriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28480B0819F6F2E20030B2E4 /* FriendViewController.m */; };
 		28480B0C19F70ED70030B2E4 /* FriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28480B0B19F70ED70030B2E4 /* FriendTableViewCell.m */; };
 		2863B96219EEECE900ADFDA7 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2863B96119EEECE900ADFDA7 /* EventKit.framework */; };
@@ -50,8 +53,13 @@
 /* Begin PBXFileReference section */
 		280726DA19F1A3A20043657C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		280726DB19F1A3A20043657C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		2827A9091A1A018C00057CE8 /* IT-3@4x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IT-3@4x.png"; sourceTree = "<group>"; };
+		2827A90B1A1A5DFB00057CE8 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		2827A90C1A1A5DFB00057CE8 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		283AEB4619E7195600B83A8A /* ReminderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderTableViewController.h; sourceTree = "<group>"; };
 		283AEB4719E7195600B83A8A /* ReminderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderTableViewController.m; sourceTree = "<group>"; };
+		284404481A4774EC00F04BBC /* TaskDetailViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskDetailViewTableViewCell.h; sourceTree = "<group>"; };
+		284404491A4774EC00F04BBC /* TaskDetailViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskDetailViewTableViewCell.m; sourceTree = "<group>"; };
 		28480B0719F6F2E20030B2E4 /* FriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendViewController.h; sourceTree = "<group>"; };
 		28480B0819F6F2E20030B2E4 /* FriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendViewController.m; sourceTree = "<group>"; };
 		28480B0A19F70ED70030B2E4 /* FriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewCell.h; sourceTree = "<group>"; };
@@ -181,6 +189,10 @@
 				28DBB20619FEE491002ACBA1 /* TaskViewController.m */,
 				2894442819DB75210036CDDA /* TaskDetailViewController.h */,
 				2894442919DB75210036CDDA /* TaskDetailViewController.m */,
+				284404481A4774EC00F04BBC /* TaskDetailViewTableViewCell.h */,
+				284404491A4774EC00F04BBC /* TaskDetailViewTableViewCell.m */,
+				2827A90B1A1A5DFB00057CE8 /* Message.h */,
+				2827A90C1A1A5DFB00057CE8 /* Message.m */,
 				28480B0719F6F2E20030B2E4 /* FriendViewController.h */,
 				28480B0819F6F2E20030B2E4 /* FriendViewController.m */,
 				28BA6B9519F85BD80072EC32 /* FriendCollectionViewCell.h */,
@@ -229,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				28DBB20A19FEE538002ACBA1 /* Star@4x.png */,
+				2827A9091A1A018C00057CE8 /* IT-3@4x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -318,6 +331,7 @@
 				289443FF19DB5FC00036CDDA /* Main.storyboard in Resources */,
 				2894440419DB5FC00036CDDA /* LaunchScreen.xib in Resources */,
 				2894440119DB5FC00036CDDA /* Images.xcassets in Resources */,
+				2827A90A1A1A018D00057CE8 /* IT-3@4x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,11 +353,13 @@
 				28BA6B9719F85BD90072EC32 /* FriendCollectionViewCell.m in Sources */,
 				28480B0919F6F2E20030B2E4 /* FriendViewController.m in Sources */,
 				28EF068219E35614002AB675 /* DatePickerViewController.m in Sources */,
+				2844044A1A4774EC00F04BBC /* TaskDetailViewTableViewCell.m in Sources */,
 				287077D61A0D4E5C008B1B47 /* Event.m in Sources */,
 				287077C41A0C122C008B1B47 /* ServerBackend.m in Sources */,
 				28A907761A1541FF00970D78 /* Person.m in Sources */,
 				289443F619DB5FC00036CDDA /* AppDelegate.m in Sources */,
 				28CED42C19FB13CE005989D0 /* EventInfoTableViewController.m in Sources */,
+				2827A90D1A1A5DFB00057CE8 /* Message.m in Sources */,
 				283AEB4819E7195600B83A8A /* ReminderTableViewController.m in Sources */,
 				280726DC19F1A3A20043657C /* LoginViewController.m in Sources */,
 				28CED42619FB13BF005989D0 /* EventViewController.m in Sources */,
