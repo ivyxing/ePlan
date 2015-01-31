@@ -39,7 +39,7 @@
 }
 
 + (Event *)eventObjectFromEventServerID:(NSString *)eventServerID update:(NSDictionary *)dictionary{
-    if (eventServerID == nil) {
+    if (!eventServerID) {
         return nil;
     }
     NSManagedObjectContext *context = ((AppDelegate *)[UIApplication sharedApplication].delegate).managedObjectContext;

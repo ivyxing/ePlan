@@ -28,7 +28,7 @@
     self.alert = dictionary[@"alert"];
     self.dueDate = [DataTypeConversion stringToDate:dictionary[@"dueDate"]];
     self.name = dictionary[@"name"];
-//    self.timeStamp = [DataTypeConversion stringToDate:dictionary[@"timeStamp"]];
+    self.timeStamp = [DataTypeConversion stringToDate:dictionary[@"timeStamp"]];
     NSString *parentEventServerID = [dictionary[@"parentEvent"] valueForKey:@"serverID"];
     self.parentEvent = [DataTypeConversion eventObjectFromEventServerID:parentEventServerID update:dictionary[@"parentEvent"]];
     [self addPersons:[DataTypeConversion personsObjectSetFromPersonsServerIDsArray:dictionary[@"persons"]]];
@@ -39,7 +39,7 @@
     safeSet(jsonable, @"alert", self.alert);
     safeSet(jsonable, @"dueDate", [DataTypeConversion dateToString:self.dueDate]);
     safeSet(jsonable, @"name", self.name);
-//    safeSet(jsonable, @"timeStamp", [DataTypeConversion dateToString:self.timeStamp]);
+    safeSet(jsonable, @"timeStamp", [DataTypeConversion dateToString:self.timeStamp]);
     safeSet(jsonable, @"parentEvent", [self.parentEvent toDictionary]);
     safeSet(jsonable, @"persons", [DataTypeConversion personsServerIDsArrayFromPersonsObjectSet:self.persons]);
     return jsonable;

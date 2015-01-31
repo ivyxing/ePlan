@@ -32,7 +32,7 @@
     self.title = dictionary[@"title"];
     //TODO: Fix add persons
     [self addPersons:[DataTypeConversion personsObjectSetFromPersonsServerIDsArray:dictionary[@"persons"]]];
-    [self addTasks:[DataTypeConversion tasksObjectSetFromTasksDictionaryArray:dictionary[@"tasks"]]];
+//    [self addTasks:[DataTypeConversion tasksObjectSetFromTasksDictionaryArray:dictionary[@"tasks"]]];
 }
 
 - (NSDictionary*) toDictionary {
@@ -43,7 +43,7 @@
     safeSet(jsonable, @"summary", self.summary);
     safeSet(jsonable, @"title", self.title);
     safeSet(jsonable, @"persons", [DataTypeConversion personsServerIDsArrayFromPersonsObjectSet:self.persons]);
-    safeSet(jsonable, @"tasks", [DataTypeConversion tasksDictionaryArrayFromTasksObjectSet:self.tasks]);
+//    safeSet(jsonable, @"tasks", [DataTypeConversion tasksDictionaryArrayFromTasksObjectSet:self.tasks]);
     return jsonable;
 }
 
